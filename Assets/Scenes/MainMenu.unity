@@ -282,11 +282,7 @@ SpriteRenderer:
   m_Size: {x: 0.99, y: 0.42}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
-  m_WasSpriteAssigned: 0
-=======
   m_WasSpriteAssigned: 1
->>>>>>> parent of b64c0e3 (Revert "Revert "Revert "Revert "Revert "+ UI of scenes""""")
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &780653394
@@ -726,11 +722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1673110812}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-<<<<<<< HEAD
         m_MethodName: SelectLevelScene
-=======
-        m_MethodName: LoadLevel1
->>>>>>> parent of b64c0e3 (Revert "Revert "Revert "Revert "Revert "+ UI of scenes""""")
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -792,13 +784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playBt: {fileID: 1673110810}
   exitBt: {fileID: 2041818411}
-<<<<<<< HEAD
   sizeAfter: {x: 2, y: 2, z: 2}
   sizeBefore: {x: 1.75, y: 1.75, z: 1.75}
-=======
-  sizeAfter: {x: 1.5, y: 1.5, z: 1.5}
-  sizeBefore: {x: 1.25, y: 1.25, z: 1.25}
->>>>>>> parent of b64c0e3 (Revert "Revert "Revert "Revert "Revert "+ UI of scenes""""")
 --- !u!1 &1915187942
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,11 +909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
   m_AnchoredPosition: {x: -1.1000099, y: -62}
-=======
-  m_AnchoredPosition: {x: -1.1000099, y: -55.5}
->>>>>>> parent of b64c0e3 (Revert "Revert "Revert "Revert "Revert "+ UI of scenes""""")
   m_SizeDelta: {x: 47.0021, y: 18.1409}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2041818413
@@ -943,13 +926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playBt: {fileID: 1673110810}
   exitBt: {fileID: 2041818411}
-<<<<<<< HEAD
   sizeAfter: {x: 2, y: 2, z: 2}
   sizeBefore: {x: 1.75, y: 1.75, z: 1.75}
-=======
-  sizeAfter: {x: 1.5, y: 1.5, z: 1.5}
-  sizeBefore: {x: 1.25, y: 1.25, z: 1.25}
->>>>>>> parent of b64c0e3 (Revert "Revert "Revert "Revert "Revert "+ UI of scenes""""")
 --- !u!114 &2041818414
 MonoBehaviour:
   m_ObjectHideFlags: 0

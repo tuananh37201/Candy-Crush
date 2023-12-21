@@ -98,12 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99636212d8ea75d46abef616a4673cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeAngle: 0
   column: 0
   row: 0
   targetX: 0
   targetY: 0
+  previousRow: 0
+  previousColumn: 0
   isMatched: 0
+  swipeAngle: 0
+  swipeResist: 1
+  isColumnBomb: 0
+  isRowBomb: 0
+  rowSugar: {fileID: 1255682190997073417, guid: 690a9fe8a7a2b914c96b9d944f54a32d, type: 3}
+  columnSugar: {fileID: 454384835735758834, guid: e46754db73a83844eb5908ae7568822d, type: 3}
 --- !u!58 &-2830333995770405728
 CircleCollider2D:
   m_ObjectHideFlags: 0

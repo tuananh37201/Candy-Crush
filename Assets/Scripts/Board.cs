@@ -12,14 +12,16 @@ public class Board : MonoBehaviour
 {
     public GameState currentStage = GameState.move;
 
-    public GameObject boardTilePrefab;
     public int width;
     public int height;
     public int offSet;
 
-    private BoardTile[,] allTiles;
+    public GameObject boardTilePrefab;
     public GameObject[] candys;
+    public GameObject destroyEffect;
+    private BoardTile[,] allTiles;
     public GameObject[,] allCandys;
+    public Candy currentCandy;
     private FindMatches findMatches;
 
     void Start()
@@ -101,6 +103,8 @@ public class Board : MonoBehaviour
         if (allCandys[column, row].GetComponent<Candy>().isMatched)
         {
             findMatches.currentMatches.Remove(allCandys[column, row]);
+            GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+            Destroy(particle, .5f);
             Destroy(allCandys[column, row]);
             allCandys[column, row] = null;
         }

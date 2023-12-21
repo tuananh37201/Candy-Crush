@@ -105,12 +105,15 @@ MonoBehaviour:
   previousRow: 0
   previousColumn: 0
   isMatched: 0
+  otherCandy: {fileID: 0}
   swipeAngle: 0
   swipeResist: 1
-  isColumnBomb: 0
   isRowBomb: 0
+  isColumnBomb: 0
+  isColorBomb: 0
   rowSugar: {fileID: 1255682190997073417, guid: 690a9fe8a7a2b914c96b9d944f54a32d, type: 3}
   columnSugar: {fileID: 454384835735758834, guid: e46754db73a83844eb5908ae7568822d, type: 3}
+  colorBomb: {fileID: 3390875458332916994, guid: a1b44234922a3924e9522cfbf45800dc, type: 3}
 --- !u!58 &4761973652577004776
 CircleCollider2D:
   m_ObjectHideFlags: 0

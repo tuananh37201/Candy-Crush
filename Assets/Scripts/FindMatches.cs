@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 public class FindMatches : MonoBehaviour
 {
@@ -128,6 +129,26 @@ public class FindMatches : MonoBehaviour
                                 currentCandy.GetComponent<Candy>().isMatched = true;
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public void MacthPiecesColor(string color)
+    {
+        for (int i = 0; i < board.width; i++)
+        {
+            for (int j = 0; j < board.height; j++)
+            {
+                // Check if that piece exists
+                if (board.allCandys[i, j] != null)
+                {
+                    // Check the tag on that candy
+                    if (board.allCandys[i, j].tag == color)
+                    {
+                        // Set that dot to be matched
+                        board.allCandys[i, j].GetComponent<Candy>().isMatched = true;
                     }
                 }
             }

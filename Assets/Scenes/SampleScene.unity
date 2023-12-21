@@ -290,10 +290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStage: 1
-  boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
   width: 7
   height: 10
   offSet: 20
+  boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
   candys:
   - {fileID: 7636414600690166343, guid: d925159bdcc0bd942a16d42952986393, type: 3}
   - {fileID: 2568502293647107190, guid: 18f59c474a878dd468acf84e537c4988, type: 3}
@@ -303,6 +303,7 @@ MonoBehaviour:
   - {fileID: 1146532523108486354, guid: 657e9e054ae649f4b9187616aeb705be, type: 3}
   - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
   - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
+  destroyEffect: {fileID: 1125130479578687610, guid: 02f894a4445db5b42a4410cde0d90678, type: 3}
 --- !u!4 &1101248398
 Transform:
   m_ObjectHideFlags: 0

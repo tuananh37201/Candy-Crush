@@ -3,15 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public void SelectLevelScene() {
-        SceneManager.LoadScene("SelectLevel");
-    }
-
     public void LoadLevel1() {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("SampleScene");
     }
 
-    public void BackToMainMenu() {
-        SceneManager.LoadScene("MainMenu");
+    public void ExitGame() {
+        Application.Quit();
     }
 }

@@ -24,11 +24,19 @@ public class Candy : MonoBehaviour
     public float swipeAngle = 0;
     public float swipeResist = 1f;
 
+    [Header("Power Stuff")]
+    public bool isColumnBomb;
+    public bool isRowBomb;
+    public GameObject rowSugar;
+    public GameObject columnSugar;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        isColumnBomb = false;
+        isRowBomb = false;
+
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
         //targetX = (int)transform.position.x;
@@ -40,10 +48,20 @@ public class Candy : MonoBehaviour
 
     }
 
+    // Testing
+    private void OnMouseOver()
+    {
+        if(Input.GetMouseButtonDown(1))
+        {
+            isRowBomb = true;
+            GameObject sugar = Instantiate(rowSugar, transform.position, Quaternion.identity);
+            sugar.transform.parent = this.transform;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //FindMatches();
 
         targetX = column;
         targetY = row;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FindMatches : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class FindMatches : MonoBehaviour
                         {
                             if (currentCandy.CompareTag(leftCandy.tag) && currentCandy.CompareTag(rightCandy.tag))
                             {
+                                if(currentCandy.GetComponent<Candy>().isRowBomb || leftCandy.GetComponent<Candy>().isRowBomb || rightCandy.GetComponent<Candy>().isRowBomb)
+                                {
+                                    currentMatches.Union(GetRowPieces(j));
+                                }
+
                                 if (!currentMatches.Contains(leftCandy))
                                 {
                                     currentMatches.Add(leftCandy);
@@ -86,6 +92,33 @@ public class FindMatches : MonoBehaviour
                 }
             }
         }
+    }
+
+    List<GameObject> GetColumnPieces(int column)
+    {
+        List<GameObject> candys = new List<GameObject>();
+        for (int i = 0; i < board.height; i++)
+        {
+            if (board.allCandys[column, i] != null)
+            {
+                candys.Add(board.allCandys[column, i]);
+                board.allCandys[column, i].GetComponent<Candy>().isMatched = true;
+            }
+        }
+        return candys;
+    }
+    List<GameObject> GetRowPieces(int row)
+    {
+        List<GameObject> candys = new List<GameObject>();
+        for (int i = 0; i < board.width; i++)
+        {
+            if (board.allCandys[i, row] != null)
+            {
+                candys.Add(board.allCandys[i, row]);
+                board.allCandys[i, row].GetComponent<Candy>().isMatched = true;
+            }
+        }
+        return candys;
     }
 
 }

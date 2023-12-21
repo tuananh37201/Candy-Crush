@@ -21,6 +21,7 @@ public class Board : MonoBehaviour
     public GameObject destroyEffect;
     private BoardTile[,] allTiles;
     public GameObject[,] allCandys;
+    public Candy currentCandy;
     private FindMatches findMatches;
 
     void Start()

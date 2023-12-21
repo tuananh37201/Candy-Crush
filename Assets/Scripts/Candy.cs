@@ -15,7 +15,7 @@ public class Candy : MonoBehaviour
 
     private FindMatches findMatches;
     private Board board;
-    private GameObject otherCandy;
+    public GameObject otherCandy;
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
     private Vector2 tempPosition;
@@ -131,6 +131,8 @@ public class Candy : MonoBehaviour
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             MovePieces();
             board.currentStage = GameState.wait;
+
+            board.currentCandy = this;
         }
         else
         {
@@ -193,12 +195,13 @@ public class Candy : MonoBehaviour
                 column = previousColumn;
                 yield return new WaitForSeconds(.5f);
                 board.currentStage = GameState.move;
+                board.currentCandy = null;
             }
             else
             {
                 board.DestroyMatches();
             }
-            otherCandy = null;
+            //otherCandy = null;
         }
     }
 
@@ -235,5 +238,19 @@ public class Candy : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    public void MakeRowBomb()
+    {
+        isRowBomb = true;
+        GameObject sugar = Instantiate(rowSugar, transform.position, Quaternion.identity);
+        sugar.transform.parent = this.transform;
+    }
+    public void MakeColumnBomb()
+    {
+        isColumnBomb = true;
+        GameObject sugar = Instantiate(columnSugar, transform.position, Quaternion.identity);
+        sugar.transform.parent = this.transform;
     }
 }

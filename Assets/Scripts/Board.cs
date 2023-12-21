@@ -102,6 +102,12 @@ public class Board : MonoBehaviour
     {
         if (allCandys[column, row].GetComponent<Candy>().isMatched)
         {
+            // How many elements are in the matched pieces list from findmatches?
+            if(findMatches.currentMatches.Count == 4 || findMatches.currentMatches.Count == 7)
+            {
+                // Gerenating bomb
+                findMatches.CheckBomb();
+            }
             findMatches.currentMatches.Remove(allCandys[column, row]);
             GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
@@ -196,7 +202,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
-
+        findMatches.currentMatches.Clear();
+        currentCandy = null;
         yield return new WaitForSeconds(.5f);
         currentStage = GameState.move;
     }

@@ -163,7 +163,7 @@ public class FindMatches : MonoBehaviour
         }
         return candys;
     }
-    
+
     public void CheckBomb()
     {
         // Did player move somthing?
@@ -172,23 +172,41 @@ public class FindMatches : MonoBehaviour
             // Is the piece they move mathed?
             if (board.currentCandy.isMatched)
             {
-                // Make it unmated
+                // Make it unmatched
                 board.currentCandy.isMatched = false;
+
                 // Decide what kind of bomb to make
-                int typeOfBomb = Random.Range(0, 100);
-                if (typeOfBomb < 50)
+                if ((board.currentCandy.swipeAngle > -45 && board.currentCandy.swipeAngle <= 45)
+                || (board.currentCandy.swipeAngle < -135 || board.currentCandy.swipeAngle >= 135))
                 {
                     board.currentCandy.MakeRowBomb();
                 }
-                else if (typeOfBomb >= 50)
+                else
                 {
                     board.currentCandy.MakeColumnBomb();
                 }
             }
             // Is the other piece matched?
-            else if (board.currentCandy.otherCandy.GetComponent<Candy>().isMatched)
+            else if (board.currentCandy.otherCandy != null)
             {
+                Candy otherCandy = board.currentCandy.otherCandy.GetComponent<Candy>();
+                // Is other Candy unmatched?
+                if (otherCandy.isMatched)
+                {
+                    // Make it unmatched
+                    otherCandy.isMatched = false;
 
+                    // Decide what kind of bomb make
+                    if ((board.currentCandy.swipeAngle > -45 && board.currentCandy.swipeAngle <= 45)
+                    || (board.currentCandy.swipeAngle < -135 || board.currentCandy.swipeAngle >= 135))
+                    {
+                        otherCandy.MakeRowBomb();
+                    }
+                    else
+                    {
+                        otherCandy.MakeColumnBomb();
+                    }
+                }
             }
         }
     }

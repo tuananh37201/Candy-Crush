@@ -304,6 +304,7 @@ MonoBehaviour:
   - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
   - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
   destroyEffect: {fileID: 1125130479578687610, guid: 02f894a4445db5b42a4410cde0d90678, type: 3}
+  currentCandy: {fileID: 0}
 --- !u!4 &1101248398
 Transform:
   m_ObjectHideFlags: 0

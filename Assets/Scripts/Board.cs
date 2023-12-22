@@ -10,7 +10,7 @@ public enum GameState
 
 public class Board : MonoBehaviour
 {
-    public GameState currentStage = GameState.move;
+    public GameState currentState = GameState.move;
 
     public int width;
     public int height;
@@ -226,12 +226,13 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        findMatches.currentMatches.Clear();
+        findMatches.currentMatches.Clear();       
         StartCoroutine(DecreaseRowCor());
     }
 
     private IEnumerator DecreaseRowCor()
     {
+        yield return new WaitForSeconds(.5f);
         int nullCount = 0;
         for (int i = 0; i < width; i++)
         {
@@ -303,6 +304,6 @@ public class Board : MonoBehaviour
         findMatches.currentMatches.Clear();
         currentCandy = null;
         yield return new WaitForSeconds(.5f);
-        currentStage = GameState.move;
+        currentState = GameState.move;
     }
 }

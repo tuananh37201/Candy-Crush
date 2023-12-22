@@ -114,14 +114,14 @@ public class Candy : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(board.currentStage == GameState.move)
+        if(board.currentState == GameState.move)
         {
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
     private void OnMouseUp()
     {
-        if(board.currentStage == GameState.move)
+        if(board.currentState == GameState.move)
         {
             finalTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             CaculateAngele();
@@ -132,17 +132,29 @@ public class Candy : MonoBehaviour
     {
         if (Mathf.Abs(finalTouchPosition.y - firstTouchPosition.y) > swipeResist || Mathf.Abs(finalTouchPosition.x - firstTouchPosition.x) > swipeResist)
         {
+            board.currentState = GameState.wait;
             // Tính hàm Tan để đưa ra góc người chơi kéo chuột
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             MovePieces();
-            board.currentStage = GameState.wait;
 
             board.currentCandy = this;
         }
         else
         {
-            board.currentStage = GameState.move;
+            board.currentState = GameState.move;
         }
+    }
+
+    void MovePiecesActual(Vector2 direction)
+    {
+        otherCandy = board.allCandys[column + (int)direction.x, row + (int)direction.y];  // Lấy vị trí kẹo 
+        previousRow = row;
+        previousColumn = column;
+        otherCandy.GetComponent<Candy>().column += -1 * (int)direction.x; // Chuyển viên kẹo other về vị trí viên kẹo hiện tại
+        otherCandy.GetComponent<Candy>().row += -1 * (int)direction.y;
+        column += (int)direction.x;                                       // Chuyển viên kẹo hiện tại sang vị trí other
+        row += (int)direction.y;
+        StartCoroutine(CheckMoveCor());
     }
 
     void MovePieces()
@@ -150,41 +162,27 @@ public class Candy : MonoBehaviour
         // Right Swipe
         if (swipeAngle > -45 && swipeAngle <= 45 && column < board.width - 1)
         {
-            otherCandy = board.allCandys[column + 1, row];  // Lấy vị trí kẹo bên phải
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().column -= 1;   // Chuyển viên kẹo bên phải sang bên trái
-            column += 1;                                    // Chuyển viên kẹo được kéo sang bên phải
+            MovePiecesActual(Vector2.right);
         }
         // Left Swipe
         else if ((swipeAngle > 135 || swipeAngle <= -135) && column > 0)
         {
-            otherCandy = board.allCandys[column - 1, row];  // Lấy vị trí kẹo bên trái
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().column += 1;   // Chuyển viên kẹo bên phải sang bên phải
-            column -= 1;                                    // Chuyển viên kẹo được kéo sang bên trái
+            MovePiecesActual(Vector2.left);
         }
         // Up Swipe
         else if (swipeAngle > 45 && swipeAngle <= 135 && row < board.height - 1)
         {
-            otherCandy = board.allCandys[column, row + 1];  // Lấy vị trí kẹo bên trái
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().row -= 1;   // Chuyển viên kẹo bên phải sang bên phải
-            row += 1;                                    // Chuyển viên kẹo được kéo sang bên trái
+            MovePiecesActual(Vector2.up);
         }
         // Down Swipe
         else if (swipeAngle < -45 && swipeAngle >= -135 && row > 0)
         {
-            otherCandy = board.allCandys[column, row - 1];  // Lấy vị trí kẹo bên trái
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().row += 1;   // Chuyển viên kẹo bên phải sang bên phải
-            row -= 1;                                    // Chuyển viên kẹo được kéo sang bên trái
+            MovePiecesActual(Vector2.down);
         }
-
-        StartCoroutine(CheckMoveCor());
+        else
+        {
+            board.currentState = GameState.move;
+        }
     }
 
     public IEnumerator CheckMoveCor()
@@ -213,7 +211,7 @@ public class Candy : MonoBehaviour
                 row = previousRow;
                 column = previousColumn;
                 yield return new WaitForSeconds(.5f);
-                board.currentStage = GameState.move;
+                board.currentState = GameState.move;
                 board.currentCandy = null;
             }
             else

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -128,6 +128,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
+        findMatches.currentMatches.Clear();
         StartCoroutine(DecreaseRowCor());
     }
 
@@ -201,7 +202,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             DestroyMatches();
         }
-
+        findMatches.currentMatches.Clear();
+        currentCandy = null;
         yield return new WaitForSeconds(.5f);
         currentStage = GameState.move;
     }

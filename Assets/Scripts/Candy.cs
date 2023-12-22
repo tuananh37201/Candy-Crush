@@ -26,10 +26,12 @@ public class Candy : MonoBehaviour
     public float swipeResist = 1f;
 
     [Header("Power Stuff")]
-    public bool isColumnBomb;
     public bool isRowBomb;
+    public bool isColumnBomb;
+    public bool isColorBomb;
     public GameObject rowSugar;
     public GameObject columnSugar;
+    public GameObject colorBomb;
 
 
     // Start is called before the first frame update
@@ -53,9 +55,9 @@ public class Candy : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1))
         {
-            isRowBomb = true;
-            GameObject sugar = Instantiate(rowSugar, transform.position, Quaternion.identity);
-            sugar.transform.parent = this.transform;
+            isColorBomb = true;
+            GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+            color.transform.parent = this.transform;
         }
     }
 
@@ -184,6 +186,20 @@ public class Candy : MonoBehaviour
 
     public IEnumerator CheckMoveCor()
     {
+        if(isColorBomb)
+        {
+            // This piece is a color bomb, the other piece is the color to destroy
+            findMatches.MacthPiecesColor(otherCandy.tag);
+            isMatched = true;
+        }
+        else if (otherCandy.GetComponent<Candy>().isColorBomb)
+        {
+            // The other piece is a color bomb, this piece has the color to destroy
+            findMatches.MacthPiecesColor(this.tag);
+            otherCandy.GetComponent<Candy>().isMatched = true;
+        }
+
+
         yield return new WaitForSeconds(.5f);
         if (otherCandy != null)
         {

@@ -29,9 +29,11 @@ public class Candy : MonoBehaviour
     public bool isRowBomb;
     public bool isColumnBomb;
     public bool isColorBomb;
+    public bool isAdjacentBomb;
     public GameObject rowSugar;
     public GameObject columnSugar;
     public GameObject colorBomb;
+    public GameObject adjacentMarker;
 
 
     // Start is called before the first frame update
@@ -39,6 +41,7 @@ public class Candy : MonoBehaviour
     {
         isColumnBomb = false;
         isRowBomb = false;
+        isAdjacentBomb = false;
 
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
@@ -55,9 +58,9 @@ public class Candy : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(1))
         {
-            isColorBomb = true;
-            GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
-            color.transform.parent = this.transform;
+            isAdjacentBomb = true;
+            GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
+            maker.transform.parent = this.transform;
         }
     }
 

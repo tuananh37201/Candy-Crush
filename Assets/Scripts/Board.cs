@@ -97,6 +97,103 @@ public class Board : MonoBehaviour
         return false;
     }
 
+    private bool ColumnOrBow()
+    {
+        int numberHorizontal = 0;
+        int numberVertical = 0;
+        Candy firstPiece = findMatches.currentMatches[0].GetComponent<Candy>();
+        if (firstPiece != null)
+        {
+            foreach (GameObject currentPiece in findMatches.currentMatches)
+            {
+                Candy candy = currentPiece.GetComponent<Candy>();
+                if (candy.row == firstPiece.row)
+                {
+                    numberHorizontal++;
+                }
+                if (candy.column == firstPiece.column)
+                {
+                    numberVertical++;
+                }
+            }
+        }
+        return (numberVertical == 5 || numberHorizontal == 5);
+    }
+
+    private void CheckToMakeBombs()
+    {
+        if (findMatches.currentMatches.Count == 4 || findMatches.currentMatches.Count == 7)
+        {
+            findMatches.CheckBomb();
+        }
+        if (findMatches.currentMatches.Count == 5 || findMatches.currentMatches.Count == 8)
+        {
+            if (ColumnOrBow())
+            {
+                // Make a color bomb
+                //Is thr current candy matched?
+                if(currentCandy != null)
+                {
+                    if(currentCandy.isMatched)
+                    {
+                        if (!currentCandy.isColorBomb)
+                        {
+                            currentCandy.isMatched = false;
+                            currentCandy.MakeColorBomb();
+                        }
+                    }
+                    else
+                    {
+                        if(currentCandy.otherCandy != null)
+                        {
+                            Candy otherCandy = currentCandy.otherCandy.GetComponent<Candy>();
+                            if (otherCandy.isMatched)
+                            {
+                                if (! otherCandy.isColorBomb)
+                                {
+                                    otherCandy.isMatched = false;
+                                    otherCandy.MakeColorBomb();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Make a adjcent bomb
+                //Is thr current candy matched?
+                if (currentCandy != null)
+                {
+                    if (currentCandy.isMatched)
+                    {
+                        if (!currentCandy.isAdjacentBomb)
+                        {
+                            currentCandy.isMatched = false;
+                            currentCandy.MakeAdjacentBomb();
+                        }
+                    }
+                    else
+                    {
+                        if (currentCandy.otherCandy != null)
+                        {
+                            Candy otherCandy = currentCandy.otherCandy.GetComponent<Candy>();
+                            if (otherCandy.isMatched)
+                            {
+                                if (!otherCandy.isAdjacentBomb)
+                                {
+                                    otherCandy.isMatched = false;
+                                    otherCandy.MakeAdjacentBomb();
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
     // Destroy viên kẹo và đặt ô đó thành null
     private void DestroyMatchesAt(int column, int row)
     {
@@ -104,12 +201,11 @@ public class Board : MonoBehaviour
         {
 
             // How many elements are in the matched pieces list from findmatches?
-            if(findMatches.currentMatches.Count == 4 || findMatches.currentMatches.Count == 7)
+            if (findMatches.currentMatches.Count >= 4)
             {
-                // Gerenating bomb
-                findMatches.CheckBomb();
+                CheckToMakeBombs();
             }
-            
+
             GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allCandys[column, row]);

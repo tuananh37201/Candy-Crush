@@ -198,7 +198,7 @@ public class Candy : MonoBehaviour
         else if (otherCandy.GetComponent<Candy>().isColorBomb)
         {
             // The other piece is a color bomb, this piece has the color to destroy
-            findMatches.MacthPiecesColor(this.tag);
+            findMatches.MacthPiecesColor(this.gameObject.tag);
             otherCandy.GetComponent<Candy>().isMatched = true;
         }
 
@@ -259,7 +259,6 @@ public class Candy : MonoBehaviour
         }
     }
 
-
     public void MakeRowBomb()
     {
         isRowBomb = true;
@@ -271,5 +270,17 @@ public class Candy : MonoBehaviour
         isColumnBomb = true;
         GameObject sugar = Instantiate(columnSugar, transform.position, Quaternion.identity);
         sugar.transform.parent = this.transform;
+    }
+    public void MakeColorBomb()
+    {
+        isColorBomb = true;
+        GameObject color =Instantiate(colorBomb, transform.position, Quaternion.identity);
+        color.transform.parent = this.transform;
+    }
+    public void MakeAdjacentBomb()
+    {
+        isAdjacentBomb = true;
+        GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
+        maker.transform.parent = this.transform;
     }
 }

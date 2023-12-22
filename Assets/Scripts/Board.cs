@@ -102,7 +102,16 @@ public class Board : MonoBehaviour
     {
         if (allCandys[column, row].GetComponent<Candy>().isMatched)
         {
+<<<<<<< Updated upstream
             findMatches.currentMatches.Remove(allCandys[column, row]);
+=======
+            // How many elements are in the matched pieces list from findmatches?
+            if(findMatches.currentMatches.Count == 4 || findMatches.currentMatches.Count == 7)
+            {
+                // Gerenating bomb
+                findMatches.CheckBomb();
+            }
+>>>>>>> Stashed changes
             GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allCandys[column, row]);

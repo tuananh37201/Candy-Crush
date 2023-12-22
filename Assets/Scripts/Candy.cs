@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Candy : MonoBehaviour
 {
@@ -47,7 +48,6 @@ public class Candy : MonoBehaviour
         //column = targetX;
         //previousRow = row;
         //previousColumn = column;
-
     }
 
     // Testing

@@ -108,7 +108,7 @@ public class Board : MonoBehaviour
                 // Gerenating bomb
                 findMatches.CheckBomb();
             }
-            
+            findMatches.currentMatches.Remove(allCandys[column, row]);
             GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allCandys[column, row]);

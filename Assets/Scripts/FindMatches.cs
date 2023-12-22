@@ -24,7 +24,6 @@ public class FindMatches : MonoBehaviour
     {
         List<GameObject> currentCandys = new List<GameObject>();
 
-        // Nếu là Row Bomb
         if (candy1.isRowBomb)
         {
             currentMatches.Union(GetRowPieces(candy1.row));
@@ -44,7 +43,6 @@ public class FindMatches : MonoBehaviour
     {
         List<GameObject> currentCandys = new List<GameObject>();
 
-        // Nếu là Columb Bomb
         if (candy1.isColumnBomb)
         {
             currentMatches.Union(GetColumnPieces(candy1.column));
@@ -84,9 +82,9 @@ private IEnumerator FindAllMatchesCor()
             for (int j = 0; j < board.height; j++)
             {
                 GameObject currentCandy = board.allCandys[i, j];
-                Candy _currentCandy = currentCandy.GetComponent<Candy>();
                 if (currentCandy != null)
                 {
+                Candy _currentCandy = currentCandy.GetComponent<Candy>();
                     // Check column
                     if (i > 0 && i < board.width - 1)
                     {
@@ -101,7 +99,6 @@ private IEnumerator FindAllMatchesCor()
                                 // Check 2 viên bên phải và trái cùng màu hay ko
                                 if (currentCandy.CompareTag(leftCandy.tag) && currentCandy.CompareTag(rightCandy.tag))
                                 {
-                                    // Check 1 trong 3 viên có Row Bomb không
                                     // If is a Row Bomb
                                     currentMatches.Union(IsRowBomb(_leftCandy, _currentCandy, _rightCandy));
                                     // If is a Column Bomb
@@ -128,7 +125,6 @@ private IEnumerator FindAllMatchesCor()
                                 // Check 2 viên bên trên và dưới cùng màu hay ko
                                 if (currentCandy.CompareTag(upCandy.tag) && currentCandy.CompareTag(downCandy.tag))
                                 {
-                                    // Check 1 trong 3 viên có Column Bomb không
                                     // If is a Column Bomb
                                     currentMatches.Union(IsColumnBomb(_upCandy,_currentCandy, _downCandy));
                                     // If is a Row Bomb

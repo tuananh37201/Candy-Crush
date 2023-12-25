@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum GameState
 {
@@ -31,16 +32,19 @@ public class Board : MonoBehaviour
     public int offSet;
 
     public GameObject boardTilePrefab;
+    public GameObject breakableTilePrefab;
     public GameObject[] candys;
     public GameObject destroyEffect;
     public TileType[] boardLayout;
     private bool[,] blankSpaces;
+    private BoardTile[,] breakableTiles;
     public GameObject[,] allCandys;
     public Candy currentCandy;
     private FindMatches findMatches;
 
     void Start()
     {
+        breakableTiles = new BoardTile[width, height];
         findMatches = FindObjectOfType<FindMatches>();
 
         blankSpaces = new bool[width, height];
@@ -59,9 +63,26 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void GenerateBreakableTiles()
+    {
+        // Look at all the tilse in the layout
+        for (int i = 0; i < boardLayout.Length; i++)
+        {
+            // If a tiles is a "Breakable" tile
+            if (boardLayout[i].tileKind == TileKind.Breakable)
+            {
+                // Create a "Breakable tiles at that position
+                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                GameObject tile = Instantiate(breakableTilePrefab, tempPosition, Quaternion.identity);
+                breakableTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
+            }
+        }
+    }
+
     private void Setup()
     {
         GenerateBlankSpace();
+        GenerateBreakableTiles();
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -249,6 +270,17 @@ public class Board : MonoBehaviour
                 CheckToMakeBombs();
             }
 
+            // Does tile need to break?
+            if (breakableTiles[column, row] != null)
+            {
+                // If it does, take damege
+                breakableTiles[column, row].TakeDamage(1);
+                if (breakableTiles[column, row].hitPoints <= 0)
+                {
+                    breakableTiles[column, row] = null;
+                }
+            }
+
             GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allCandys[column, row]);
@@ -275,15 +307,15 @@ public class Board : MonoBehaviour
 
     private IEnumerator DecreaseRowCor2()
     {
-        for(int i = 0; i < width; i++)
+        for (int i = 0; i < width; i++)
         {
-            for(int j = 0; j < height; j++)
+            for (int j = 0; j < height; j++)
             {
                 // If the cureent spot isn't blank and is empty
                 if (!blankSpaces[i, j] && allCandys[i, j] == null)
                 {
                     // Loop from the space abpve to ther top of the column
-                    for(int k = j + 1; k < height; k++)
+                    for (int k = j + 1; k < height; k++)
                     {
                         // If a dot is found
                         if (allCandys[i, k] != null)
@@ -304,8 +336,7 @@ public class Board : MonoBehaviour
     }
 
     private IEnumerator DecreaseRowCor()
-    {
-        yield return new WaitForSeconds(.5f);
+    {     
         int nullCount = 0;
         for (int i = 0; i < width; i++)
         {
@@ -333,7 +364,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                if (allCandys[i, j] == null && !blankSpaces[i,j])
+                if (allCandys[i, j] == null && !blankSpaces[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int candyToUse = Random.Range(0, candys.Length);
@@ -379,4 +410,6 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         currentState = GameState.move;
     }
+
+
 }

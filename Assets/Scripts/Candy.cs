@@ -56,7 +56,7 @@ public class Candy : MonoBehaviour
     // Testing
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             isAdjacentBomb = true;
             GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
@@ -114,14 +114,14 @@ public class Candy : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(board.currentState == GameState.move)
+        if (board.currentState == GameState.move)
         {
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
     private void OnMouseUp()
     {
-        if(board.currentState == GameState.move)
+        if (board.currentState == GameState.move)
         {
             finalTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             CaculateAngele();
@@ -150,7 +150,7 @@ public class Candy : MonoBehaviour
         otherCandy = board.allCandys[column + (int)direction.x, row + (int)direction.y];  // Lấy vị trí kẹo 
         previousRow = row;
         previousColumn = column;
-        if(otherCandy != null)
+        if (otherCandy != null)
         {
             otherCandy.GetComponent<Candy>().column += -1 * (int)direction.x; // Chuyển viên kẹo other về vị trí viên kẹo hiện tại
             otherCandy.GetComponent<Candy>().row += -1 * (int)direction.y;
@@ -194,7 +194,7 @@ public class Candy : MonoBehaviour
 
     public IEnumerator CheckMoveCor()
     {
-        if(isColorBomb)
+        if (isColorBomb)
         {
             // This piece is a color bomb, the other piece is the color to destroy
             findMatches.MacthPiecesColor(otherCandy.tag);
@@ -279,7 +279,7 @@ public class Candy : MonoBehaviour
     public void MakeColorBomb()
     {
         isColorBomb = true;
-        GameObject color =Instantiate(colorBomb, transform.position, Quaternion.identity);
+        GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
         color.transform.parent = this.transform;
     }
     public void MakeAdjacentBomb()

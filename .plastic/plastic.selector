@@ -1,4 +1,0 @@
-repository "Candy Crush@tuananh37201@cloud"
-  path "/"
-    br "/main"
-    co "/main"

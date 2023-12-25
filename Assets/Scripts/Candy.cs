@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Candy : MonoBehaviour
 {
@@ -13,9 +14,10 @@ public class Candy : MonoBehaviour
     public int previousColumn;
     public bool isMatched = false;
 
+    private HintManager hintManager;
     private FindMatches findMatches;
     private Board board;
-    private GameObject otherCandy;
+    public GameObject otherCandy;
     private Vector2 firstTouchPosition;
     private Vector2 finalTouchPosition;
     private Vector2 tempPosition;
@@ -24,11 +26,25 @@ public class Candy : MonoBehaviour
     public float swipeAngle = 0;
     public float swipeResist = 1f;
 
+    [Header("Power Stuff")]
+    public bool isRowBomb;
+    public bool isColumnBomb;
+    public bool isColorBomb;
+    public bool isAdjacentBomb;
+    public GameObject rowSugar;
+    public GameObject columnSugar;
+    public GameObject colorBomb;
+    public GameObject adjacentMarker;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        isColumnBomb = false;
+        isRowBomb = false;
+        isAdjacentBomb = false;
+
+        hintManager = FindObjectOfType<HintManager>();
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
         //targetX = (int)transform.position.x;
@@ -37,13 +53,22 @@ public class Candy : MonoBehaviour
         //column = targetX;
         //previousRow = row;
         //previousColumn = column;
+    }
 
+    // Testing
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            isAdjacentBomb = true;
+            GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
+            maker.transform.parent = this.transform;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //FindMatches();
 
         targetX = column;
         targetY = row;
@@ -91,14 +116,20 @@ public class Candy : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(board.currentStage == GameState.move)
+        // Destroy the hint
+        if(hintManager != null)
+        {
+            hintManager.DestroyHInt();
+        }
+        
+        if (board.currentState == GameState.move)
         {
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
     private void OnMouseUp()
     {
-        if(board.currentStage == GameState.move)
+        if (board.currentState == GameState.move)
         {
             finalTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             CaculateAngele();
@@ -109,14 +140,35 @@ public class Candy : MonoBehaviour
     {
         if (Mathf.Abs(finalTouchPosition.y - firstTouchPosition.y) > swipeResist || Mathf.Abs(finalTouchPosition.x - firstTouchPosition.x) > swipeResist)
         {
+            board.currentState = GameState.wait;
             // Tính hàm Tan để đưa ra góc người chơi kéo chuột
             swipeAngle = Mathf.Atan2(finalTouchPosition.y - firstTouchPosition.y, finalTouchPosition.x - firstTouchPosition.x) * 180 / Mathf.PI;
             MovePieces();
-            board.currentStage = GameState.wait;
+
+            board.currentCandy = this;
         }
         else
         {
-            board.currentStage = GameState.move;
+            board.currentState = GameState.move;
+        }
+    }
+
+    void MovePiecesActual(Vector2 direction)
+    {
+        otherCandy = board.allCandys[column + (int)direction.x, row + (int)direction.y];  // Lấy vị trí kẹo 
+        previousRow = row;
+        previousColumn = column;
+        if (otherCandy != null)
+        {
+            otherCandy.GetComponent<Candy>().column += -1 * (int)direction.x; // Chuyển viên kẹo other về vị trí viên kẹo hiện tại
+            otherCandy.GetComponent<Candy>().row += -1 * (int)direction.y;
+            column += (int)direction.x;                                       // Chuyển viên kẹo hiện tại sang vị trí other
+            row += (int)direction.y;
+            StartCoroutine(CheckMoveCor());
+        }
+        else
+        {
+            board.currentState = GameState.move;
         }
     }
 
@@ -125,45 +177,44 @@ public class Candy : MonoBehaviour
         // Right Swipe
         if (swipeAngle > -45 && swipeAngle <= 45 && column < board.width - 1)
         {
-            otherCandy = board.allCandys[column + 1, row];  // Lấy vị trí kẹo bên phải
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().column -= 1;   // Chuyển viên kẹo bên phải sang bên trái
-            column += 1;                                    // Chuyển viên kẹo được kéo sang bên phải
+            MovePiecesActual(Vector2.right);
         }
         // Left Swipe
         else if ((swipeAngle > 135 || swipeAngle <= -135) && column > 0)
         {
-            otherCandy = board.allCandys[column - 1, row];  // Lấy vị trí kẹo bên trái
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().column += 1;   // Chuyển viên kẹo bên phải sang bên phải
-            column -= 1;                                    // Chuyển viên kẹo được kéo sang bên trái
+            MovePiecesActual(Vector2.left);
         }
         // Up Swipe
         else if (swipeAngle > 45 && swipeAngle <= 135 && row < board.height - 1)
         {
-            otherCandy = board.allCandys[column, row + 1];  // Lấy vị trí kẹo bên trái
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().row -= 1;   // Chuyển viên kẹo bên phải sang bên phải
-            row += 1;                                    // Chuyển viên kẹo được kéo sang bên trái
+            MovePiecesActual(Vector2.up);
         }
         // Down Swipe
         else if (swipeAngle < -45 && swipeAngle >= -135 && row > 0)
         {
-            otherCandy = board.allCandys[column, row - 1];  // Lấy vị trí kẹo bên trái
-            previousRow = row;
-            previousColumn = column;
-            otherCandy.GetComponent<Candy>().row += 1;   // Chuyển viên kẹo bên phải sang bên phải
-            row -= 1;                                    // Chuyển viên kẹo được kéo sang bên trái
+            MovePiecesActual(Vector2.down);
         }
-
-        StartCoroutine(CheckMoveCor());
+        else
+        {
+            board.currentState = GameState.move;
+        }
     }
 
     public IEnumerator CheckMoveCor()
     {
+        if (isColorBomb)
+        {
+            // This piece is a color bomb, the other piece is the color to destroy
+            findMatches.MacthPiecesColor(otherCandy.tag);
+            isMatched = true;
+        }
+        else if (otherCandy.GetComponent<Candy>().isColorBomb)
+        {
+            // The other piece is a color bomb, this piece has the color to destroy
+            findMatches.MacthPiecesColor(this.gameObject.tag);
+            otherCandy.GetComponent<Candy>().isMatched = true;
+        }
+
         yield return new WaitForSeconds(.5f);
         if (otherCandy != null)
         {
@@ -174,13 +225,14 @@ public class Candy : MonoBehaviour
                 row = previousRow;
                 column = previousColumn;
                 yield return new WaitForSeconds(.5f);
-                board.currentStage = GameState.move;
+                board.currentCandy = null;
+                board.currentState = GameState.move;
             }
             else
             {
                 board.DestroyMatches();
             }
-            otherCandy = null;
+            //otherCandy = null;
         }
     }
 
@@ -217,5 +269,30 @@ public class Candy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void MakeRowBomb()
+    {
+        isRowBomb = true;
+        GameObject sugar = Instantiate(rowSugar, transform.position, Quaternion.identity);
+        sugar.transform.parent = this.transform;
+    }
+    public void MakeColumnBomb()
+    {
+        isColumnBomb = true;
+        GameObject sugar = Instantiate(columnSugar, transform.position, Quaternion.identity);
+        sugar.transform.parent = this.transform;
+    }
+    public void MakeColorBomb()
+    {
+        isColorBomb = true;
+        GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
+        color.transform.parent = this.transform;
+    }
+    public void MakeAdjacentBomb()
+    {
+        isAdjacentBomb = true;
+        GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
+        maker.transform.parent = this.transform;
     }
 }

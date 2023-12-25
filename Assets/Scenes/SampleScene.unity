@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101248398}
   - component: {fileID: 1101248397}
+  - component: {fileID: 1101248399}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -289,20 +290,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a057556d2929c64e8f9b7074ad9ef54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStage: 1
+  currentState: 1
+  width: 5
+  height: 5
+  offSet: 10
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
-  width: 7
-  height: 10
-  offSet: 20
+  breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
   candys:
   - {fileID: 7636414600690166343, guid: d925159bdcc0bd942a16d42952986393, type: 3}
   - {fileID: 2568502293647107190, guid: 18f59c474a878dd468acf84e537c4988, type: 3}
   - {fileID: 8393387378985738209, guid: 6385b74783251954aaa279db6498116f, type: 3}
   - {fileID: 2058901184206250836, guid: 084490744b36beb4eace397811867292, type: 3}
-  - {fileID: 6251447239853859308, guid: 579639f99ba78614bbeda6963f913169, type: 3}
-  - {fileID: 1146532523108486354, guid: 657e9e054ae649f4b9187616aeb705be, type: 3}
-  - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
-  - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
+  destroyEffect: {fileID: 1125130479578687610, guid: 02f894a4445db5b42a4410cde0d90678, type: 3}
+  boardLayout: []
+  currentCandy: {fileID: 0}
 --- !u!4 &1101248398
 Transform:
   m_ObjectHideFlags: 0
@@ -318,3 +319,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1101248399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101248396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a5dc2c1c272ed4a97052311a119abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintDelay: 3
+  hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
+  currentHint: {fileID: 0}

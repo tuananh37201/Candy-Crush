@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -336,7 +337,7 @@ public class Board : MonoBehaviour
     }
 
     private IEnumerator DecreaseRowCor()
-    {     
+    {
         int nullCount = 0;
         for (int i = 0; i < width; i++)
         {
@@ -408,8 +409,99 @@ public class Board : MonoBehaviour
         findMatches.currentMatches.Clear();
         currentCandy = null;
         yield return new WaitForSeconds(.5f);
+
+        if (IsDeadlocked())
+        {
+            Debug.Log("Deadlocked!!");
+        }
+
         currentState = GameState.move;
     }
 
+    private void SwitchPieces(int column, int row, Vector2 direction)
+    {
+        // Take the secend piece and save it in a holder
+        GameObject holder = allCandys[column + (int)direction.x, row + (int)direction.y];
+        // Switching the first candy to be the second popsition
+        allCandys[column + (int)direction.x, row + (int)direction.y] = allCandys[column, row];
+        // Set the first candy to be the second candy
+        allCandys[column, row] = holder;
+    }
 
+    private bool CheckForMathces()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (allCandys[i, j] != null)
+                {
+                    // Make sure that one and two to the right in the board{
+                    if (i < width - 2)
+                    {
+                        // Check if the candys to the rinht and two to the right exist
+                        if (allCandys[i + 1, j] != null && allCandys[i + 2, j] != null)
+                        {
+                            if (allCandys[i + 1, j].tag == allCandys[i, j].tag && allCandys[i + 2, j].tag == allCandys[i, j].tag)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    if (j < height - 2)
+                    {
+                        // Check if candys above exist
+                        if (allCandys[i, j + 1] != null && allCandys[i, j + 2] != null)
+                        {
+                            if (allCandys[i, j + 1].tag == allCandys[i, j].tag && allCandys[i, j + 2].tag == allCandys[i, j].tag)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    {
+        SwitchPieces(column, row, direction);
+        if (CheckForMathces())
+        {
+            SwitchPieces(column, row, direction);
+            return true;
+        }
+        SwitchPieces(column, row, direction);
+        return false;
+    }
+
+    private bool IsDeadlocked()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (allCandys[i, j] != null)
+                {
+                    if (i < width - 1)
+                    {
+                        if (SwitchAndCheck(i, j, Vector2.right))
+                        {
+                            return false;
+                        }
+                    }
+                    if (j < height - 1)
+                    {
+                        if (SwitchAndCheck(i, j, Vector2.up))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

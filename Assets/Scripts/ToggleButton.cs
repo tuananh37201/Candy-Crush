@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ToggleButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Image imageOn;
+    public Image imageOff;
+
+    public bool isBtnOn = true;
+
+    private void Start()
     {
-        
+        SetImagesState(isBtnOn);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ButtonClick()
     {
-        
+        isBtnOn = !isBtnOn;
+        SetImagesState(isBtnOn);
+        //Debug.Log("Button State: " + isBtnOn);
+    }
+
+    public bool IsButtonOn()
+    {
+        return isBtnOn;
+    }
+
+    private void SetImagesState(bool state)
+    {
+        imageOn.gameObject.SetActive(state);
+        imageOff.gameObject.SetActive(!state);
     }
 }

@@ -1,11 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState
 {
     wait,
     move
+}
+
+public enum TileKind
+{
+    Breakable,
+    Blank,
+    Normal
+}
+
+[System.Serializable]
+public class TileType
+{
+    public int x;
+    public int y;
+    public TileKind tileKind;
 }
 
 public class Board : MonoBehaviour
@@ -19,7 +33,8 @@ public class Board : MonoBehaviour
     public GameObject boardTilePrefab;
     public GameObject[] candys;
     public GameObject destroyEffect;
-    private BoardTile[,] allTiles;
+    public TileType[] boardLayout;
+    private bool[,] blankSpaces;
     public GameObject[,] allCandys;
     public Candy currentCandy;
     private FindMatches findMatches;
@@ -28,38 +43,53 @@ public class Board : MonoBehaviour
     {
         findMatches = FindObjectOfType<FindMatches>();
 
-        allTiles = new BoardTile[width, height];
+        blankSpaces = new bool[width, height];
         allCandys = new GameObject[width, height];
         Setup();
     }
 
+    public void GenerateBlankSpace()
+    {
+        for (int i = 0; i < boardLayout.Length; i++)
+        {
+            if (boardLayout[i].tileKind == TileKind.Blank)
+            {
+                blankSpaces[boardLayout[i].x, boardLayout[i].y] = true;
+            }
+        }
+    }
+
     private void Setup()
     {
+        GenerateBlankSpace();
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                Vector2 tempPosition = new Vector2(i, j + offSet);
-                GameObject boardTile = Instantiate(boardTilePrefab, tempPosition, Quaternion.identity);
-                boardTile.transform.parent = this.transform;
-                boardTile.name = "( " + i + " , " + j + " )";
-
-                int candyToUse = Random.Range(0, candys.Length);
-
-                int maxIterations = 0;
-                while (MatchesAt(i, j, candys[candyToUse]) && maxIterations < 100)
+                if (!blankSpaces[i, j])
                 {
-                    candyToUse = Random.Range(0, candys.Length);
-                    maxIterations++;
-                }
-                maxIterations = 0;
+                    Vector2 tempPosition = new Vector2(i, j + offSet);
+                    GameObject boardTile = Instantiate(boardTilePrefab, tempPosition, Quaternion.identity);
+                    boardTile.transform.parent = this.transform;
+                    boardTile.name = "( " + i + " , " + j + " )";
 
-                GameObject candy = Instantiate(candys[candyToUse], tempPosition, Quaternion.identity);
-                candy.GetComponent<Candy>().row = j;
-                candy.GetComponent<Candy>().column = i;
-                candy.transform.parent = this.transform;
-                candy.name = "( " + i + " , " + j + " )";
-                allCandys[i, j] = candy;
+                    int candyToUse = Random.Range(0, candys.Length);
+
+                    int maxIterations = 0;
+                    while (MatchesAt(i, j, candys[candyToUse]) && maxIterations < 100)
+                    {
+                        candyToUse = Random.Range(0, candys.Length);
+                        maxIterations++;
+                    }
+                    maxIterations = 0;
+
+                    GameObject candy = Instantiate(candys[candyToUse], tempPosition, Quaternion.identity);
+                    candy.GetComponent<Candy>().row = j;
+                    candy.GetComponent<Candy>().column = i;
+                    candy.transform.parent = this.transform;
+                    candy.name = "( " + i + " , " + j + " )";
+                    allCandys[i, j] = candy;
+                }
             }
         }
     }
@@ -68,29 +98,42 @@ public class Board : MonoBehaviour
     {
         if (column > 1 && row > 1)
         {
-            if (piece.CompareTag(allCandys[column - 1, row].tag) && piece.CompareTag(allCandys[column - 2, row].tag))
+            if (allCandys[column - 1, row] != null && allCandys[column - 2, row] != null)
             {
-                return true;
+                if (piece.CompareTag(allCandys[column - 1, row].tag) && piece.CompareTag(allCandys[column - 2, row].tag))
+                {
+                    return true;
+                }
             }
-            if (piece.CompareTag(allCandys[column, row - 1].tag) && piece.CompareTag(allCandys[column, row - 2].tag))
-            {
-                return true;
-            }
-        }
-        else if (column <= 1 || row <= 1)
-        {
-            if (row > 1)
+
+            if (allCandys[column, row - 1] != null && allCandys[column, row - 2] != null)
             {
                 if (piece.CompareTag(allCandys[column, row - 1].tag) && piece.CompareTag(allCandys[column, row - 2].tag))
                 {
                     return true;
                 }
             }
+        }
+        else if (column <= 1 || row <= 1)
+        {
+            if (row > 1)
+            {
+                if (allCandys[column, row - 1] != null && allCandys[column, row - 2])
+                {
+                    if (piece.CompareTag(allCandys[column, row - 1].tag) && piece.CompareTag(allCandys[column, row - 2].tag))
+                    {
+                        return true;
+                    }
+                }
+            }
             if (column > 1)
             {
-                if (piece.CompareTag(allCandys[column - 1, row].tag) && piece.CompareTag(allCandys[column - 2, row].tag))
+                if (allCandys[column - 1, row] != null && allCandys[column - 2, row])
                 {
-                    return true;
+                    if (piece.CompareTag(allCandys[column - 1, row].tag) && piece.CompareTag(allCandys[column - 2, row].tag))
+                    {
+                        return true;
+                    }
                 }
             }
         }
@@ -132,9 +175,9 @@ public class Board : MonoBehaviour
             {
                 // Make a color bomb
                 //Is thr current candy matched?
-                if(currentCandy != null)
+                if (currentCandy != null)
                 {
-                    if(currentCandy.isMatched)
+                    if (currentCandy.isMatched)
                     {
                         if (!currentCandy.isColorBomb)
                         {
@@ -144,12 +187,12 @@ public class Board : MonoBehaviour
                     }
                     else
                     {
-                        if(currentCandy.otherCandy != null)
+                        if (currentCandy.otherCandy != null)
                         {
                             Candy otherCandy = currentCandy.otherCandy.GetComponent<Candy>();
                             if (otherCandy.isMatched)
                             {
-                                if (! otherCandy.isColorBomb)
+                                if (!otherCandy.isColorBomb)
                                 {
                                     otherCandy.isMatched = false;
                                     otherCandy.MakeColorBomb();
@@ -226,8 +269,38 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        findMatches.currentMatches.Clear();       
-        StartCoroutine(DecreaseRowCor());
+        findMatches.currentMatches.Clear();
+        StartCoroutine(DecreaseRowCor2());
+    }
+
+    private IEnumerator DecreaseRowCor2()
+    {
+        for(int i = 0; i < width; i++)
+        {
+            for(int j = 0; j < height; j++)
+            {
+                // If the cureent spot isn't blank and is empty
+                if (!blankSpaces[i, j] && allCandys[i, j] == null)
+                {
+                    // Loop from the space abpve to ther top of the column
+                    for(int k = j + 1; k < height; k++)
+                    {
+                        // If a dot is found
+                        if (allCandys[i, k] != null)
+                        {
+                            // Move that do to this empty space
+                            allCandys[i, k].GetComponent<Candy>().row = j;
+                            // Set that spot to be null
+                            allCandys[i, k] = null;
+                            /// Break out of the loop
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        yield return new WaitForSeconds(.4f);
+        StartCoroutine(FillBoardCor());
     }
 
     private IEnumerator DecreaseRowCor()
@@ -260,7 +333,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                if (allCandys[i, j] == null)
+                if (allCandys[i, j] == null && !blankSpaces[i,j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int candyToUse = Random.Range(0, candys.Length);

@@ -150,11 +150,18 @@ public class Candy : MonoBehaviour
         otherCandy = board.allCandys[column + (int)direction.x, row + (int)direction.y];  // Lấy vị trí kẹo 
         previousRow = row;
         previousColumn = column;
-        otherCandy.GetComponent<Candy>().column += -1 * (int)direction.x; // Chuyển viên kẹo other về vị trí viên kẹo hiện tại
-        otherCandy.GetComponent<Candy>().row += -1 * (int)direction.y;
-        column += (int)direction.x;                                       // Chuyển viên kẹo hiện tại sang vị trí other
-        row += (int)direction.y;
-        StartCoroutine(CheckMoveCor());
+        if(otherCandy != null)
+        {
+            otherCandy.GetComponent<Candy>().column += -1 * (int)direction.x; // Chuyển viên kẹo other về vị trí viên kẹo hiện tại
+            otherCandy.GetComponent<Candy>().row += -1 * (int)direction.y;
+            column += (int)direction.x;                                       // Chuyển viên kẹo hiện tại sang vị trí other
+            row += (int)direction.y;
+            StartCoroutine(CheckMoveCor());
+        }
+        else
+        {
+            board.currentState = GameState.move;
+        }
     }
 
     void MovePieces()

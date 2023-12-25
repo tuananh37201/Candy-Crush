@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public enum GameState
 {
@@ -164,7 +162,7 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    private bool ColumnOrBow()
+    private bool ColumnOrRow()
     {
         int numberHorizontal = 0;
         int numberVertical = 0;
@@ -195,10 +193,10 @@ public class Board : MonoBehaviour
         }
         if (findMatches.currentMatches.Count == 5 || findMatches.currentMatches.Count == 8)
         {
-            if (ColumnOrBow())
+            if (ColumnOrRow())
             {
                 // Make a color bomb
-                //Is thr current candy matched?
+                //Is the current candy matched?
                 if (currentCandy != null)
                 {
                     if (currentCandy.isMatched)
@@ -266,7 +264,6 @@ public class Board : MonoBehaviour
     {
         if (allCandys[column, row].GetComponent<Candy>().isMatched)
         {
-
             // How many elements are in the matched pieces list from findmatches?
             if (findMatches.currentMatches.Count >= 4)
             {
@@ -371,6 +368,15 @@ public class Board : MonoBehaviour
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int candyToUse = Random.Range(0, candys.Length);
+
+                    int maxIterations = 0;
+                    while (MatchesAt(i, j, candys[candyToUse]) && maxIterations < 100)
+                    {
+                        maxIterations++;
+                        candyToUse = Random.Range(0, candys.Length);
+                    }           
+                    maxIterations = 0;
+
                     GameObject piece = Instantiate(candys[candyToUse], tempPosition, Quaternion.identity);
                     allCandys[i, j] = piece;
                     piece.GetComponent<Candy>().row = j;
@@ -444,7 +450,7 @@ public class Board : MonoBehaviour
                         // Check if the candys to the rinht and two to the right exist
                         if (allCandys[i + 1, j] != null && allCandys[i + 2, j] != null)
                         {
-                            if (allCandys[i + 1, j].tag == allCandys[i, j].tag && allCandys[i + 2, j].tag == allCandys[i, j].tag)
+                            if (allCandys[i, j].CompareTag(allCandys[i + 1, j].tag) && allCandys[i, j].CompareTag(allCandys[i + 2, j].tag))
                             {
                                 return true;
                             }
@@ -455,7 +461,7 @@ public class Board : MonoBehaviour
                         // Check if candys above exist
                         if (allCandys[i, j + 1] != null && allCandys[i, j + 2] != null)
                         {
-                            if (allCandys[i, j + 1].tag == allCandys[i, j].tag && allCandys[i, j + 2].tag == allCandys[i, j].tag)
+                            if (allCandys[i, j].CompareTag(allCandys[i, j + 1].tag) && allCandys[i, j].CompareTag(allCandys[i, j + 2].tag))
                             {
                                 return true;
                             }
@@ -467,7 +473,7 @@ public class Board : MonoBehaviour
         return false;
     }
 
-    private bool SwitchAndCheck(int column, int row, Vector2 direction)
+    public bool SwitchAndCheck(int column, int row, Vector2 direction)
     {
         SwitchPieces(column, row, direction);
         if (CheckForMathces())
@@ -528,7 +534,7 @@ public class Board : MonoBehaviour
             for (int j = 0; j < height; j++)
             {
                 // If this spot shouldn't be blank
-                if (blankSpaces[i, j])
+                if (!blankSpaces[i, j])
                 {
                     // Pick a random number
                     int pieceToUse = Random.Range(0, newBoard.Count);

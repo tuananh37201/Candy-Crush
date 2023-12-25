@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101248398}
   - component: {fileID: 1101248397}
+  - component: {fileID: 1101248399}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -322,3 +323,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1101248399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101248396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a5dc2c1c272ed4a97052311a119abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintDelay: 3
+  hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
+  currentHint: {fileID: 0}

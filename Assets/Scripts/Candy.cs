@@ -14,6 +14,7 @@ public class Candy : MonoBehaviour
     public int previousColumn;
     public bool isMatched = false;
 
+    private HintManager hintManager;
     private FindMatches findMatches;
     private Board board;
     public GameObject otherCandy;
@@ -43,6 +44,7 @@ public class Candy : MonoBehaviour
         isRowBomb = false;
         isAdjacentBomb = false;
 
+        hintManager = FindObjectOfType<HintManager>();
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
         //targetX = (int)transform.position.x;
@@ -114,6 +116,12 @@ public class Candy : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Destroy the hint
+        if(hintManager != null)
+        {
+            hintManager.DestroyHInt();
+        }
+        
         if (board.currentState == GameState.move)
         {
             firstTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

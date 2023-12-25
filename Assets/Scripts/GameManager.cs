@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioClip bgAudio;
-    private AudioSource audioSource;
     bool isPlay=false;
+    public AudioClip bgAudio;
+    public AudioClip closePopup;
+    public AudioClip openPopup;
+    private AudioSource audioSource;
     public ToggleButton toggleButton;
 
 
@@ -41,28 +43,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //void AudioBackground()
-    //{
-    //    // Kiểm tra trạng thái của ToggleButton
-    //    ToggleButton toggleButton = FindObjectOfType<ToggleButton>();
+    public void AudioClosePopup()
+    {
+        audioSource.PlayOneShot(closePopup);
+    } 
+    public void AudioOpenPopup()
+    {
+        audioSource.PlayOneShot(openPopup);
 
-    //    if (toggleButton != null)
-    //    {
-    //        Debug.Log("Trạng thái nút bật/tắt: " + toggleButton.IsButtonOn());
+    }
 
-    //        if (toggleButton.IsButtonOn())
-    //        {
-    //            audioSource.Play(); // Phát âm thanh
-    //        }
-    //        // Nếu nút đã tắt, dừng phát âm thanh
-    //        else
-    //        {
-    //            audioSource.Stop(); // Dừng âm thanh
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Không tìm thấy nút bật/tắt trong scene.");
-    //    }
-    //}
+
 }

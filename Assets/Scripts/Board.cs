@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -102,6 +103,7 @@ public class Board : MonoBehaviour
                     {
                         candyToUse = Random.Range(0, candys.Length);
                         maxIterations++;
+                        Debug.Log(maxIterations);
                     }
                     maxIterations = 0;
 
@@ -403,18 +405,18 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         while (MathesOnBoard())
         {
-            yield return new WaitForSeconds(.5f);
             DestroyMatches();
+            yield return new WaitForSeconds(.5f);
         }
         findMatches.currentMatches.Clear();
         currentCandy = null;
-        yield return new WaitForSeconds(.5f);
 
         if (IsDeadlocked())
         {
+            ShuffleBoard();
             Debug.Log("Deadlocked!!");
         }
-
+        yield return new WaitForSeconds(.5f);
         currentState = GameState.move;
     }
 
@@ -503,5 +505,60 @@ public class Board : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private void ShuffleBoard()
+    {
+        List<GameObject> newBoard = new List<GameObject> ();
+
+        for (int i = 0; i < width; i ++)
+        {
+            for (int j = 0;j < height; j++)
+            {
+                if (allCandys[i, j] != null)
+                {
+                    newBoard.Add(allCandys[i, j]);
+                }
+            }
+        }
+
+        // For every spot on the board
+        for (int i = 0; i < width; i ++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                // If this spot shouldn't be blank
+                if (blankSpaces[i, j])
+                {
+                    // Pick a random number
+                    int pieceToUse = Random.Range(0, newBoard.Count);
+                    
+                    // Assign the column and row to the piece
+                    int maxIterations = 0;
+                    while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)
+                    {
+                        pieceToUse = Random.Range(0, newBoard.Count);
+                        maxIterations++;
+                    }
+                    // Make a container for the piece
+                    Candy piece = newBoard[pieceToUse].GetComponent<Candy>();
+                    maxIterations = 0;
+                    piece.column = i;
+                    piece.row = j;
+
+                    //Fill in the candys array with this new piece
+                    allCandys[i, j] = newBoard[pieceToUse];
+                    //Remove it from list
+                    newBoard.Remove(newBoard[pieceToUse]);
+                }
+            }
+        }
+
+        // Check if it's still deadlocked
+        if (IsDeadlocked())
+        {
+            ShuffleBoard();
+        }
+
     }
 }

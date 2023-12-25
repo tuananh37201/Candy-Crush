@@ -207,7 +207,6 @@ public class Candy : MonoBehaviour
             otherCandy.GetComponent<Candy>().isMatched = true;
         }
 
-
         yield return new WaitForSeconds(.5f);
         if (otherCandy != null)
         {
@@ -218,8 +217,8 @@ public class Candy : MonoBehaviour
                 row = previousRow;
                 column = previousColumn;
                 yield return new WaitForSeconds(.5f);
-                board.currentState = GameState.move;
                 board.currentCandy = null;
+                board.currentState = GameState.move;
             }
             else
             {

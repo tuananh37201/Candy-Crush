@@ -289,11 +289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a057556d2929c64e8f9b7074ad9ef54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStage: 1
-  width: 7
-  height: 10
-  offSet: 20
+  currentState: 1
+  width: 5
+  height: 5
+  offSet: 10
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
+  breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
   candys:
   - {fileID: 7636414600690166343, guid: d925159bdcc0bd942a16d42952986393, type: 3}
   - {fileID: 2568502293647107190, guid: 18f59c474a878dd468acf84e537c4988, type: 3}
@@ -304,6 +305,7 @@ MonoBehaviour:
   - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
   - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
   destroyEffect: {fileID: 1125130479578687610, guid: 02f894a4445db5b42a4410cde0d90678, type: 3}
+  boardLayout: []
   currentCandy: {fileID: 0}
 --- !u!4 &1101248398
 Transform:

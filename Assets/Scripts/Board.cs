@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -269,7 +269,6 @@ public class Board : MonoBehaviour
             {
                 CheckToMakeBombs();
             }
-
             // Does tile need to break?
             if (breakableTiles[column, row] != null)
             {

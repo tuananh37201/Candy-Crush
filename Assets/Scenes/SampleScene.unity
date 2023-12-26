@@ -123,7 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-
 --- !u!1 &374094660
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,10 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0455d7d499b8d5b47b6957b9039e797a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 374094660}
-  pausePanel: {fileID: 953166053}
-  posAfter: {x: 2.9, y: 4.8}
-  posBefore: {x: 0, y: 0}
 --- !u!114 &374094663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMatches: []
-
 --- !u!1 &953166053
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,10 +440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0455d7d499b8d5b47b6957b9039e797a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 374094660}
-  pausePanel: {fileID: 953166053}
-  posAfter: {x: 2.9, y: 4.8}
-  posBefore: {x: 0, y: 0}
 --- !u!1 &973887400
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,12 +498,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: a665c63209172394fb6e9c77b868833c, type: 3}
+  m_Sprite: {fileID: -1215892026, guid: 78939aca1c2c3f5458f8a7ca8785340d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.400001, y: 22.808353}
+  m_Size: {x: 6.24, y: 8.73}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -527,14 +517,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973887400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7626, y: 4.7459, z: 0}
-  m_LocalScale: {x: 0.64725566, y: 0.694118, z: 1}
+  m_LocalPosition: {x: 2.9146, y: 5.0634, z: 0}
+  m_LocalScale: {x: 1.3935772, y: 1.7318872, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
 --- !u!1 &1101248396
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +535,7 @@ GameObject:
   - component: {fileID: 1101248398}
   - component: {fileID: 1101248397}
   - component: {fileID: 1101248399}
+  - component: {fileID: 1101248400}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -594,8 +584,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
-
+--- !u!114 &1101248399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101248396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1101248400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101248396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
 --- !u!1 &1106057405
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,8 +638,6 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1106057406
---- !u!114 &1101248399
- d2351de8463f147ed2ad47939771e9ff5f3696ac
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -625,17 +646,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1106057405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1106057407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,14 +1049,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061174954}
   m_CullTransparentMesh: 1
-
-  m_GameObject: {fileID: 1101248396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9a5dc2c1c272ed4a97052311a119abf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintDelay: 3
-  hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
-  currentHint: {fileID: 0}
- d2351de8463f147ed2ad47939771e9ff5f3696ac

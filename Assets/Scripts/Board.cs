@@ -90,7 +90,8 @@ public class Board : MonoBehaviour
                 if (!blankSpaces[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
-                    GameObject boardTile = Instantiate(boardTilePrefab, tempPosition, Quaternion.identity);
+                    Vector2 tilePosition = new Vector2(i, j );
+                    GameObject boardTile = Instantiate(boardTilePrefab, tilePosition, Quaternion.identity);
                     boardTile.transform.parent = this.transform;
                     boardTile.name = "( " + i + " , " + j + " )";
 

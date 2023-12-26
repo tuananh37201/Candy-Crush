@@ -490,7 +490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cef461bf6f9a06647bbc96a4e0da0241, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e2895b35cb039b4a9225fb12780b99b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28cdee9fdb6f14c4a869f21e8999f60e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a50356026611fd4dabf6f8a043750dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yourButton: {fileID: 3074581842048872383}
-  scaleDuration: 0.5
+  scaleDuration: 0.8
   scaleValue: {x: 1.1, y: 0.9}
 --- !u!1 &3369598388256805553
 GameObject:
@@ -1454,7 +1454,7 @@ RectTransform:
   - {fileID: 8630305108791466522}
   - {fileID: 2987083747695677737}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f4d28cf09f906ce4aa59358a7e82046c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 522852170a5187240a01c068655a5dfb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

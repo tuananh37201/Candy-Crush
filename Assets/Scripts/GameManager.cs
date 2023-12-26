@@ -1,15 +1,21 @@
-﻿// Kịch bản GameManager
-using UnityEngine;
-
+﻿using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     bool isPlay=false;
+
     public AudioClip bgAudio;
     public AudioClip closePopup;
     public AudioClip openPopup;
+    public AudioClip point;
     private AudioSource audioSource;
     public ToggleButton toggleButton;
 
+    public static GameManager instance { get; private set; }
+    private void Awake()
+    {
+        if (instance != null && instance != this) Destroy(this);
+        else instance = this;
+    }
 
     void Start()
     {
@@ -26,20 +32,10 @@ public class GameManager : MonoBehaviour
             if (toggleButton != null)
             {
                 Debug.Log("Trạng thái nút bật/tắt: " + toggleButton.isBtnOn);
-                if (toggleButton.isBtnOn)
-                {
-                    audioSource.Play(); // Phát âm thanh
-                }
-                // Nếu nút đã tắt, dừng phát âm thanh
-                else
-                { 
-                    audioSource.Stop();
-                }
+                if (toggleButton.isBtnOn) audioSource.Play(); // Phát âm thanh
+                else audioSource.Stop();
             }
-            else
-            {
-                Debug.LogError("Không tìm thấy nút bật/tắt trong scene.");
-            }
+            else Debug.LogError("Không tìm thấy nút bật/tắt trong scene.");
         }
     }
 
@@ -50,7 +46,10 @@ public class GameManager : MonoBehaviour
     public void AudioOpenPopup()
     {
         audioSource.PlayOneShot(openPopup);
-
+    } 
+    public void AudioPoint()
+    {
+        audioSource.PlayOneShot(point);
     }
 
 

@@ -14,7 +14,6 @@ public class PopupSetting : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton pattern: đảm bảo chỉ có một instance của PopupSetting tồn tại
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
     }

@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6059008893247641452
 MonoBehaviour:
@@ -48,6 +48,7 @@ MonoBehaviour:
   bgAudio: {fileID: 8300000, guid: 08bda562293223e4e8f821dfaac8228a, type: 3}
   closePopup: {fileID: 8300000, guid: 80a869a7cb575c64bb98aa74cfd0393e, type: 3}
   openPopup: {fileID: 8300000, guid: 10eeb2aeeddc7714bbb76a5f0b7e0832, type: 3}
+  point: {fileID: 8300000, guid: 170f8ea2850ce604eb20ad9b57306e2a, type: 3}
   toggleButton: {fileID: 0}
 --- !u!82 &2829523244825202893
 AudioSource:

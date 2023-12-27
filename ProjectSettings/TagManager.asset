@@ -13,6 +13,8 @@ TagManager:
   - Red Candy
   - Yellow Candy
   - Color
+  - Purple Candy
+  - Cherry Candy
   layers:
   - Default
   - TransparentFX

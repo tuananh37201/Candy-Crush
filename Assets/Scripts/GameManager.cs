@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
 public class GameManager : MonoBehaviour
 {
-    bool isPlay=false;
+    bool isPlay = false;
 
     public AudioClip bgAudio;
     public AudioClip closePopup;
     public AudioClip openPopup;
     public AudioClip point;
+    public AudioClip win;
+    public AudioClip lose;
+    public AudioClip bom;
+    public AudioClip fourCandy;
+    public AudioClip candyFall;
+    public AudioClip coins;
+
     private AudioSource audioSource;
     public ToggleButton toggleButton;
 
@@ -15,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
+
     }
 
     void Start()
@@ -28,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isPlay)
         {
-            isPlay=true;
+            isPlay = true;
             if (toggleButton != null)
             {
                 Debug.Log("Trạng thái nút bật/tắt: " + toggleButton.isBtnOn);
@@ -42,14 +50,38 @@ public class GameManager : MonoBehaviour
     public void AudioClosePopup()
     {
         audioSource.PlayOneShot(closePopup);
-    } 
+    }
     public void AudioOpenPopup()
     {
         audioSource.PlayOneShot(openPopup);
-    } 
+    }
     public void AudioPoint()
     {
         audioSource.PlayOneShot(point);
+    }
+    public void AudioWin()
+    {
+        audioSource.PlayOneShot(win);
+    }
+    public void AudioLose()
+    {
+        audioSource.PlayOneShot(lose);
+    }
+    public void AudioBom()
+    {
+        audioSource.PlayOneShot(bom);
+    }
+    public void AudioFourCandy()
+    {
+        audioSource.PlayOneShot(fourCandy);
+    }
+    public void AudioCandyFall()
+    {
+        audioSource.PlayOneShot(candyFall);
+    }
+    public void AudioCois()
+    {
+        audioSource.PlayOneShot(coins);
     }
 
 

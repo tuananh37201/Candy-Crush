@@ -8,6 +8,7 @@ public class CandyDestroyParticle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         animator.SetBool("isDestroyed", true);
     }
 

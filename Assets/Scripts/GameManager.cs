@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public AudioClip bgAudio;
     public AudioClip closePopup;
     public AudioClip openPopup;
-    public AudioClip point;
+    public AudioClip threeCandy;
     public AudioClip win;
     public AudioClip lose;
     public AudioClip bom;
@@ -55,9 +55,9 @@ public class GameManager : MonoBehaviour
     {
         audioSource.PlayOneShot(openPopup);
     }
-    public void AudioPoint()
+    public void AudioThreeCandy()
     {
-        audioSource.PlayOneShot(point);
+        audioSource.PlayOneShot(threeCandy);
     }
     public void AudioWin()
     {

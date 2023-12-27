@@ -48,13 +48,14 @@ MonoBehaviour:
   bgAudio: {fileID: 8300000, guid: 08bda562293223e4e8f821dfaac8228a, type: 3}
   closePopup: {fileID: 8300000, guid: 5ca2b83bf128d1b4aa5e78184ce7d1ae, type: 3}
   openPopup: {fileID: 8300000, guid: 10eeb2aeeddc7714bbb76a5f0b7e0832, type: 3}
-  point: {fileID: 8300000, guid: 170f8ea2850ce604eb20ad9b57306e2a, type: 3}
+  threeCandy: {fileID: 8300000, guid: 170f8ea2850ce604eb20ad9b57306e2a, type: 3}
   win: {fileID: 8300000, guid: 860a645c31258ee4b91c0c4376e805a0, type: 3}
   lose: {fileID: 8300000, guid: 28cf16aa508cbf448814d6b77425543f, type: 3}
   bom: {fileID: 8300000, guid: fbf6c2abbab34c94783cd152c4bc65bb, type: 3}
   fourCandy: {fileID: 8300000, guid: 55a84bc72786b804689b5b08d88e7f48, type: 3}
   candyFall: {fileID: 8300000, guid: fe2864c5d727f034e8eb83d973e4c986, type: 3}
   coins: {fileID: 8300000, guid: 1adcfd788381dc34da87db1c2ba8b096, type: 3}
+  toggleButton: {fileID: 0}
 --- !u!82 &2829523244825202893
 AudioSource:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class Board : MonoBehaviour
     public int basePieceValue = 20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
-    public float refillDelay = 0.5f;
+    public float refillDelay = .5f;
 
     [Header("Destroy Effect")]
     public GameObject blueDestroyEffect;
@@ -295,13 +295,43 @@ public class Board : MonoBehaviour
                 }
             }
 
-            GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-            Destroy(particle, .5f);
+            if (allCandys[column, row].tag == "Blue Candy")
+            {
+                GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                Destroy(particle, .25f);
+            }
+            if (allCandys[column, row].tag == "Green Candy")
+            {
+                GameObject particle = Instantiate(greenDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                Destroy(particle, .5f);
+            }
+            if (allCandys[column, row].tag == "Orange Candy")
+            {
+                GameObject particle = Instantiate(orangeDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                Destroy(particle, .5f);
+            }
+            if (allCandys[column, row].tag == "Red Candy")
+            {
+                GameObject particle = Instantiate(redDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                Destroy(particle, .5f);
+            }
+            if (allCandys[column, row].tag == "Purple Candy")
+            {
+                GameObject particle = Instantiate(purpleDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                Destroy(particle, .5f);
+            }
+            if (allCandys[column, row].tag == "Yellow Candy")
+            {
+                GameObject particle = Instantiate(yellowDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                Destroy(particle, .5f);
+            }
+
             Destroy(allCandys[column, row]);
             scoreManager.IncreaseScore(basePieceValue * streakValue);
             allCandys[column, row] = null;
         }
     }
+
 
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()
     public void DestroyMatches()
@@ -322,6 +352,7 @@ public class Board : MonoBehaviour
 
     private IEnumerator DecreaseRowCor2()
     {
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -369,7 +400,7 @@ public class Board : MonoBehaviour
             }
             nullCount = 0;
         }
-        yield return new WaitForSeconds(refillDelay*0.5f);
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         StartCoroutine(FillBoardCor());
     }
 
@@ -388,7 +419,7 @@ public class Board : MonoBehaviour
                     {
                         maxIterations++;
                         candyToUse = Random.Range(0, candys.Length);
-                    }           
+                    }
                     maxIterations = 0;
 
                     GameObject piece = Instantiate(candys[candyToUse], tempPosition, Quaternion.identity);
@@ -425,9 +456,9 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(refillDelay);
         while (MatchesOnBoard())
         {
-            streakValue ++;
+            streakValue++;
             DestroyMatches();
-            yield return new WaitForSeconds(2*refillDelay);
+            yield return new WaitForSeconds(2 * refillDelay);
         }
         findMatches.currentMatches.Clear();
         currentCandy = null;
@@ -531,11 +562,11 @@ public class Board : MonoBehaviour
 
     private IEnumerator ShuffleBoard()
     {
-        List<GameObject> newBoard = new List<GameObject> ();
+        List<GameObject> newBoard = new List<GameObject>();
 
-        for (int i = 0; i < width; i ++)
+        for (int i = 0; i < width; i++)
         {
-            for (int j = 0;j < height; j++)
+            for (int j = 0; j < height; j++)
             {
                 if (allCandys[i, j] != null)
                 {
@@ -545,7 +576,7 @@ public class Board : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
         // For every spot on the board
-        for (int i = 0; i < width; i ++)
+        for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
@@ -554,7 +585,7 @@ public class Board : MonoBehaviour
                 {
                     // Pick a random number
                     int pieceToUse = Random.Range(0, newBoard.Count);
-                    
+
                     // Assign the column and row to the piece
                     int maxIterations = 0;
                     while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)

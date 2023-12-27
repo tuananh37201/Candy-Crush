@@ -12,6 +12,7 @@ TagManager:
   - Pink Candy
   - Red Candy
   - Yellow Candy
+  - Color
   layers:
   - Default
   - TransparentFX

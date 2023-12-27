@@ -41,9 +41,14 @@ public class Board : MonoBehaviour
     public GameObject[,] allCandys;
     public Candy currentCandy;
     private FindMatches findMatches;
+    public int basePieceValue = 20;
+    private int streakValue = 1;
+    private ScoreManager scoreManager;
+    public float refillDelay = 0.5f;
 
     void Start()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
         findMatches = FindObjectOfType<FindMatches>();
 
@@ -284,6 +289,7 @@ public class Board : MonoBehaviour
             GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allCandys[column, row]);
+            scoreManager.IncreaseScore(basePieceValue * streakValue);
             allCandys[column, row] = null;
         }
     }
@@ -331,7 +337,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         StartCoroutine(FillBoardCor());
     }
 
@@ -354,7 +360,7 @@ public class Board : MonoBehaviour
             }
             nullCount = 0;
         }
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(refillDelay*0.5f);
         StartCoroutine(FillBoardCor());
     }
 
@@ -368,7 +374,6 @@ public class Board : MonoBehaviour
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int candyToUse = Random.Range(0, candys.Length);
-
                     int maxIterations = 0;
                     while (MatchesAt(i, j, candys[candyToUse]) && maxIterations < 100)
                     {
@@ -387,7 +392,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    private bool MathesOnBoard()
+    private bool MatchesOnBoard()
     {
         for (int i = 0; i < width; i++)
         {
@@ -408,11 +413,12 @@ public class Board : MonoBehaviour
     private IEnumerator FillBoardCor()
     {
         RefillBoard();
-        yield return new WaitForSeconds(.5f);
-        while (MathesOnBoard())
+        yield return new WaitForSeconds(refillDelay);
+        while (MatchesOnBoard())
         {
+            streakValue ++;
             DestroyMatches();
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(2*refillDelay);
         }
         findMatches.currentMatches.Clear();
         currentCandy = null;
@@ -422,8 +428,9 @@ public class Board : MonoBehaviour
             ShuffleBoard();
             Debug.Log("Deadlocked!!");
         }
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(refillDelay);
         currentState = GameState.move;
+        streakValue = 1;
     }
 
     private void SwitchPieces(int column, int row, Vector2 direction)
@@ -513,7 +520,7 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    private void ShuffleBoard()
+    private IEnumerator ShuffleBoard()
     {
         List<GameObject> newBoard = new List<GameObject> ();
 
@@ -527,7 +534,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
-
+        yield return new WaitForSeconds(0.5f);
         // For every spot on the board
         for (int i = 0; i < width; i ++)
         {

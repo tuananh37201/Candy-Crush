@@ -34,7 +34,6 @@ public class Board : MonoBehaviour
     public GameObject boardTilePrefab;
     public GameObject breakableTilePrefab;
     public GameObject[] candys;
-    public GameObject destroyEffect;
     public TileType[] boardLayout;
     private bool[,] blankSpaces;
     private BoardTile[,] breakableTiles;
@@ -45,6 +44,16 @@ public class Board : MonoBehaviour
     private int streakValue = 1;
     private ScoreManager scoreManager;
     public float refillDelay = 0.5f;
+
+    [Header("Destroy Effect")]
+    public GameObject blueDestroyEffect;
+    public GameObject greenDestroyEffect;
+    public GameObject orangeDestroyEffect;
+    public GameObject purpleDestroyEffect;
+    public GameObject redDestroyEffect;
+    public GameObject yellowDestroyEffect;
+
+
 
     void Start()
     {
@@ -286,7 +295,7 @@ public class Board : MonoBehaviour
                 }
             }
 
-            GameObject particle = Instantiate(destroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+            GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allCandys[column, row]);
             scoreManager.IncreaseScore(basePieceValue * streakValue);

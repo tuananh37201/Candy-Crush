@@ -14,6 +14,7 @@ public class Candy : MonoBehaviour
     public int previousColumn;
     public bool isMatched = false;
 
+    private EndGameManager endGameManager;
     private HintManager hintManager;
     private FindMatches findMatches;
     private Board board;
@@ -43,6 +44,7 @@ public class Candy : MonoBehaviour
         isColumnBomb = false;
         isRowBomb = false;
         isAdjacentBomb = false;
+        endGameManager = FindObjectOfType<EndGameManager>();
 
         hintManager = FindObjectOfType<HintManager>();
         board = FindObjectOfType<Board>();
@@ -230,6 +232,11 @@ public class Candy : MonoBehaviour
             }
             else
             {
+                if (endGameManager != null) {
+                    if (endGameManager.requirements.gameType == GameType.Moves) {
+                        endGameManager.DecreaseCountervalue();
+                    }
+                }
                 board.DestroyMatches();
             }
             //otherCandy = null;

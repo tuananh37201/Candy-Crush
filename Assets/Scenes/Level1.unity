@@ -3184,16 +3184,21 @@ MonoBehaviour:
   breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
   candys:
   - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
-  - {fileID: 2568502293647107190, guid: 18f59c474a878dd468acf84e537c4988, type: 3}
+  - {fileID: 3119144058038550759, guid: 956a563712e349a4e92ba7f107890975, type: 3}
   - {fileID: 8393387378985738209, guid: 6385b74783251954aaa279db6498116f, type: 3}
-  - {fileID: 6251447239853859308, guid: 579639f99ba78614bbeda6963f913169, type: 3}
+  - {fileID: 5154954808007798995, guid: f2c2a6b7a63d9fb41928cbc2e7ba8dd1, type: 3}
   - {fileID: 1146532523108486354, guid: 657e9e054ae649f4b9187616aeb705be, type: 3}
   - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
-  destroyEffect: {fileID: 1125130479578687610, guid: 02f894a4445db5b42a4410cde0d90678, type: 3}
   boardLayout: []
   currentCandy: {fileID: 0}
   basePieceValue: 20
-  refillDelay: 0.5
+  refillDelay: 1
+  blueDestroyEffect: {fileID: 4019345676554505500, guid: ff6318237d098b040b37ade45ab5751b, type: 3}
+  greenDestroyEffect: {fileID: 7533259568578924540, guid: 4788fc4a6ef365d4e957ae980aa32307, type: 3}
+  orangeDestroyEffect: {fileID: 3938427918766701007, guid: 3db39eef3ff7feb4db739c142521f9e0, type: 3}
+  purpleDestroyEffect: {fileID: 4613531433712596340, guid: ad8fb2e5d65a11e4891817cee7556b9f, type: 3}
+  redDestroyEffect: {fileID: 2720973319430098509, guid: 838400672393a0b478ca712f0c416be9, type: 3}
+  yellowDestroyEffect: {fileID: 3394766436165476547, guid: d1bc6f7aede65bf45be4cdcb723211db, type: 3}
 --- !u!4 &1101248398
 Transform:
   m_ObjectHideFlags: 0

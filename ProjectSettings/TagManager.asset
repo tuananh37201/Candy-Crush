@@ -5,14 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blue Candy
-  - Brown Candy
-  - Gray Candy
   - Green Candy
   - Orange Candy
-  - Pink Candy
   - Red Candy
   - Yellow Candy
-  - Color
+  - Purple Candy
+  - Gray Candy
+  - Pink Candy
   layers:
   - Default
   - TransparentFX

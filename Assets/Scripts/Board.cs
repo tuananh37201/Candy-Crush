@@ -454,6 +454,7 @@ public class Board : MonoBehaviour
     {
         RefillBoard();
         yield return new WaitForSeconds(refillDelay);
+
         while (MatchesOnBoard())
         {
             streakValue++;
@@ -465,7 +466,7 @@ public class Board : MonoBehaviour
 
         if (IsDeadlocked())
         {
-            ShuffleBoard();
+            StartCoroutine(ShuffleBoard());
             Debug.Log("Deadlocked!!");
         }
         yield return new WaitForSeconds(refillDelay);
@@ -562,6 +563,8 @@ public class Board : MonoBehaviour
 
     private IEnumerator ShuffleBoard()
     {
+        yield return new WaitForSeconds(0.5f);
+
         List<GameObject> newBoard = new List<GameObject>();
 
         for (int i = 0; i < width; i++)
@@ -610,7 +613,7 @@ public class Board : MonoBehaviour
         // Check if it's still deadlocked
         if (IsDeadlocked())
         {
-            ShuffleBoard();
+            StartCoroutine(ShuffleBoard());
         }
 
     }

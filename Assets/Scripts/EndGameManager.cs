@@ -23,6 +23,7 @@ public class EndGameManager : MonoBehaviour {
     private Board board;
     private float timerSeconds;
     public int counterValue;
+    private bool setEndGame = false;
 
     private void Awake() {
         if (instance == null) {
@@ -60,11 +61,18 @@ public class EndGameManager : MonoBehaviour {
         }
     }
 
-    void Update() {
-        if (currentCounterValue == 0) {
-            //currentState = GameState.pause;
+    public void SetEndGame() {
+        if (!setEndGame) {
             FindObjectOfType<PopupSetting>().PanelFadeIn();
             GameObjectLV1.Instance.LosePanelAppear();
+            setEndGame = true;
+        }
+    }
+
+    void Update() {
+        if (currentCounterValue == 0) {
+            FindObjectOfType<Board>().currentState = GameState.pause;
+            SetEndGame();
         }
         if (requirements.gameType == GameType.Times && currentCounterValue > 0) {
             timerSeconds -= Time.deltaTime;

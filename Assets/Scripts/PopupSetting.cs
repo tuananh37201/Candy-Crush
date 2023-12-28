@@ -9,7 +9,7 @@ public class PopupSetting : MonoBehaviour
     public float fadeTime = 0.5f;
     public CanvasGroup canvasGroup;
     public RectTransform rectTransform;
-    public List<GameObject> items = new List<GameObject>();
+    //public List<GameObject> items = new List<GameObject>();
     public static PopupSetting instance { get; private set; }
 
     private void Awake()
@@ -25,7 +25,7 @@ public class PopupSetting : MonoBehaviour
         rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f); // Đặt vị trí ban đầu của panel
         rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
         canvasGroup.DOFade(1, fadeTime); // Thực hiện animation làm đậm canvasGroup lên giá trị 1
-        StartCoroutine("ItemsAnimation"); // Bắt đầu coroutine để thực hiện animation cho các items
+        //StartCoroutine("ItemsAnimation"); // Bắt đầu coroutine để thực hiện animation cho các items
     }
 
     // Phương thức để ẩn popup và thực hiện animation
@@ -38,19 +38,19 @@ public class PopupSetting : MonoBehaviour
     }
 
     // Coroutine để thực hiện animation cho các items
-    IEnumerator ItemsAnimation()
-    {
-        // Thiết lập kích thước ban đầu của các items là Vector3.zero (kích thước không)
-        foreach (var item in items)
-        {
-            item.transform.localScale = Vector3.zero;
-        }
+    //IEnumerator ItemsAnimation()
+    //{
+    //    // Thiết lập kích thước ban đầu của các items là Vector3.zero (kích thước không)
+    //    foreach (var item in items)
+    //    {
+    //        item.transform.localScale = Vector3.zero;
+    //    }
 
-        // Thực hiện animation mở rộng kích thước của từng item
-        foreach (var item in items)
-        {
-            item.transform.DOScale(1f, fadeTime).SetEase(Ease.OutBounce);
-            yield return new WaitForSeconds(0.1f); // Chờ 0.25 giây trước khi thực hiện animation cho item tiếp theo
-        }
-    }
+    //    // Thực hiện animation mở rộng kích thước của từng item
+    //    foreach (var item in items)
+    //    {
+    //        item.transform.DOScale(1f, fadeTime).SetEase(Ease.OutBounce);
+    //        yield return new WaitForSeconds(0.1f); // Chờ 0.25 giây trước khi thực hiện animation cho item tiếp theo
+    //    }
+    //}
 }

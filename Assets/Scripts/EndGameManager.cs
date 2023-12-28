@@ -18,7 +18,7 @@ public class EndGameManager : MonoBehaviour {
     public EndGameRequirements requirements;
     public TextMeshProUGUI counter;
     public GameObject movesLabels;
-    public GameObject timesLabels;
+    //public GameObject timesLabels;
     public int currentCounterValue;
     private Board board;
     private float timerSeconds;
@@ -39,11 +39,11 @@ public class EndGameManager : MonoBehaviour {
         
         if (requirements.gameType == GameType.Moves) {
             movesLabels.SetActive(true);
-            timesLabels.SetActive(false);
+            //timesLabels.SetActive(false);
         } else {
             timerSeconds = 1;
             movesLabels.SetActive(false);
-            timesLabels.SetActive(true);
+           // timesLabels.SetActive(true);
         }
         counter.text =  currentCounterValue.ToString();
     }

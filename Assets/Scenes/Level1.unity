@@ -3518,7 +3518,10 @@ MonoBehaviour:
   - {fileID: 5154954808007798995, guid: f2c2a6b7a63d9fb41928cbc2e7ba8dd1, type: 3}
   - {fileID: 1146532523108486354, guid: 657e9e054ae649f4b9187616aeb705be, type: 3}
   - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
-  boardLayout: []
+  boardLayout:
+  - x: 3
+    y: 4
+    tileKind: 0
   currentCandy: {fileID: 0}
   basePieceValue: 20
   refillDelay: 1

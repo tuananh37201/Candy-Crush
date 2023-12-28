@@ -78,6 +78,8 @@ public class Board : MonoBehaviour
     private void Update() {
         if(EndGameManager.instance.currentCounterValue<=0) {
             currentState = GameState.pause;
+            FindObjectOfType<PopupSetting>().PanelFadeIn();
+            GameObjectLV1.Instance.LosePanelAppear();
         }
     }
 

@@ -60,9 +60,7 @@ public class Candy : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            isAdjacentBomb = true;
-            GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
-            maker.transform.parent = this.transform;
+            
         }
     }
 

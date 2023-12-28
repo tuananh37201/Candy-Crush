@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146532523108486354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.937591, y: 3.456396, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,10 +112,10 @@ MonoBehaviour:
   isColumnBomb: 0
   isColorBomb: 0
   isAdjacentBomb: 0
-  rowSugar: {fileID: 1255682190997073417, guid: 690a9fe8a7a2b914c96b9d944f54a32d, type: 3}
-  columnSugar: {fileID: 454384835735758834, guid: e46754db73a83844eb5908ae7568822d, type: 3}
-  colorBomb: {fileID: 3390875458332916994, guid: a1b44234922a3924e9522cfbf45800dc, type: 3}
-  adjacentMarker: {fileID: 52993823247317496, guid: 3238a024a5832c0439d37f64f7bb66d8, type: 3}
+  rowSugar: {fileID: 21217495654323839, guid: cb407a645eb437c4f88a6b5850c907ec, type: 3}
+  columnSugar: {fileID: 8878634807094117546, guid: 0e1ce35b35348524580d23ab6760b148, type: 3}
+  colorBomb: {fileID: 1828469735811717235, guid: ef40751bbd24e5846843b449bf737d09, type: 3}
+  adjacentMarker: {fileID: 7356583036393262731, guid: ec2c41a02a3ce3e4a8befd407d8d9dfe, type: 3}
 --- !u!58 &4761973652577004776
 CircleCollider2D:
   m_ObjectHideFlags: 0

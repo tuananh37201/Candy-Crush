@@ -3507,7 +3507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 1
   width: 7
-  height: 9
+  height: 10
   offSet: 10
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
   breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
@@ -7009,7 +7009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5227492845160093099
 MonoBehaviour:
   m_ObjectHideFlags: 0

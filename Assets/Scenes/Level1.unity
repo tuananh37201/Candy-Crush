@@ -1835,7 +1835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requirements:
     gameType: 0
-    counterValue: 2
+    counterValue: 1
   counter: {fileID: 297817621}
   movesLabels: {fileID: 516936881}
   timesLabels: {fileID: 0}

@@ -18,6 +18,7 @@ public class BoardTile : MonoBehaviour
         if (hitPoints <= 0)
         {
             StartCoroutine(breakalbeDestroyEffect());
+            Destroy(gameObject);
         }
     }
 
@@ -26,13 +27,11 @@ public class BoardTile : MonoBehaviour
         hitPoints -= damage;
     }
 
-    private IEnumerator breakalbeDestroyEffect()
+    public IEnumerator breakalbeDestroyEffect()
     {
         this.gameObject.SetActive(false);
         GameObject Effect = Instantiate(breakEffect, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(.25f);
-        Destroy(this.gameObject);
-        Destroy(Effect);
-
+        Destroy(Effect, .3f);
+        yield return new WaitForSeconds(.1f);
     }
 }

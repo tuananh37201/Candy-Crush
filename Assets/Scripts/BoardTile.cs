@@ -6,6 +6,7 @@ public class BoardTile : MonoBehaviour
 {
     public int hitPoints;
     private SpriteRenderer sprite;
+    public GameObject breakEffect;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class BoardTile : MonoBehaviour
     {
         if (hitPoints <= 0)
         {
-            Destroy(this.gameObject);
+            StartCoroutine(breakalbeDestroyEffect());
         }
     }
 
@@ -25,11 +26,13 @@ public class BoardTile : MonoBehaviour
         hitPoints -= damage;
     }
 
-
-    void MakeLighter()
+    private IEnumerator breakalbeDestroyEffect()
     {
-        Color color = sprite.color;
-        float newAlpha = color.a * .5f;
-        sprite.color = new Color(color.r, color.g, color.b, newAlpha);
+        this.gameObject.SetActive(false);
+        GameObject Effect = Instantiate(breakEffect, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+        Destroy(this.gameObject);
+        Destroy(Effect);
+
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -33,6 +33,7 @@ public class EndGameManager : MonoBehaviour {
         currentCounterValue = requirements.counterValue;
         board = FindObjectOfType<Board>();
         SetUpGame();
+        
     }
 
     void SetUpGame() {
@@ -60,6 +61,11 @@ public class EndGameManager : MonoBehaviour {
     }
 
     void Update() {
+        if (currentCounterValue == 0) {
+            //currentState = GameState.pause;
+            FindObjectOfType<PopupSetting>().PanelFadeIn();
+            GameObjectLV1.Instance.LosePanelAppear();
+        }
         if (requirements.gameType == GameType.Times && currentCounterValue > 0) {
             timerSeconds -= Time.deltaTime;
             if (timerSeconds <= 0) {

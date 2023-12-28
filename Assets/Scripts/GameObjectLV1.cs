@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameObjectLV1 : MonoBehaviour
@@ -6,6 +6,8 @@ public class GameObjectLV1 : MonoBehaviour
     public static GameObjectLV1 Instance;
     public GameObject shopPanel, closeTabButton, musicButton, soundButton,losePanel;
     public GameObject bombShop, colorBombshop, switchShop, lolipopBomShop;
+    private bool losePanelAppeared = false;
+
 
     private void Awake() {
         Instance = this;
@@ -69,8 +71,14 @@ public class GameObjectLV1 : MonoBehaviour
     }
 
     public void LosePanelAppear() {
-        //shopPanel.SetActive(false);
-        losePanel.SetActive(true);
+        if (!losePanelAppeared) {
+            //shopPanel.SetActive(false);
+            losePanel.SetActive(true);
+            ThreeBtDisappear();
+
+            // Đặt biến để đánh dấu rằng hàm đã được gọi
+            losePanelAppeared = true;
+        }
     }
 
     public void LosePaneDisappear() {

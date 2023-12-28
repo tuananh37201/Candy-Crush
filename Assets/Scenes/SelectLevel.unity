@@ -8582,6 +8582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelMapButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8003125828359000422, guid: 8a2c07d0ec9182241b8701cfc2b9b358, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

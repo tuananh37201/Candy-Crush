@@ -5,7 +5,10 @@ using UnityEngine;
 public enum GameState
 {
     wait,
-    move
+    move, 
+    win,
+    lose,
+    pause
 }
 
 public enum TileKind
@@ -25,6 +28,7 @@ public class TileType
 
 public class Board : MonoBehaviour
 {
+    public static Board Instance;
     public GameState currentState = GameState.move;
 
     public int width;
@@ -46,6 +50,11 @@ public class Board : MonoBehaviour
     private ScoreManager scoreManager;
     public float refillDelay = 0.5f;
 
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+    }
     void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
@@ -55,6 +64,12 @@ public class Board : MonoBehaviour
         blankSpaces = new bool[width, height];
         allCandys = new GameObject[width, height];
         Setup();
+        //currentState = GameState.pause;
+    }
+    private void Update() {
+        if(EndGameManager.instance.currentCounterValue<=0) {
+            currentState = GameState.pause;
+        }
     }
 
     public void GenerateBlankSpace()

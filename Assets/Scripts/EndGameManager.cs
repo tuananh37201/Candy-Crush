@@ -14,19 +14,29 @@ public class EndGameRequirements {
 }
 
 public class EndGameManager : MonoBehaviour {
+    public static EndGameManager instance;
     public EndGameRequirements requirements;
     public TextMeshProUGUI counter;
     public GameObject movesLabels;
     public GameObject timesLabels;
     public int currentCounterValue;
+    private Board board;
     private float timerSeconds;
+    public int counterValue;
 
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
     void Start() {
+        currentCounterValue = requirements.counterValue;
+        board = FindObjectOfType<Board>();
         SetUpGame();
     }
 
     void SetUpGame() {
-        currentCounterValue = requirements.counterValue;
+        
         if (requirements.gameType == GameType.Moves) {
             movesLabels.SetActive(true);
             timesLabels.SetActive(false);
@@ -35,21 +45,24 @@ public class EndGameManager : MonoBehaviour {
             movesLabels.SetActive(false);
             timesLabels.SetActive(true);
         }
-        counter.text = "" + currentCounterValue;
+        counter.text =  currentCounterValue.ToString();
     }
     public void DecreaseCountervalue() {
+        //if (board.currentState != GameState.pause) {
             currentCounterValue--;
             counter.text = "" + currentCounterValue;
-        if(currentCounterValue == 0) {
-            currentCounterValue = 0;
-            counter.text = "" + currentCounterValue;
+            if (currentCounterValue == 0) {
+                board.currentState = GameState.pause;
+                currentCounterValue = 0;
+                counter.text = "" + currentCounterValue;
+            //}
         }
     }
-     
+
     void Update() {
-        if(requirements.gameType == GameType.Times && currentCounterValue  > 0) {
+        if (requirements.gameType == GameType.Times && currentCounterValue > 0) {
             timerSeconds -= Time.deltaTime;
-            if(timerSeconds <= 0) {
+            if (timerSeconds <= 0) {
                 DecreaseCountervalue();
                 timerSeconds = 1;
             }

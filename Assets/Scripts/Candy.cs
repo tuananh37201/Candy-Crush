@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class Candy : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
+
     [Header("Board Variables")]
     public int column;
     public int row;
@@ -41,6 +43,8 @@ public class Candy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         isColumnBomb = false;
         isRowBomb = false;
         isAdjacentBomb = false;
@@ -62,9 +66,7 @@ public class Candy : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            isAdjacentBomb = true;
-            GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
-            maker.transform.parent = this.transform;
+            
         }
     }
 
@@ -281,18 +283,34 @@ public class Candy : MonoBehaviour
     public void MakeRowBomb()
     {
         isRowBomb = true;
+
+        Color alpha = spriteRenderer.color;
+        alpha.a = 0;
+        spriteRenderer.color = alpha;
+
         GameObject sugar = Instantiate(rowSugar, transform.position, Quaternion.identity);
         sugar.transform.parent = this.transform;
+
     }
     public void MakeColumnBomb()
     {
         isColumnBomb = true;
+
+        Color alpha = spriteRenderer.color;
+        alpha.a = 0;
+        spriteRenderer.color = alpha;
+
         GameObject sugar = Instantiate(columnSugar, transform.position, Quaternion.identity);
         sugar.transform.parent = this.transform;
     }
     public void MakeColorBomb()
     {
         isColorBomb = true;
+
+        Color alpha = spriteRenderer.color;
+        alpha.a = 0;
+        spriteRenderer.color = alpha;
+
         GameObject color = Instantiate(colorBomb, transform.position, Quaternion.identity);
         color.transform.parent = this.transform;
         this.gameObject.tag = "Color";
@@ -300,6 +318,11 @@ public class Candy : MonoBehaviour
     public void MakeAdjacentBomb()
     {
         isAdjacentBomb = true;
+
+        Color alpha = spriteRenderer.color;
+        alpha.a = 0;
+        spriteRenderer.color = alpha;
+
         GameObject maker = Instantiate(adjacentMarker, transform.position, Quaternion.identity);
         maker.transform.parent = this.transform;
     }

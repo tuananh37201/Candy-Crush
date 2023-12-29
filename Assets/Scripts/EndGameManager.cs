@@ -24,6 +24,9 @@ public class EndGameManager : MonoBehaviour {
     private float timerSeconds;
     public int counterValue;
     private bool setEndGame = false;
+    private bool setWinGame = false;
+    public TextMeshProUGUI goalScoreText;
+    public int goalScore;
 
     private void Awake() {
         if (instance == null) {
@@ -69,17 +72,23 @@ public class EndGameManager : MonoBehaviour {
         }
     }
 
+    public void SetWinGame() {
+        if (!setWinGame) {
+            FindObjectOfType<PopupSetting>().PanelFadeIn();
+            GameObjectLV1.Instance.WinPanelAppear();
+            setWinGame = true;
+        }
+    }
+
     void Update() {
         if (currentCounterValue == 0) {
             FindObjectOfType<Board>().currentState = GameState.pause;
             SetEndGame();
         }
-        if (requirements.gameType == GameType.Times && currentCounterValue > 0) {
-            timerSeconds -= Time.deltaTime;
-            if (timerSeconds <= 0) {
-                DecreaseCountervalue();
-                timerSeconds = 1;
-            }
+        if(FindObjectOfType<ScoreManager>().score >= goalScore) {
+            FindObjectOfType<Board>().currentState = GameState.pause;
+            SetWinGame();
         }
+        goalScoreText.text = goalScore.ToString();
     }
 }

@@ -123,7 +123,7 @@ public class Candy : MonoBehaviour
         // Destroy the hint
         if(hintManager != null)
         {
-            hintManager.DestroyHInt();
+            hintManager.DestroyHint();
         }
         
         if (board.currentState == GameState.move)

@@ -84,7 +84,7 @@ public class HintManager : MonoBehaviour
     }
 
     // Destroy the hind
-    public void DestroyHInt()
+    public void DestroyHint()
     {
         if(currentHint != null)
         {

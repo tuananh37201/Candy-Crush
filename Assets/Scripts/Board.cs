@@ -349,6 +349,11 @@ public class Board : MonoBehaviour
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()
     public void DestroyMatches()
     {
+        if (findMatches.currentMatches.Count >= 4)
+        {
+            CheckToMakeBombs();
+        }
+        findMatches.currentMatches.Clear();
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -359,7 +364,6 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        findMatches.currentMatches.Clear();
         StartCoroutine(DecreaseRowCor2());
     }
 
@@ -391,6 +395,7 @@ public class Board : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(refillDelay * 0.5f);
+        Debug.Log("Refilling the board");
         StartCoroutine(FillBoardCor());
     }
 
@@ -413,7 +418,7 @@ public class Board : MonoBehaviour
             }
             nullCount = 0;
         }
-        yield return new WaitForSeconds(refillDelay * 0.5f);
+        yield return new WaitForSeconds(refillDelay * 0.25f);
         StartCoroutine(FillBoardCor());
     }
 
@@ -465,6 +470,7 @@ public class Board : MonoBehaviour
 
     private IEnumerator FillBoardCor()
     {
+        yield return new WaitForSeconds(refillDelay);
         RefillBoard();
         yield return new WaitForSeconds(refillDelay);
 
@@ -472,9 +478,10 @@ public class Board : MonoBehaviour
         {
             streakValue++;
             DestroyMatches();
-            yield return new WaitForSeconds(2 * refillDelay);
+            //yield return new WaitForSeconds(2 * refillDelay);
+            yield break;
         }
-        findMatches.currentMatches.Clear();
+        //findMatches.currentMatches.Clear();
         currentCandy = null;
 
         if (IsDeadlocked())
@@ -483,6 +490,8 @@ public class Board : MonoBehaviour
             Debug.Log("Deadlocked!!");
         }
         yield return new WaitForSeconds(refillDelay);
+        Debug.Log("Done Refill");
+        System.GC.Collect();
         currentState = GameState.move;
         streakValue = 1;
     }

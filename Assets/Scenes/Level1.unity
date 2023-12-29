@@ -3795,7 +3795,7 @@ MonoBehaviour:
     tileKind: 0
   currentCandy: {fileID: 0}
   basePieceValue: 20
-  refillDelay: 1
+  refillDelay: 0.5
   blueDestroyEffect: {fileID: 4019345676554505500, guid: ff6318237d098b040b37ade45ab5751b, type: 3}
   greenDestroyEffect: {fileID: 7533259568578924540, guid: 4788fc4a6ef365d4e957ae980aa32307, type: 3}
   orangeDestroyEffect: {fileID: 3938427918766701007, guid: 3db39eef3ff7feb4db739c142521f9e0, type: 3}

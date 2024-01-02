@@ -4,32 +4,38 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class PopupSetting : MonoBehaviour {
+public class PopupSetting : MonoBehaviour
+{
     public float fadeTime = 0.5f;
     public CanvasGroup canvasGroup;
     public RectTransform rectTransform;
     public List<GameObject> items = new List<GameObject>();
-    public bool isFadeIn = true;
     public static PopupSetting instance { get; private set; }
 
-    private void Awake() {
+    private void Awake()
+    {
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
     }
 
     // Phương thức để hiển thị popup và thực hiện animation
-    public void PanelFadeIn() {
-        if (isFadeIn) {
-            canvasGroup.alpha = 0; // Đặt độ đục của canvasGroup về 0
-            rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f); // Đặt vị trí ban đầu của panel
-            rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
-            canvasGroup.DOFade(1, fadeTime); // Thực hiện animation làm đậm canvasGroup lên giá trị 1
-                                             //StartCoroutine("ItemsAnimation"); // Bắt đầu coroutine để thực hiện animation cho các items
-        }
+    public void PanelFadeIn()
+    {
+        canvasGroup.alpha = 0; // Đặt độ đục của canvasGroup về 0
+        rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f); // Đặt vị trí ban đầu của panel
+        rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
+        canvasGroup.DOFade(1, fadeTime); // Thực hiện animation làm đậm canvasGroup lên giá trị 1
+        //StartCoroutine("ItemsAnimation"); // Bắt đầu coroutine để thực hiện animation cho các items
+        DelaySpawnStar();
+    }
+
+    private void DelaySpawnStar() {
+        GetStarManager.instance.SpawnStar();
     }
 
     // Phương thức để ẩn popup và thực hiện animation
-    public void PanelFadeOut() {
+    public void PanelFadeOut()
+    {
         canvasGroup.alpha = 1f; // Đặt độ đục của canvasGroup về 1
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f); // Đặt vị trí ban đầu của panel
         rectTransform.DOAnchorPos(new Vector2(0, -1000f), 0.35f, false).SetEase(Ease.InOutQuint); // Thực hiện animation dịch chuyển panel ra khỏi màn hình

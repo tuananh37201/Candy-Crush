@@ -14,6 +14,10 @@ public class GetStarManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        SpawnStar();
+    }
+
+    private void SpawnStar() {
         if (FindObjectOfType<ScoreManager>().score >= scoreToGetOneStar) {
             SpawnStar1();
         }

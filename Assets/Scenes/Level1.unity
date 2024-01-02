@@ -9105,6 +9105,7 @@ MonoBehaviour:
   fadeTime: 0.5
   canvasGroup: {fileID: 1675146379572665833}
   rectTransform: {fileID: 2987083747340710183}
+  items: []
 --- !u!95 &5349924885836764799
 Animator:
   serializedVersion: 5

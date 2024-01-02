@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameObjectLV1 : MonoBehaviour {
     public static GameObjectLV1 Instance;
-    public GameObject shopPanel, closeTabButton, musicButton, soundButton, exitButton, losePanel, winPanel;
+    public GameObject shopPanel, closeTabButton, musicButton, soundButton, exitButton, losePanel, winPanel, fourBtSettingPanel;
     public GameObject bombShop, colorBombshop, switchShop, lolipopBomShop;
 
     private void Awake() {
@@ -21,17 +21,19 @@ public class GameObjectLV1 : MonoBehaviour {
     }
 
     public void FourBtDisappear() {
-        closeTabButton.SetActive(false);
-        musicButton.SetActive(false);
-        soundButton.SetActive(false);
-        exitButton.SetActive(false);
+        //closeTabButton.SetActive(false);
+        //musicButton.SetActive(false);
+        //soundButton.SetActive(false);
+        //exitButton.SetActive(false);
+        fourBtSettingPanel.SetActive(false);
     }
 
     public void FourBtAppear() {
-        closeTabButton.SetActive(true);
-        musicButton.SetActive(true);
-        soundButton.SetActive(true);
-        exitButton.SetActive(true);
+        //closeTabButton.SetActive(true);
+        //musicButton.SetActive(true);
+        //soundButton.SetActive(true);
+        //exitButton.SetActive(true);
+        fourBtSettingPanel.SetActive(true) ;
     }
 
     public void BombShopAppear() {

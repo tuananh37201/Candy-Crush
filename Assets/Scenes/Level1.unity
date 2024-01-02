@@ -1655,18 +1655,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6152176508877361189}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 5227492845160093099}
         m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
         m_MethodName: PanelFadeIn
@@ -1693,7 +1681,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: ThreeBtDisappear
+        m_MethodName: FourBtDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1939,18 +1927,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6152176508877361189}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 5227492845160093099}
         m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
         m_MethodName: PanelFadeIn
@@ -1977,7 +1953,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: ThreeBtDisappear
+        m_MethodName: FourBtDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4453,18 +4429,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6152176508877361189}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 5227492845160093099}
         m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
         m_MethodName: PanelFadeIn
@@ -4491,7 +4455,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: ThreeBtDisappear
+        m_MethodName: FourBtDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6031,6 +5995,7 @@ MonoBehaviour:
   exitButton: {fileID: 1676426443}
   losePanel: {fileID: 1806253713}
   winPanel: {fileID: 1514963559}
+  fourBtSettingPanel: {fileID: 0}
   bombShop: {fileID: 736635550}
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}
@@ -6834,18 +6799,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6152176508877361189}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 5227492845160093099}
         m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
         m_MethodName: PanelFadeIn
@@ -6872,7 +6825,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: ThreeBtDisappear
+        m_MethodName: FourBtDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7041,6 +6994,7 @@ MonoBehaviour:
   exitButton: {fileID: 1676426443}
   losePanel: {fileID: 1806253713}
   winPanel: {fileID: 1514963559}
+  fourBtSettingPanel: {fileID: 6152176508877361189}
   bombShop: {fileID: 736635550}
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}
@@ -7541,6 +7495,7 @@ MonoBehaviour:
   exitButton: {fileID: 1676426443}
   losePanel: {fileID: 1806253713}
   winPanel: {fileID: 1514963559}
+  fourBtSettingPanel: {fileID: 6152176508877361189}
   bombShop: {fileID: 736635550}
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}
@@ -8776,7 +8731,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: ThreeBtAppear
+        m_MethodName: FourBtAppear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9239,7 +9194,7 @@ GameObject:
   - component: {fileID: 8641487802074115845}
   - component: {fileID: 1675146379572665833}
   m_Layer: 5
-  m_Name: PopupSetting
+  m_Name: FourBtSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9500,18 +9455,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6152176508877361189}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5227492845160093099}
         m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
         m_MethodName: PanelFadeOut

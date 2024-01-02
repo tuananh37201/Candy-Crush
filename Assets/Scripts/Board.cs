@@ -5,7 +5,7 @@ using UnityEngine;
 public enum GameState
 {
     wait,
-    move, 
+    move,
     win,
     lose,
     pause
@@ -15,6 +15,7 @@ public enum TileKind
 {
     Breakable,
     Blank,
+    Chocolate,
     Normal
 }
 
@@ -35,19 +36,27 @@ public class Board : MonoBehaviour
     public int height;
     public int offSet;
 
-    public GameObject boardTilePrefab;
-    public GameObject breakableTilePrefab;
-    public GameObject[] candys;
     public TileType[] boardLayout;
     private bool[,] blankSpaces;
-    private BoardTile[,] breakableTiles;
-    public GameObject[,] allCandys;
+
+    [Header("Math Stuff")]
     public Candy currentCandy;
     private FindMatches findMatches;
     public int basePieceValue = 20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
     public float refillDelay = .5f;
+    private bool makeChocolate = true;
+
+    [Header("Prefabs")]
+    public GameObject boardTilePrefab;
+    public GameObject breakableTilePrefab;
+    public GameObject chocolatePrefab;
+
+    public GameObject[] candys;
+    private BoardTile[,] breakableTiles;
+    private BoardTile[,] chocolateTiles;
+    public GameObject[,] allCandys;
 
     [Header("Destroy Effect")]
     public GameObject blueDestroyEffect;
@@ -59,8 +68,10 @@ public class Board : MonoBehaviour
 
 
 
-    private void Awake() {
-        if (Instance == null) {
+    private void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
         }
     }
@@ -68,6 +79,8 @@ public class Board : MonoBehaviour
     {
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
+        chocolateTiles = new BoardTile[width, height];
+
         findMatches = FindObjectOfType<FindMatches>();
 
         blankSpaces = new bool[width, height];
@@ -75,8 +88,9 @@ public class Board : MonoBehaviour
         Setup();
         //currentState = GameState.pause;
     }
-    private void Update() {
-        
+    private void Update()
+    {
+
     }
 
     public void GenerateBlankSpace()
@@ -106,15 +120,32 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void GenerateChocolateTiles()
+    {
+        // Look at all the tilse in the layout
+        for (int i = 0; i < boardLayout.Length; i++)
+        {
+            // If a tiles is a "Chocolate" tile
+            if (boardLayout[i].tileKind == TileKind.Chocolate)
+            {
+                // Create a "Chocolate tiles at that position
+                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                GameObject tile = Instantiate(chocolatePrefab, tempPosition, Quaternion.identity);
+                chocolateTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
+            }
+        }
+    }
+
     private void Setup()
     {
         GenerateBlankSpace();
         GenerateBreakableTiles();
+        GenerateChocolateTiles();
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                if (!blankSpaces[i, j])
+                if (!blankSpaces[i, j] && !chocolateTiles[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     Vector2 tilePosition = new Vector2(i, j);
@@ -307,6 +338,7 @@ public class Board : MonoBehaviour
                     breakableTiles[column, row] = null;
                 }
             }
+            DameChocolate(column, row);
 
             if (allCandys[column, row].tag == "Blue Candy")
             {
@@ -345,7 +377,6 @@ public class Board : MonoBehaviour
         }
     }
 
-
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()
     public void DestroyMatches()
     {
@@ -367,15 +398,67 @@ public class Board : MonoBehaviour
         StartCoroutine(DecreaseRowCor2());
     }
 
+    private void DameChocolate(int column, int row)
+    {
+        if (column > 0)
+        {
+            if (chocolateTiles[column - 1, row])
+            {
+                chocolateTiles[column - 1, row].TakeDamage(1);
+                if (chocolateTiles[column - 1, row].hitPoints <= 0)
+                {
+                    chocolateTiles[column - 1, row] = null;
+                }
+                makeChocolate = false;
+            }
+        }
+        if (column < width - 1)
+        {
+            if (chocolateTiles[column + 1, row])
+            {
+                chocolateTiles[column + 1, row].TakeDamage(1);
+                if (chocolateTiles[column + 1, row].hitPoints <= 0)
+                {
+                    chocolateTiles[column + 1, row] = null;
+                }
+                makeChocolate = false;
+            }
+        }
+        if (row > 0)
+        {
+            if (chocolateTiles[column, row - 1])
+            {
+                chocolateTiles[column, row - 1].TakeDamage(1);
+                if (chocolateTiles[column, row - 1].hitPoints <= 0)
+                {
+                    chocolateTiles[column, row - 1] = null;
+                }
+                makeChocolate = false;
+            }
+        }
+        if (row < height - 1)
+        {
+            if (chocolateTiles[column, row + 1])
+            {
+                chocolateTiles[column, row + 1].TakeDamage(1);
+                if (chocolateTiles[column, row + 1].hitPoints <= 0)
+                {
+                    chocolateTiles[column, row + 1] = null;
+                }
+                makeChocolate = false;
+            }
+        }
+    }
+
     private IEnumerator DecreaseRowCor2()
     {
-        yield return new WaitForSeconds(refillDelay * 0.5f);
+        //yield return new WaitForSeconds(refillDelay * 0.5f);
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
                 // If the cureent spot isn't blank and is empty
-                if (!blankSpaces[i, j] && allCandys[i, j] == null)
+                if (!blankSpaces[i, j] && allCandys[i, j] == null && !chocolateTiles[i,j])
                 {
                     // Loop from the space abpve to ther top of the column
                     for (int k = j + 1; k < height; k++)
@@ -428,7 +511,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                if (allCandys[i, j] == null && !blankSpaces[i, j])
+                if (allCandys[i, j] == null && !blankSpaces[i, j] && !chocolateTiles[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int candyToUse = Random.Range(0, candys.Length);
@@ -483,6 +566,7 @@ public class Board : MonoBehaviour
         }
         //findMatches.currentMatches.Clear();
         currentCandy = null;
+        CheckToMakeChocolate();
 
         if (IsDeadlocked())
         {
@@ -493,7 +577,70 @@ public class Board : MonoBehaviour
         Debug.Log("Done Refill");
         System.GC.Collect();
         currentState = GameState.move;
+        makeChocolate = true;
         streakValue = 1;
+    }
+
+    private void CheckToMakeChocolate()
+    {
+        // Check the choclotate tiles array
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (chocolateTiles[i, j] != null && makeChocolate)
+                {
+                    // Call another method to make new chocolate
+                    MakeNewChocolate();
+                    return;
+                }
+            }
+        }
+    }
+    private Vector2 CheckForAdjacent(int column, int row)
+    {
+        if (column < width - 1 && allCandys[column + 1, row])
+        {
+            return Vector2.right;
+        }
+        if (column > 0 && allCandys[column - 1, row])
+        {
+            return Vector2.left;
+        }
+        if (row < height - 1 && allCandys[column, row + 1])
+        {
+            return Vector2.up;
+        }
+        if (row > 0 && allCandys[column, row - 1])
+        {
+            return Vector2.down;
+        }
+        return Vector2.zero;
+    }
+    private void MakeNewChocolate()
+    {
+        bool chocolate = false;
+        int loops = 0;
+
+        while (!chocolate && loops < 200)
+        {
+            int newX = Random.Range(0, width);
+            int newY = Random.Range(0, height);
+            if (chocolateTiles[newX, newY])
+            {
+                Vector2 adjacent = CheckForAdjacent(newX, newY);
+                if (adjacent != Vector2.zero)
+                {
+                    Destroy(allCandys[newX + (int)adjacent.x, newY + (int)adjacent.y]);
+                    Vector2 tempPosition = new Vector2(newX + (int)adjacent.x, newY + (int)adjacent.y);
+                    GameObject tile = Instantiate(chocolatePrefab, tempPosition, Quaternion.identity);
+                    chocolateTiles[newX + (int)adjacent.x, newY + (int)adjacent.y] = tile.GetComponent<BoardTile>();
+                    chocolate = true;
+                }
+            }
+
+            loops++;
+        }
     }
 
     private void SwitchPieces(int column, int row, Vector2 direction)
@@ -606,7 +753,7 @@ public class Board : MonoBehaviour
             for (int j = 0; j < height; j++)
             {
                 // If this spot shouldn't be blank
-                if (!blankSpaces[i, j])
+                if (!blankSpaces[i, j] && !chocolateTiles[i, j])
                 {
                     // Pick a random number
                     int pieceToUse = Random.Range(0, newBoard.Count);

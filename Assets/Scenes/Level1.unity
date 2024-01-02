@@ -1841,7 +1841,7 @@ MonoBehaviour:
   currentCounterValue: 0
   counterValue: 0
   goalScoreText: {fileID: 2001514953}
-  goalScore: 400
+  goalScore: 200
 --- !u!1 &457085480
 GameObject:
   m_ObjectHideFlags: 0
@@ -5454,9 +5454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a424554401c44e9df99a2f2d22e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToGetOneStar: 100
-  scoreToGetTwoStar: 200
-  scoreToGetThreeStar: 300
+  scoreToGetOneStar: 0
+  scoreToGetTwoStar: 0
+  scoreToGetThreeStar: 0
   yellowStar1: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar2: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar3: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}

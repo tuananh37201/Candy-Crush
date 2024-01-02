@@ -20,6 +20,9 @@ public class GetStarManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(GameObjectLV1.Instance.winPanel != null) {
+            SpawnStar();
+        }
     }
 
     public void SpawnStar() {

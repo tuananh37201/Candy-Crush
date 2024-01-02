@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6772501800855981739}
   - component: {fileID: 6059008893247641452}
   - component: {fileID: 2829523244825202893}
+  - component: {fileID: 1443298234412819884}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6059008893247641452
 MonoBehaviour:
@@ -152,3 +153,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1443298234412819884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978765936507124736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8d2973d959fae4e8f74af9766b1999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btMusicOn: {fileID: 0}
+  btMusicOff: {fileID: 0}
+  audioSource: {fileID: 2829523244825202893}
+  bgMusic: {fileID: 8300000, guid: 08bda562293223e4e8f821dfaac8228a, type: 3}

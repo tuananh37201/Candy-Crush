@@ -452,7 +452,7 @@ public class Board : MonoBehaviour
 
     private IEnumerator DecreaseRowCor2()
     {
-        //yield return new WaitForSeconds(refillDelay * 0.5f);
+        yield return new WaitForSeconds(refillDelay * 0.5f);
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)

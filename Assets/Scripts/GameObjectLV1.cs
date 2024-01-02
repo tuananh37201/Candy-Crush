@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameObjectLV1 : MonoBehaviour
-{
+public class GameObjectLV1 : MonoBehaviour {
     public static GameObjectLV1 Instance;
-    public GameObject shopPanel, closeTabButton, musicButton, soundButton,exitButton, losePanel,winPanel;
+    public GameObject shopPanel, closeTabButton, musicButton, soundButton, exitButton, losePanel, winPanel;
     public GameObject bombShop, colorBombshop, switchShop, lolipopBomShop;
 
     private void Awake() {
@@ -23,7 +22,7 @@ public class GameObjectLV1 : MonoBehaviour
 
     public void FourBtDisappear() {
         closeTabButton.SetActive(false);
-        musicButton.SetActive(false);   
+        musicButton.SetActive(false);
         soundButton.SetActive(false);
         exitButton.SetActive(false);
     }
@@ -91,6 +90,10 @@ public class GameObjectLV1 : MonoBehaviour
         FourBtDisappear();
     }
 
+    public void WinPanelDisappear() {
+        winPanel.SetActive(false);
+    }
+
     public void LosePaneDisappear() {
         losePanel.SetActive(false);
     }
@@ -98,7 +101,7 @@ public class GameObjectLV1 : MonoBehaviour
     public void LoadLv1() {
         SceneManager.LoadScene("Level1");
     }
-    
+
     public void LoadMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }

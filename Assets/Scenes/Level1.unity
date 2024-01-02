@@ -1751,6 +1751,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1946257002}
+        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
+        m_MethodName: WinPanelDisappear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &439179803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,6 +2026,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
         m_MethodName: SwitchShopDisappear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1946257002}
+        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
+        m_MethodName: WinPanelDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4506,6 +4530,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1946257002}
+        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
+        m_MethodName: WinPanelDisappear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1228399305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5931,7 +5967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1514963560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6866,6 +6902,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
         m_MethodName: ColorBombshopDisappear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1946257002}
+        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
+        m_MethodName: WinPanelDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8816,6 +8864,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1946257002}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
         m_MethodName: LosePaneDisappear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1946257002}
+        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
+        m_MethodName: WinPanelDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

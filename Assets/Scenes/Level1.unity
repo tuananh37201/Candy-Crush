@@ -4048,6 +4048,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1443298234412819884, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
+      propertyPath: btMusicOn
+      value: 
+      objectReference: {fileID: 2910554176793264841}
+    - target: {fileID: 1443298234412819884, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
+      propertyPath: btMusicOff
+      value: 
+      objectReference: {fileID: 1870246763483059748}
     - target: {fileID: 6059008893247641452, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
       propertyPath: toggleButton
       value: 

@@ -77,6 +77,7 @@ public class EndGameManager : MonoBehaviour {
             FindObjectOfType<PopupSetting>().PanelFadeIn();
             GameObjectLV1.Instance.WinPanelAppear();
             setWinGame = true;
+            FindObjectOfType<SoundManager>().audioSource.Stop();
         }
     }
 

@@ -24,7 +24,7 @@ public class ResizeBtMainMenu : MonoBehaviour
     }
 
     private void ResizePlayButton() {
-        playBt.transform.DOScale(sizeAfter, 1.5f);
+        playBt.transform.DOScale(sizeAfter, 1f);
     }
 
     private void PlayAndExitAppear() {

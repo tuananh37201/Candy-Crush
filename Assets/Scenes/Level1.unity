@@ -1862,9 +1862,7 @@ MonoBehaviour:
   currentCounterValue: 0
   counterValue: 0
   goalScoreText: {fileID: 2001514953}
-
   goalScore: 5000
-
 --- !u!1 &457085480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4089,7 +4087,6 @@ MonoBehaviour:
   - x: 3
     y: 3
     tileKind: 1
-  boardLayout: []
   currentCandy: {fileID: 0}
   basePieceValue: 20
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}

@@ -69,6 +69,8 @@ public class EndGameManager : MonoBehaviour {
             FindObjectOfType<PopupSetting>().PanelFadeIn();
             GameObjectLV1.Instance.LosePanelAppear();
             setEndGame = true;
+            FindObjectOfType<SoundManager>().audioSource.Stop();
+            FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().loseSound);
         }
     }
 
@@ -78,6 +80,7 @@ public class EndGameManager : MonoBehaviour {
             GameObjectLV1.Instance.WinPanelAppear();
             setWinGame = true;
             FindObjectOfType<SoundManager>().audioSource.Stop();
+            FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().winSound);
         }
     }
 

@@ -561,8 +561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 139, y: 2}
-  m_SizeDelta: {x: 50.45, y: 31.17}
+  m_AnchoredPosition: {x: 135.04, y: 2}
+  m_SizeDelta: {x: 106.54, y: 31.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213183500
 MonoBehaviour:
@@ -1857,7 +1857,7 @@ MonoBehaviour:
   currentCounterValue: 0
   counterValue: 0
   goalScoreText: {fileID: 2001514953}
-  goalScore: 100
+  goalScore: 1000
 --- !u!1 &457085480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4041,9 +4041,17 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1443298234412819884, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
+      propertyPath: winSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 860a645c31258ee4b91c0c4376e805a0, type: 3}
+    - target: {fileID: 1443298234412819884, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
       propertyPath: btMusicOn
       value: 
       objectReference: {fileID: 2910554176793264841}
+    - target: {fileID: 1443298234412819884, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
+      propertyPath: loseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28cf16aa508cbf448814d6b77425543f, type: 3}
     - target: {fileID: 1443298234412819884, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
       propertyPath: btMusicOff
       value: 
@@ -5505,9 +5513,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a424554401c44e9df99a2f2d22e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToGetOneStar: 0
-  scoreToGetTwoStar: 0
-  scoreToGetThreeStar: 0
+  scoreToGetOneStar: 100
+  scoreToGetTwoStar: 200
+  scoreToGetThreeStar: 300
   yellowStar1: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar2: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar3: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
@@ -6023,7 +6031,7 @@ MonoBehaviour:
   exitButton: {fileID: 1676426443}
   losePanel: {fileID: 1806253713}
   winPanel: {fileID: 1514963559}
-  fourBtSettingPanel: {fileID: 0}
+  fourBtSettingPanel: {fileID: 6152176508877361189}
   bombShop: {fileID: 736635550}
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}

@@ -1862,7 +1862,9 @@ MonoBehaviour:
   currentCounterValue: 0
   counterValue: 0
   goalScoreText: {fileID: 2001514953}
-  goalScore: 10000
+
+  goalScore: 5000
+
 --- !u!1 &457085480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,10 +4079,19 @@ MonoBehaviour:
   width: 7
   height: 10
   offSet: 10
+  boardLayout:
+  - x: 3
+    y: 4
+    tileKind: 2
+  - x: 3
+    y: 5
+    tileKind: 2
+  - x: 3
+    y: 3
+    tileKind: 1
   boardLayout: []
   currentCandy: {fileID: 0}
   basePieceValue: 20
-  refillDelay: 0.5
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
   breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
   chocolatePrefab: {fileID: 4224556276647248944, guid: 66092b997fc844f4bb688f2f4a94a2bd, type: 3}
@@ -4091,12 +4102,14 @@ MonoBehaviour:
   - {fileID: 5154954808007798995, guid: f2c2a6b7a63d9fb41928cbc2e7ba8dd1, type: 3}
   - {fileID: 1146532523108486354, guid: 657e9e054ae649f4b9187616aeb705be, type: 3}
   - {fileID: 687010145582659275, guid: c74f124a6445d8941896397c4f853a5e, type: 3}
-  blueDestroyEffect: {fileID: 4019345676554505500, guid: ff6318237d098b040b37ade45ab5751b, type: 3}
-  greenDestroyEffect: {fileID: 7533259568578924540, guid: 4788fc4a6ef365d4e957ae980aa32307, type: 3}
-  orangeDestroyEffect: {fileID: 3938427918766701007, guid: 3db39eef3ff7feb4db739c142521f9e0, type: 3}
-  purpleDestroyEffect: {fileID: 4613531433712596340, guid: ad8fb2e5d65a11e4891817cee7556b9f, type: 3}
-  redDestroyEffect: {fileID: 2720973319430098509, guid: 838400672393a0b478ca712f0c416be9, type: 3}
-  yellowDestroyEffect: {fileID: 3394766436165476547, guid: d1bc6f7aede65bf45be4cdcb723211db, type: 3}
+  blueDestroyEffect: {fileID: 518454942183443498, guid: 0e12aaeb9c080fc46b97b79765141335, type: 3}
+  greenDestroyEffect: {fileID: 5590111344084703339, guid: a2d2c9b0d29204343acc680b47efea44, type: 3}
+  orangeDestroyEffect: {fileID: 2666337849023960760, guid: 8c7519e4eb2b1ee4d931ade9bd87b556, type: 3}
+  purpleDestroyEffect: {fileID: 3673959378764797617, guid: 915f70eebe0f5274e9c1302efb2db482, type: 3}
+  redDestroyEffect: {fileID: 544003806559083526, guid: bbeee6bd9402e7a49b4243166c983fe0, type: 3}
+  yellowDestroyEffect: {fileID: 6555520004648186044, guid: ecb1e6735f68bb644a2200591b90371b, type: 3}
+  CandyDestroyTime: 0.15
+  refillDelay: 0.3
 --- !u!4 &1101248398
 Transform:
   m_ObjectHideFlags: 0
@@ -6148,6 +6161,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576112504}
   m_CullTransparentMesh: 1
+--- !u!1 &1674507415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674507416}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674507416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674507415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.74, y: 9.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676426443
 GameObject:
   m_ObjectHideFlags: 0

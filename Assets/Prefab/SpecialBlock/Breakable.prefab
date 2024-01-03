@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 1
-  breakEffect: {fileID: 8369100788387120853, guid: 3562998cb9c96f3448035deed020ad65, type: 3}
+  target: {x: 4, y: 14, z: 0}

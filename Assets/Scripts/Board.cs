@@ -45,7 +45,6 @@ public class Board : MonoBehaviour
     public int basePieceValue = 20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
-    public float refillDelay = .5f;
     private bool makeChocolate = true;
 
     [Header("Prefabs")]
@@ -66,6 +65,13 @@ public class Board : MonoBehaviour
     public GameObject redDestroyEffect;
     public GameObject yellowDestroyEffect;
 
+    [Header("Animation Time Scale")]
+    [Tooltip("Chỉnh thời gian bằng thời gian của animation")]
+    [Range(0, 1)]
+    public float CandyDestroyTime;
+    [Tooltip("Thời gian viên kẹo rơi")]
+    [Range(0, 1)]
+    public float refillDelay;
 
 
     private void Awake()
@@ -87,10 +93,6 @@ public class Board : MonoBehaviour
         allCandys = new GameObject[width, height];
         Setup();
         //currentState = GameState.pause;
-    }
-    private void Update()
-    {
-
     }
 
     public void GenerateBlankSpace()
@@ -343,32 +345,32 @@ public class Board : MonoBehaviour
             if (allCandys[column, row].tag == "Blue Candy")
             {
                 GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, .25f);
+                Destroy(particle, CandyDestroyTime);
             }
             if (allCandys[column, row].tag == "Green Candy")
             {
                 GameObject particle = Instantiate(greenDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, .5f);
+                Destroy(particle, CandyDestroyTime);
             }
             if (allCandys[column, row].tag == "Orange Candy")
             {
                 GameObject particle = Instantiate(orangeDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, .5f);
+                Destroy(particle, CandyDestroyTime);
             }
             if (allCandys[column, row].tag == "Red Candy")
             {
                 GameObject particle = Instantiate(redDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, .5f);
+                Destroy(particle, CandyDestroyTime);
             }
             if (allCandys[column, row].tag == "Purple Candy")
             {
                 GameObject particle = Instantiate(purpleDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, .5f);
+                Destroy(particle, CandyDestroyTime);
             }
             if (allCandys[column, row].tag == "Yellow Candy")
             {
                 GameObject particle = Instantiate(yellowDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, .5f);
+                Destroy(particle, CandyDestroyTime);
             }
 
             Destroy(allCandys[column, row]);
@@ -477,7 +479,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        yield return new WaitForSeconds(refillDelay * 0.5f);
+        //yield return new WaitForSeconds(refillDelay * 0.5f);
         Debug.Log("Refilling the board");
         StartCoroutine(FillBoardCor());
     }

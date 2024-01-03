@@ -4,6 +4,8 @@ public class SoundManager : MonoBehaviour {
     public GameObject btMusicOn, btMusicOff;
     public AudioSource audioSource;
     public AudioClip bgMusic;
+    public AudioClip winSound;
+    public AudioClip loseSound;
     // Start is called before the first frame update
     void Start() {
         audioSource.PlayOneShot(bgMusic);

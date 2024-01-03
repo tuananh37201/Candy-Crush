@@ -64,10 +64,7 @@ public class Candy : MonoBehaviour
     // Testing
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            
-        }
+
     }
 
     // Update is called once per frame
@@ -82,7 +79,7 @@ public class Candy : MonoBehaviour
         if (Mathf.Abs(targetX - transform.position.x) > .1) // Lấy trị tuyệt đối để di chuyển sang trái hay bên phải ( + hoặc - )
         {
             tempPosition = new Vector2(targetX, transform.position.y);
-            transform.position = Vector2.Lerp(transform.position, tempPosition, .4f); // Tạo chuyển động giữa 2 đối tượng trong 1 khoảng thời gian
+            transform.position = Vector2.Lerp(transform.position, tempPosition, .1f); // Tạo chuyển động giữa 2 đối tượng trong 1 khoảng thời gian
             if (board.allCandys[column, row] != this.gameObject)
             {
                 board.allCandys[column, row] = this.gameObject;
@@ -100,7 +97,7 @@ public class Candy : MonoBehaviour
         if (Mathf.Abs(targetY - transform.position.y) > .1)
         {
             tempPosition = new Vector2(transform.position.x, targetY);
-            transform.position = Vector2.Lerp(transform.position, tempPosition, .4f);
+            transform.position = Vector2.Lerp(transform.position, tempPosition, .1f);
             if (board.allCandys[column, row] != this.gameObject)
             {
                 board.allCandys[column, row] = this.gameObject;

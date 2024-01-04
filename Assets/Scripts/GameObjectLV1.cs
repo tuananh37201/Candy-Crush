@@ -9,6 +9,8 @@ public class GameObjectLV1 : MonoBehaviour {
     public bool isClickBuyColorBomb;
     private int clickBuyRowBombCount = 0;
     private int clickBuyColorBombCount = 0;
+    private int clickUseRowBomb = 0;
+    private int clickUseColorBomb = 0;
 
     private void Awake() {
         Instance = this;
@@ -56,6 +58,14 @@ public class GameObjectLV1 : MonoBehaviour {
             isClickBuyColorBomb = false;
         }
     }
+
+    public void UseRowBomb() {
+        clickUseRowBomb++;
+        if(clickUseRowBomb >= 1 && ItemPriceManager.Instance.bombAmount >= 1) {
+            isClickBuyRowBomb = true;
+            isClickBuyColorBomb = false;
+        }
+    }
     
     public void BuyColorBomb() {
         clickBuyColorBombCount++;
@@ -64,6 +74,14 @@ public class GameObjectLV1 : MonoBehaviour {
             ItemPriceManager.Instance.colorBombAmount += 1;
             isClickBuyColorBomb = true;
             isClickBuyRowBomb = false;
+        }
+    }
+
+    public void UseColorBomb() {
+        clickUseColorBomb++;
+        if (clickUseColorBomb >= 1 && ItemPriceManager.Instance.colorBombAmount >= 1) {
+            isClickBuyRowBomb = false;
+            isClickBuyColorBomb = true;
         }
     }
 

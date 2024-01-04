@@ -10,6 +10,10 @@ public class ItemPriceManager : MonoBehaviour
     public int bombPrice;
     public TextMeshProUGUI colorBombPriceText;
     public int colorBombPrice;
+    public TextMeshProUGUI bombAmountText;
+    public int bombAmount;
+    public TextMeshProUGUI colorBombAmountText;
+    public int colorBombAmount;
 
     private void Awake() {
         Instance = this;
@@ -18,14 +22,16 @@ public class ItemPriceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bombPriceText.text = bombPrice.ToString();
-        colorBombPriceText.text = colorBombPrice.ToString();
-        myMoneyText.text = myMoney.ToString();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        bombPriceText.text = bombPrice.ToString();
+        colorBombPriceText.text = colorBombPrice.ToString();
+        myMoneyText.text = myMoney.ToString();
+        bombAmountText.text = bombAmount.ToString();
+        colorBombAmountText.text = colorBombAmount.ToString();
     }
 }

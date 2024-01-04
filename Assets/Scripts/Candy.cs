@@ -72,11 +72,13 @@ public class Candy : MonoBehaviour {
             isRowBomb = true;
             GameObject arrow = Instantiate(rowSugar, transform.position, Quaternion.identity);
             arrow.transform.parent = this.transform;
+            ItemPriceManager.Instance.bombAmount -= 1;
         }
         if (isClickColorBomb && Input.GetMouseButtonDown(1)) {
             isColorBomb = true;
             GameObject arrow = Instantiate(colorBomb, transform.position, Quaternion.identity);
             arrow.transform.parent = this.transform;
+            ItemPriceManager.Instance.colorBombAmount -= 1;
         }
     }
 
@@ -85,11 +87,13 @@ public class Candy : MonoBehaviour {
         if (GameObjectLV1.Instance.isClickBuyColorBomb == true) {
             isClickColorBomb = true;
             isClickRowBomb = false;
-        }  if (GameObjectLV1.Instance.isClickBuyRowBomb == true) {
+        }
+        if (GameObjectLV1.Instance.isClickBuyRowBomb == true) {
             isClickRowBomb = true;
             isClickColorBomb = false;
         }
-
+        if(ItemPriceManager.Instance.bombAmount <= 0) isClickRowBomb=false;
+        if(ItemPriceManager.Instance.colorBombAmount <= 0) isClickColorBomb = false;
         targetX = column;
         targetY = row;
 

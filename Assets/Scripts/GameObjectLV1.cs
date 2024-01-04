@@ -54,8 +54,8 @@ public class GameObjectLV1 : MonoBehaviour {
         if (clickBuyRowBombCount >= 1 && ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.bombPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.bombPrice;
             ItemPriceManager.Instance.bombAmount += 1;
-            isClickBuyRowBomb = true;
-            isClickBuyColorBomb = false;
+            //isClickBuyRowBomb = true;
+            //isClickBuyColorBomb = false;
         }
     }
 
@@ -72,8 +72,8 @@ public class GameObjectLV1 : MonoBehaviour {
         if (clickBuyColorBombCount >= 1 && ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.colorBombPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.colorBombPrice;
             ItemPriceManager.Instance.colorBombAmount += 1;
-            isClickBuyColorBomb = true;
-            isClickBuyRowBomb = false;
+            //isClickBuyColorBomb = true;
+            //isClickBuyRowBomb = false;
         }
     }
 

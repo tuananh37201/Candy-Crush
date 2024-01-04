@@ -403,6 +403,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
+        ItemPriceManager.Instance.myMoney += 100;
         StartCoroutine(DecreaseRowCor2());
     }
 

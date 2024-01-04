@@ -5,7 +5,6 @@ public class GameObjectLV1 : MonoBehaviour {
     public static GameObjectLV1 Instance;
     public GameObject shopPanel, closeTabButton, musicButton, soundButton, exitButton, losePanel, winPanel, fourBtSettingPanel;
     public GameObject bombShop, colorBombshop, switchShop, lolipopBomShop;
-    public bool isClick = false;
     public bool isClickBuyRowBomb;
     public bool isClickBuyColorBomb;
     private int clickBuyRowBombCount = 0;
@@ -52,8 +51,7 @@ public class GameObjectLV1 : MonoBehaviour {
         clickBuyRowBombCount++;
         if (clickBuyRowBombCount >= 1 && ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.bombPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.bombPrice;
-            ItemPriceManager.Instance.bombPriceText.text = ItemPriceManager.Instance.bombPrice.ToString();
-            ItemPriceManager.Instance.myMoneyText.text = ItemPriceManager.Instance.myMoney.ToString();
+            ItemPriceManager.Instance.bombAmount += 1;
             isClickBuyRowBomb = true;
             isClickBuyColorBomb = false;
         }
@@ -63,8 +61,7 @@ public class GameObjectLV1 : MonoBehaviour {
         clickBuyColorBombCount++;
         if (clickBuyColorBombCount >= 1 && ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.colorBombPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.colorBombPrice;
-            ItemPriceManager.Instance.colorBombPriceText.text = ItemPriceManager.Instance.colorBombPrice.ToString();
-            ItemPriceManager.Instance.myMoneyText.text = ItemPriceManager.Instance.myMoney.ToString();
+            ItemPriceManager.Instance.colorBombAmount += 1;
             isClickBuyColorBomb = true;
             isClickBuyRowBomb = false;
         }

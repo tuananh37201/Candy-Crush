@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 94446499}
   m_Layer: 5
   m_Name: BuyButton
-  m_TagString: BuyBombButton
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,9 +309,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1946257002}
-        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: BuyRowBomb
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AudioClosePopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6036,7 +6036,6 @@ MonoBehaviour:
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}
   lolipopBomShop: {fileID: 1356273464}
-  isClick: 0
 --- !u!114 &1514963562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7004,7 +7003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1806253714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7052,7 +7051,6 @@ MonoBehaviour:
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}
   lolipopBomShop: {fileID: 1356273464}
-  isClick: 0
 --- !u!114 &1806253716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7554,7 +7552,6 @@ MonoBehaviour:
   colorBombshop: {fileID: 336491295}
   switchShop: {fileID: 1925453213}
   lolipopBomShop: {fileID: 1356273464}
-  isClick: 0
 --- !u!1 &1947234638
 GameObject:
   m_ObjectHideFlags: 0
@@ -8288,9 +8285,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1946257002}
-        m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: BuyColorBomb
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AudioClosePopup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

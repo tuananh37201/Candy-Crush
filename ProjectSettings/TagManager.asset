@@ -12,6 +12,7 @@ TagManager:
   - Purple Candy
   - Gray Candy
   - Pink Candy
+  - BuyBombButton
   layers:
   - Default
   - TransparentFX

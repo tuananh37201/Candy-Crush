@@ -5,6 +5,7 @@ public class GameObjectLV1 : MonoBehaviour {
     public static GameObjectLV1 Instance;
     public GameObject shopPanel, closeTabButton, musicButton, soundButton, exitButton, losePanel, winPanel, fourBtSettingPanel;
     public GameObject bombShop, colorBombshop, switchShop, lolipopBomShop;
+    public bool isClick =false;
 
     private void Awake() {
         Instance = this;
@@ -33,7 +34,7 @@ public class GameObjectLV1 : MonoBehaviour {
         //musicButton.SetActive(true);
         //soundButton.SetActive(true);
         //exitButton.SetActive(true);
-        fourBtSettingPanel.SetActive(true) ;
+        fourBtSettingPanel.SetActive(true);
     }
 
     public void BombShopAppear() {
@@ -42,6 +43,14 @@ public class GameObjectLV1 : MonoBehaviour {
         winPanel.SetActive(false);
         FourBtDisappear();
     }
+
+    public void BuyRowBomb() {
+         
+    }
+    
+    //public void BuyColorBomb() {
+    //    Candy.instance.isBuyColorBomb = true;
+    //}
 
     public void BombShopDisappear() {
         bombShop.SetActive(false);
@@ -106,5 +115,9 @@ public class GameObjectLV1 : MonoBehaviour {
 
     public void LoadMainMenu() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void OnMouseOver() {
+        
     }
 }

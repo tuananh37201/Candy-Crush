@@ -4078,14 +4078,26 @@ MonoBehaviour:
   height: 10
   offSet: 10
   boardLayout:
+  - x: 0
+    y: 4
+    tileKind: 1
+  - x: 1
+    y: 4
+    tileKind: 1
+  - x: 2
+    y: 4
+    tileKind: 1
   - x: 3
     y: 4
     tileKind: 2
-  - x: 3
-    y: 5
-    tileKind: 2
-  - x: 3
-    y: 3
+  - x: 4
+    y: 4
+    tileKind: 1
+  - x: 5
+    y: 4
+    tileKind: 1
+  - x: 6
+    y: 4
     tileKind: 1
   currentCandy: {fileID: 0}
   basePieceValue: 20
@@ -4166,14 +4178,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101248396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9a5dc2c1c272ed4a97052311a119abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hintDelay: 3
   hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
-  currentHint: {fileID: 0}
+  currentHints: []
 --- !u!1 &1120630447
 GameObject:
   m_ObjectHideFlags: 0

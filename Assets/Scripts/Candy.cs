@@ -6,8 +6,7 @@ using DG.Tweening;
 public class Candy : MonoBehaviour {
     public static Candy instance;
     private SpriteRenderer spriteRenderer;
-    public bool isClickRowBomb;
-    public bool isClickColorBomb;
+    public bool isBuyRowBomb;
 
     [Header("Board Variables")]
     public int column;
@@ -16,7 +15,7 @@ public class Candy : MonoBehaviour {
     public int targetY;
     public int previousRow;
     public int previousColumn;
-    public bool isMatched = false;
+    public bool isMatched;
 
     private EndGameManager endGameManager;
     private HintManager hintManager;
@@ -41,7 +40,6 @@ public class Candy : MonoBehaviour {
     public GameObject colorBomb;
     public GameObject adjacentMarker;
 
-
     private void Awake() {
         instance = this;
     }
@@ -49,12 +47,11 @@ public class Candy : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         isColumnBomb = false;
         isRowBomb = false;
         isAdjacentBomb = false;
         endGameManager = FindObjectOfType<EndGameManager>();
-
+        //isBuyRowBomb = true;
         hintManager = FindObjectOfType<HintManager>();
         board = FindObjectOfType<Board>();
         findMatches = FindObjectOfType<FindMatches>();
@@ -67,34 +64,30 @@ public class Candy : MonoBehaviour {
     }
 
     // Testing
+    private void OnMouseOver()
+    {
+
     private void OnMouseOver() {
-        if(isClickRowBomb) {
+        if (isBuyRowBomb) {
             if (Input.GetMouseButtonDown(1)) {
                 isRowBomb = true;
                 GameObject arrow = Instantiate(rowSugar, transform.position, Quaternion.identity);
                 arrow.transform.parent = this.transform;
             }
         }
-        if(isClickColorBomb) {
-            if (Input.GetMouseButtonDown(1)) {
-                isColorBomb = true;
-                GameObject arrow = Instantiate(colorBomb, transform.position, Quaternion.identity);
-                arrow.transform.parent = this.transform;
-            }
-        }
+        Debug.Log(isBuyRowBomb);
+    }
+
+    public void BuyRowBomb() {
+            isBuyRowBomb = true;
     }
 
     // Update is called once per frame
     void Update() {
-        if(GameObjectLV1.Instance.isClickBuyRowBomb == true) {
-            isClickRowBomb = true;
-        }
-        if(GameObjectLV1.Instance.isClickBuyColorBomb == true) {
-            isClickColorBomb = true;
-        }
-        if(isClickRowBomb == true) isClickColorBomb = false;
-        if (isClickColorBomb == true) isClickRowBomb = false; 
-
+        //if (FindObjectOfType<ScoreManager>().score >= 1) {
+        //    isBuyRowBomb = true;
+        //}
+        BuyRowBomb();
         targetX = column;
         targetY = row;
 
@@ -104,11 +97,15 @@ public class Candy : MonoBehaviour {
         {
             tempPosition = new Vector2(targetX, transform.position.y);
             transform.position = Vector2.Lerp(transform.position, tempPosition, .1f); // Tạo chuyển động giữa 2 đối tượng trong 1 khoảng thời gian
+            if (board.allCandys[column, row] != this.gameObject)
+            {
+            transform.position = Vector2.Lerp(transform.position, tempPosition, .4f); // Tạo chuyển động giữa 2 đối tượng trong 1 khoảng thời gian
             if (board.allCandys[column, row] != this.gameObject) {
                 board.allCandys[column, row] = this.gameObject;
             }
             findMatches.FindAllMatches();
         }
+        
         // Directly set the position
         else {
             tempPosition = new Vector2(targetX, transform.position.y);
@@ -119,6 +116,9 @@ public class Candy : MonoBehaviour {
         if (Mathf.Abs(targetY - transform.position.y) > .1) {
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = Vector2.Lerp(transform.position, tempPosition, .1f);
+            if (board.allCandys[column, row] != this.gameObject)
+            {
+            transform.position = Vector2.Lerp(transform.position, tempPosition, .4f);
             if (board.allCandys[column, row] != this.gameObject) {
                 board.allCandys[column, row] = this.gameObject;
             }
@@ -136,8 +136,11 @@ public class Candy : MonoBehaviour {
 
     private void OnMouseDown() {
         // Destroy the hint
-        if (hintManager != null) {
+        if(hintManager != null)
+        {
             hintManager.DestroyHint();
+        if (hintManager != null) {
+            hintManager.DestroyHInt();
         }
 
         if (board.currentState == GameState.move) {

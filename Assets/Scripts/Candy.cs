@@ -68,32 +68,27 @@ public class Candy : MonoBehaviour {
 
     // Testing
     private void OnMouseOver() {
-        if(isClickRowBomb) {
-            if (Input.GetMouseButtonDown(1)) {
-                isRowBomb = true;
-                GameObject arrow = Instantiate(rowSugar, transform.position, Quaternion.identity);
-                arrow.transform.parent = this.transform;
-            }
+        if (isClickRowBomb && Input.GetMouseButtonDown(1)) {
+            isRowBomb = true;
+            GameObject arrow = Instantiate(rowSugar, transform.position, Quaternion.identity);
+            arrow.transform.parent = this.transform;
         }
-        if(isClickColorBomb) {
-            if (Input.GetMouseButtonDown(1)) {
-                isColorBomb = true;
-                GameObject arrow = Instantiate(colorBomb, transform.position, Quaternion.identity);
-                arrow.transform.parent = this.transform;
-            }
+        if (isClickColorBomb && Input.GetMouseButtonDown(1)) {
+            isColorBomb = true;
+            GameObject arrow = Instantiate(colorBomb, transform.position, Quaternion.identity);
+            arrow.transform.parent = this.transform;
         }
     }
 
     // Update is called once per frame
     void Update() {
-        if(GameObjectLV1.Instance.isClickBuyRowBomb == true) {
-            isClickRowBomb = true;
-        }
-        if(GameObjectLV1.Instance.isClickBuyColorBomb == true) {
+        if (GameObjectLV1.Instance.isClickBuyColorBomb == true) {
             isClickColorBomb = true;
+            isClickRowBomb = false;
+        }  if (GameObjectLV1.Instance.isClickBuyRowBomb == true) {
+            isClickRowBomb = true;
+            isClickColorBomb = false;
         }
-        if(isClickRowBomb == true) isClickColorBomb = false;
-        if (isClickColorBomb == true) isClickRowBomb = false; 
 
         targetX = column;
         targetY = row;

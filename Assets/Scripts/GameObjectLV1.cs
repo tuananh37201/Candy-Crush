@@ -55,6 +55,7 @@ public class GameObjectLV1 : MonoBehaviour {
             ItemPriceManager.Instance.bombPriceText.text = ItemPriceManager.Instance.bombPrice.ToString();
             ItemPriceManager.Instance.myMoneyText.text = ItemPriceManager.Instance.myMoney.ToString();
             isClickBuyRowBomb = true;
+            isClickBuyColorBomb = false;
         }
     }
     
@@ -65,12 +66,9 @@ public class GameObjectLV1 : MonoBehaviour {
             ItemPriceManager.Instance.colorBombPriceText.text = ItemPriceManager.Instance.colorBombPrice.ToString();
             ItemPriceManager.Instance.myMoneyText.text = ItemPriceManager.Instance.myMoney.ToString();
             isClickBuyColorBomb = true;
+            isClickBuyRowBomb = false;
         }
     }
-
-    //public void BuyColorBomb() {
-    //    Candy.instance.isBuyColorBomb = true;
-    //}
 
     public void BombShopDisappear() {
         bombShop.SetActive(false);

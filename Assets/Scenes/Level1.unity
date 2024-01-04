@@ -6046,6 +6046,7 @@ MonoBehaviour:
   lolipopBomShop: {fileID: 1356273464}
   isClick: 0
   isClickBuyRowBomb: 0
+  isClickBuyColorBomb: 0
 --- !u!114 &1514963562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7094,6 +7095,7 @@ MonoBehaviour:
   lolipopBomShop: {fileID: 1356273464}
   isClick: 0
   isClickBuyRowBomb: 0
+  isClickBuyColorBomb: 0
 --- !u!114 &1806253716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7774,6 +7776,7 @@ MonoBehaviour:
   lolipopBomShop: {fileID: 1356273464}
   isClick: 0
   isClickBuyRowBomb: 0
+  isClickBuyColorBomb: 0
 --- !u!114 &1946257003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7787,7 +7790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMoneyText: {fileID: 2144618439}
-  myMoney: 200
+  myMoney: 1000
   bombPriceText: {fileID: 611052046}
   bombPrice: 200
   colorBombPriceText: {fileID: 1281578445}

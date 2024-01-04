@@ -132,7 +132,7 @@ public class Candy : MonoBehaviour {
     private void OnMouseDown() {
         // Destroy the hint
         if (hintManager != null) {
-            hintManager.DestroyHint();
+            hintManager.DestroyHints();
         }
 
         if (board.currentState == GameState.move) {

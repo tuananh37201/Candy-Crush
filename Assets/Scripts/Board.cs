@@ -147,6 +147,12 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
+                if (chocolateTiles[i, j])
+                {
+                    Vector2 tempPosition = new Vector2(i, j + offSet);
+                    Vector2 tilePosition = new Vector2(i, j);
+                    GameObject boardTile = Instantiate(boardTilePrefab, tilePosition, Quaternion.identity);
+                }
                 if (!blankSpaces[i, j] && !chocolateTiles[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
@@ -599,6 +605,7 @@ public class Board : MonoBehaviour
             }
         }
     }
+
     private Vector2 CheckForAdjacent(int column, int row)
     {
         if (column < width - 1 && allCandys[column + 1, row])
@@ -619,6 +626,7 @@ public class Board : MonoBehaviour
         }
         return Vector2.zero;
     }
+
     private void MakeNewChocolate()
     {
         bool chocolate = false;

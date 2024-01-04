@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,28 +9,26 @@ public class HintManager : MonoBehaviour
     public float hintDelay;
     private float hintDelaySeconds;
     public GameObject hintPartical;
-    public GameObject currentHint;
+    public List<GameObject> currentHints;
 
-    // Start is called before the first frame update
     void Start()
     {
         board = FindObjectOfType<Board>();
         hintDelaySeconds = hintDelay;
+        currentHints = new List<GameObject>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         hintDelaySeconds -= Time.deltaTime;
-        if (hintDelaySeconds <= 0 && currentHint == null)
+        if (hintDelaySeconds <= 0 && currentHints.Count == 0)
         {
-            MarkHint();
+            MarkHints();
             hintDelaySeconds = hintDelay;
         }
     }
 
-    // Find all possible mathces on the board
-    List<GameObject> FindAllMathes()
+    List<GameObject> FindAllMatches()
     {
         List<GameObject> possibleMoves = new List<GameObject>();
         for (int i = 0; i < board.width; i++)
@@ -38,20 +37,7 @@ public class HintManager : MonoBehaviour
             {
                 if (board.allCandys[i, j] != null)
                 {
-                    if (i < board.width - 1)
-                    {
-                        if (board.SwitchAndCheck(i, j, Vector2.right))
-                        {
-                            possibleMoves.Add(board.allCandys[i, j]);
-                        }
-                    }
-                    if (j < board.height - 1)
-                    {
-                        if (board.SwitchAndCheck(i, j, Vector2.up))
-                        {
-                            possibleMoves.Add(board.allCandys[i, j]);
-                        }
-                    }
+
                 }
             }
         }
@@ -59,39 +45,23 @@ public class HintManager : MonoBehaviour
         return possibleMoves;
     }
 
-    // Pick one ramdomly
-    GameObject PickOneRandomly()
+    private void MarkHints()
     {
-        List<GameObject> possibleMoves = new List<GameObject> ();
-        possibleMoves = FindAllMathes();
-        
-        if(possibleMoves.Count > 0)
+        List<GameObject> moves = FindAllMatches();
+        foreach (GameObject move in moves) 
         {
-            int pieceToUse = Random.Range(0, possibleMoves.Count);
-            return possibleMoves[pieceToUse];
-        }
-        return null;
-    }
-
-    // Create the hind
-    private void MarkHint()
-    {
-        GameObject move = PickOneRandomly();
-        if(move != null)
-        {
-            currentHint = Instantiate(hintPartical, move.transform.position, Quaternion.identity);
+            GameObject hint = Instantiate(hintPartical, move.transform.position, Quaternion.identity);
+            hint.transform.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            currentHints.Add(hint);
         }
     }
-
-    // Destroy the hind
-    public void DestroyHint()
+    public void DestroyHints()
     {
-        if(currentHint != null)
+        foreach (GameObject hint in currentHints)
         {
-            Destroy(currentHint);
-            currentHint = null;
-            hintDelaySeconds = hintDelay;
+            Destroy(hint);
         }
+        currentHints.Clear();
+        hintDelaySeconds = hintDelay;
     }
-
 }

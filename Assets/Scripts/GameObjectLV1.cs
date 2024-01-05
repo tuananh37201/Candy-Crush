@@ -16,6 +16,9 @@ public class GameObjectLV1 : MonoBehaviour {
     private void Awake() {
         Instance = this;
     }
+    public void ExitGame() {
+        Application.Quit();
+    }
 
     public void ShopPanelAppear() {
         shopPanel.SetActive(true);

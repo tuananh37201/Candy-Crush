@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraScale : MonoBehaviour
 {
     private Board board;
-    public float cameraOffset;
+    public float cameraOffset = -1;
     public float aspectRatio = 0.625f;
     public float padding = 2;
     public float yOffset = 1;

@@ -3386,6 +3386,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3467,6 +3468,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd521b1c1f3c7df43b8bc83159b4d771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: -1
+  aspectRatio: 0.625
+  padding: 2
+  yOffset: 1
 --- !u!1 &541336117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5286,30 +5303,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  width: 7
-  height: 10
+  width: 5
+  height: 5
   offSet: 10
   boardLayout:
-  - x: 0
-    y: 4
-    tileKind: 1
-  - x: 1
-    y: 4
-    tileKind: 1
   - x: 2
-    y: 4
-    tileKind: 1
-  - x: 3
-    y: 4
-    tileKind: 2
-  - x: 4
-    y: 4
-    tileKind: 1
-  - x: 5
-    y: 4
-    tileKind: 1
-  - x: 6
-    y: 4
+    y: 2
     tileKind: 1
   currentCandy: {fileID: 0}
   basePieceValue: 20
@@ -5396,8 +5395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hintDelay: 3
-  hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
-  currentHints: []
+  hintParticle: {fileID: 0}
+  currentHint: {fileID: 0}
 --- !u!1 &1111996752
 GameObject:
   m_ObjectHideFlags: 0

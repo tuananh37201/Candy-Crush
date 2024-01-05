@@ -3502,6 +3502,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3583,6 +3584,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd521b1c1f3c7df43b8bc83159b4d771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: -1
+  aspectRatio: 0.625
+  padding: 2
+  yOffset: 1
 --- !u!1 &541336117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,145 +5571,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  width: 7
-  height: 10
+  width: 3
+  height: 3
   offSet: 10
-  boardLayout:
-  - x: 0
-    y: 0
-    tileKind: 1
-  - x: 1
-    y: 0
-    tileKind: 1
-  - x: 2
-    y: 0
-    tileKind: 1
-  - x: 3
-    y: 0
-    tileKind: 1
-  - x: 4
-    y: 0
-    tileKind: 1
-  - x: 5
-    y: 0
-    tileKind: 1
-  - x: 6
-    y: 0
-    tileKind: 1
-  - x: 0
-    y: 1
-    tileKind: 1
-  - x: 1
-    y: 1
-    tileKind: 1
-  - x: 2
-    y: 1
-    tileKind: 1
-  - x: 3
-    y: 1
-    tileKind: 1
-  - x: 4
-    y: 1
-    tileKind: 1
-  - x: 5
-    y: 1
-    tileKind: 1
-  - x: 6
-    y: 1
-    tileKind: 1
-  - x: 0
-    y: 2
-    tileKind: 1
-  - x: 1
-    y: 2
-    tileKind: 1
-  - x: 2
-    y: 2
-    tileKind: 1
-  - x: 3
-    y: 2
-    tileKind: 1
-  - x: 4
-    y: 2
-    tileKind: 1
-  - x: 5
-    y: 2
-    tileKind: 1
-  - x: 6
-    y: 2
-    tileKind: 1
-  - x: 0
-    y: 9
-    tileKind: 1
-  - x: 1
-    y: 9
-    tileKind: 1
-  - x: 2
-    y: 9
-    tileKind: 1
-  - x: 3
-    y: 9
-    tileKind: 1
-  - x: 4
-    y: 9
-    tileKind: 1
-  - x: 5
-    y: 9
-    tileKind: 1
-  - x: 6
-    y: 9
-    tileKind: 1
-  - x: 0
-    y: 8
-    tileKind: 1
-  - x: 1
-    y: 8
-    tileKind: 1
-  - x: 2
-    y: 8
-    tileKind: 1
-  - x: 3
-    y: 8
-    tileKind: 1
-  - x: 4
-    y: 8
-    tileKind: 1
-  - x: 5
-    y: 8
-    tileKind: 1
-  - x: 6
-    y: 8
-    tileKind: 1
-  - x: 6
-    y: 3
-    tileKind: 1
-  - x: 6
-    y: 4
-    tileKind: 1
-  - x: 6
-    y: 5
-    tileKind: 1
-  - x: 6
-    y: 6
-    tileKind: 1
-  - x: 0
-    y: 3
-    tileKind: 1
-  - x: 0
-    y: 4
-    tileKind: 1
-  - x: 0
-    y: 5
-    tileKind: 1
-  - x: 0
-    y: 6
-    tileKind: 1
-  - x: 0
-    y: 7
-    tileKind: 1
-  - x: 6
-    y: 7
-    tileKind: 1
+  boardLayout: []
   currentCandy: {fileID: 0}
   basePieceValue: 20
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}

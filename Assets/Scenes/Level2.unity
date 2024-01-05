@@ -5291,26 +5291,143 @@ MonoBehaviour:
   offSet: 10
   boardLayout:
   - x: 0
-    y: 4
+    y: 0
     tileKind: 1
   - x: 1
-    y: 4
+    y: 0
     tileKind: 1
   - x: 2
-    y: 4
+    y: 0
     tileKind: 1
   - x: 3
-    y: 4
-    tileKind: 2
+    y: 0
+    tileKind: 1
   - x: 4
-    y: 4
+    y: 0
     tileKind: 1
   - x: 5
-    y: 4
+    y: 0
+    tileKind: 1
+  - x: 6
+    y: 0
+    tileKind: 1
+  - x: 0
+    y: 1
+    tileKind: 1
+  - x: 1
+    y: 1
+    tileKind: 1
+  - x: 2
+    y: 1
+    tileKind: 1
+  - x: 3
+    y: 1
+    tileKind: 1
+  - x: 4
+    y: 1
+    tileKind: 1
+  - x: 5
+    y: 1
+    tileKind: 1
+  - x: 6
+    y: 1
+    tileKind: 1
+  - x: 0
+    y: 2
+    tileKind: 1
+  - x: 1
+    y: 2
+    tileKind: 1
+  - x: 2
+    y: 2
+    tileKind: 1
+  - x: 3
+    y: 2
+    tileKind: 1
+  - x: 4
+    y: 2
+    tileKind: 1
+  - x: 5
+    y: 2
+    tileKind: 1
+  - x: 6
+    y: 2
+    tileKind: 1
+  - x: 0
+    y: 9
+    tileKind: 1
+  - x: 1
+    y: 9
+    tileKind: 1
+  - x: 2
+    y: 9
+    tileKind: 1
+  - x: 3
+    y: 9
+    tileKind: 1
+  - x: 4
+    y: 9
+    tileKind: 1
+  - x: 5
+    y: 9
+    tileKind: 1
+  - x: 6
+    y: 9
+    tileKind: 1
+  - x: 0
+    y: 8
+    tileKind: 1
+  - x: 1
+    y: 8
+    tileKind: 1
+  - x: 2
+    y: 8
+    tileKind: 1
+  - x: 3
+    y: 8
+    tileKind: 1
+  - x: 4
+    y: 8
+    tileKind: 1
+  - x: 5
+    y: 8
+    tileKind: 1
+  - x: 6
+    y: 8
+    tileKind: 1
+  - x: 6
+    y: 3
     tileKind: 1
   - x: 6
     y: 4
     tileKind: 1
+  - x: 6
+    y: 5
+    tileKind: 1
+  - x: 6
+    y: 6
+    tileKind: 1
+  - x: 0
+    y: 3
+    tileKind: 1
+  - x: 0
+    y: 4
+    tileKind: 1
+  - x: 0
+    y: 5
+    tileKind: 1
+  - x: 0
+    y: 6
+    tileKind: 1
+  - x: 0
+    y: 7
+    tileKind: 1
+  - x: 6
+    y: 7
+    tileKind: 1
+  - x: 3
+    y: 5
+    tileKind: 0
   currentCandy: {fileID: 0}
   basePieceValue: 20
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
@@ -5329,7 +5446,7 @@ MonoBehaviour:
   purpleDestroyEffect: {fileID: 3673959378764797617, guid: 915f70eebe0f5274e9c1302efb2db482, type: 3}
   redDestroyEffect: {fileID: 544003806559083526, guid: bbeee6bd9402e7a49b4243166c983fe0, type: 3}
   yellowDestroyEffect: {fileID: 6555520004648186044, guid: ecb1e6735f68bb644a2200591b90371b, type: 3}
-  CandyDestroyTime: 0.15
+  CandyDestroyTime: 0.3
   refillDelay: 0.3
 --- !u!4 &1101248398
 Transform:
@@ -5396,8 +5513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hintDelay: 3
-  hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
-  currentHints: []
+  hintParticle: {fileID: 0}
+  currentHint: {fileID: 0}
 --- !u!1 &1111996752
 GameObject:
   m_ObjectHideFlags: 0

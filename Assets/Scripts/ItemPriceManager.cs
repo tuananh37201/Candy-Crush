@@ -8,10 +8,14 @@ public class ItemPriceManager : MonoBehaviour
     public int myMoney;
     public TextMeshProUGUI bombPriceText;
     public int bombPrice;
-    public TextMeshProUGUI colorBombPriceText;
-    public int colorBombPrice;
     public TextMeshProUGUI bombAmountText;
     public int bombAmount;
+    public TextMeshProUGUI extraStepPriceText;
+    public int extraStepPrice;
+    public TextMeshProUGUI extraStepAmountText;
+    public int extraStepAmount;
+    public TextMeshProUGUI colorBombPriceText;
+    public int colorBombPrice;
     public TextMeshProUGUI colorBombAmountText;
     public int colorBombAmount;
 
@@ -29,9 +33,11 @@ public class ItemPriceManager : MonoBehaviour
     void Update()
     {
         bombPriceText.text = bombPrice.ToString();
-        colorBombPriceText.text = colorBombPrice.ToString();
-        myMoneyText.text = myMoney.ToString();
         bombAmountText.text = bombAmount.ToString();
+        extraStepPriceText.text = extraStepPrice.ToString();
+        extraStepAmountText.text = extraStepAmount.ToString();
+        colorBombPriceText.text = colorBombPrice.ToString();
         colorBombAmountText.text = colorBombAmount.ToString();
+        myMoneyText.text = myMoney.ToString();
     }
 }

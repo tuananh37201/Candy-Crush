@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
     public void AudioCandyFall() {
         audioSource.PlayOneShot(candyFall);
     }
-    public void AudioCois() {
+    public void AudioCoins() {
         audioSource.PlayOneShot(coins);
     }
 

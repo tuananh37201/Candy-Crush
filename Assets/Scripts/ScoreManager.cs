@@ -24,5 +24,6 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseScore(int amountToIncrease) {
         score += amountToIncrease;
+        ProcessBar.instance.slider.value += amountToIncrease;
     }
 }

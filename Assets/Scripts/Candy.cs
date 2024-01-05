@@ -105,9 +105,7 @@ public class Candy : MonoBehaviour
         if (Mathf.Abs(targetX - transform.position.x) > .1) // Lấy trị tuyệt đối để di chuyển sang trái hay bên phải ( + hoặc - )
         {
             tempPosition = new Vector2(targetX, transform.position.y);
-            transform.DOMove(tempPosition, .3f);
-            DOTween.Complete(this.gameObject);
-
+            transform.DOMove(tempPosition, .4f);
 
             if (board.allCandys[column, row] != this.gameObject)
             {
@@ -126,8 +124,7 @@ public class Candy : MonoBehaviour
         if (Mathf.Abs(targetY - transform.position.y) > .1)
         {
             tempPosition = new Vector2(transform.position.x, targetY);
-            transform.DOMove(tempPosition, .3f);
-            DOTween.Complete(this.gameObject);
+            transform.DOMove(tempPosition, .4f);
 
             if (board.allCandys[column, row] != this.gameObject)
             {

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -408,6 +409,7 @@ public class Board : MonoBehaviour
                 if (allCandys[i, j] != null)
                 {
                     DestroyMatchesAt(i, j);
+                    DOTween.Clear();
                 }
             }
         }

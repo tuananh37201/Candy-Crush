@@ -5452,8 +5452,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hintDelay: 3
-  hintPartical: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
-  currentHints: []
+  hintParticle: {fileID: 7741888902524828713, guid: 9743caf1c5359f844bb0b632770aa2c0, type: 3}
+  currentHint: {fileID: 0}
 --- !u!1 &1111996752
 GameObject:
   m_ObjectHideFlags: 0
@@ -9166,7 +9166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144.35, y: -28.98}
+  m_AnchoredPosition: {x: -144.35, y: -28.979996}
   m_SizeDelta: {x: 105.35, y: 20.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863852738

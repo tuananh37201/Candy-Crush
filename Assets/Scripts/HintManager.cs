@@ -1,35 +1,42 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HintManager : MonoBehaviour
 {
+
     private Board board;
     public float hintDelay;
     private float hintDelaySeconds;
-    public GameObject hintPartical;
-    public List<GameObject> currentHints;
+    public GameObject hintParticle;
+    public GameObject currentHint;
 
+    // Use this for initialization
     void Start()
     {
         board = FindObjectOfType<Board>();
         hintDelaySeconds = hintDelay;
-        currentHints = new List<GameObject>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        hintDelaySeconds -= Time.deltaTime;
-        if (hintDelaySeconds <= 0 && currentHints.Count == 0)
+        if (board.currentState == GameState.move)
         {
-            MarkHints();
-            hintDelaySeconds = hintDelay;
+            hintDelaySeconds -= Time.deltaTime;
+            if (hintDelaySeconds <= 0 && currentHint == null)
+            {
+                MarkHint();
+                hintDelaySeconds = hintDelay;
+            }
         }
     }
 
+    //First, I want to find all possible matches on the board
     List<GameObject> FindAllMatches()
     {
+
         List<GameObject> possibleMoves = new List<GameObject>();
         for (int i = 0; i < board.width; i++)
         {
@@ -37,31 +44,62 @@ public class HintManager : MonoBehaviour
             {
                 if (board.allCandys[i, j] != null)
                 {
-
+                    if (i < board.width - 1)
+                    {
+                        if (board.allCandys[i + 1, j] != null)
+                        {
+                            if (board.SwitchAndCheck(i, j, Vector2.right))
+                            {
+                                possibleMoves.Add(board.allCandys[i, j]);
+                            }
+                        }
+                    }
+                    if (j < board.height - 1)
+                    {
+                        if (board.allCandys[i, j + 1] != null)
+                        {
+                            if (board.SwitchAndCheck(i, j, Vector2.up))
+                            {
+                                possibleMoves.Add(board.allCandys[i, j]);
+                            }
+                        }
+                    }
                 }
             }
         }
-
         return possibleMoves;
     }
 
-    private void MarkHints()
+    //Pick one of those matches randomly
+    GameObject PickOneRandomly()
     {
-        List<GameObject> moves = FindAllMatches();
-        foreach (GameObject move in moves) 
+        List<GameObject> possibleMoves = new List<GameObject>();
+        possibleMoves = FindAllMatches();
+        if (possibleMoves.Count > 0)
         {
-            GameObject hint = Instantiate(hintPartical, move.transform.position, Quaternion.identity);
-            hint.transform.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
-            currentHints.Add(hint);
+            int pieceToUse = Random.Range(0, possibleMoves.Count);
+            return possibleMoves[pieceToUse];
+        }
+        return null;
+    }
+
+    //Create the hint behind the chosen match
+    private void MarkHint()
+    {
+        GameObject positionCandy = PickOneRandomly();
+        if (positionCandy != null)
+        {
+            currentHint = Instantiate(hintParticle, positionCandy.transform.position, Quaternion.identity);
         }
     }
+    //Destroy the hint.
     public void DestroyHints()
     {
-        foreach (GameObject hint in currentHints)
+        if (currentHint != null)
         {
-            Destroy(hint);
+            Destroy(currentHint);
+            currentHint = null;
+            hintDelaySeconds = hintDelay;
         }
-        currentHints.Clear();
-        hintDelaySeconds = hintDelay;
     }
 }

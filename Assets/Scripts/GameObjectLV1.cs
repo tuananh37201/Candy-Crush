@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class GameObjectLV1 : MonoBehaviour {
     public static GameObjectLV1 Instance;
     public GameObject shopPanel, closeTabButton, musicButton, soundButton, exitButton, losePanel, winPanel, fourBtSettingPanel;
-    public GameObject bombShop, colorBombshop, switchShop, lolipopBomShop;
+    public GameObject bombShop, extraStepShop, colorBombshop, switchShop, lolipopBomShop;
     public bool isClickBuyRowBomb;
     public bool isClickBuyColorBomb;
     private int clickBuyRowBombCount = 0;
@@ -66,6 +67,21 @@ public class GameObjectLV1 : MonoBehaviour {
             isClickBuyColorBomb = false;
         }
     }
+
+    public void BuyExtraStep() {
+        if(ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.extraStepPrice) {
+            ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.extraStepPrice;
+            ItemPriceManager.Instance.extraStepAmount += 1;
+        }
+    }
+
+    public void UseExtraStep() {
+        if(ItemPriceManager.Instance.extraStepAmount >= 1) {
+            EndGameManager.instance.currentCounterValue += 1;
+            EndGameManager.instance.counter.text = "" + EndGameManager.instance.currentCounterValue;
+            ItemPriceManager.Instance.extraStepAmount -= 1;
+        }
+    }
     
     public void BuyColorBomb() {
         clickBuyColorBombCount++;
@@ -87,6 +103,18 @@ public class GameObjectLV1 : MonoBehaviour {
 
     public void BombShopDisappear() {
         bombShop.SetActive(false);
+    }
+
+    public void ExtraStepShopAppear() {
+        extraStepShop.SetActive(true);
+        colorBombshop.SetActive(false);
+        losePanel.SetActive(false);
+        winPanel.SetActive(false);
+        FourBtDisappear();
+    }
+
+    public void ExtraStepShopDisppear() {
+        extraStepShop.SetActive(false);
     }
 
     public void ColorBombshopAppear() {

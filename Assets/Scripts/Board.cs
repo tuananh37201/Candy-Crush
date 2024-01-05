@@ -36,6 +36,8 @@ public class Board : MonoBehaviour
     public int height;
     public int offSet;
 
+    private HintManager hintManager;
+
     public TileType[] boardLayout;
     private bool[,] blankSpaces;
 
@@ -88,6 +90,7 @@ public class Board : MonoBehaviour
         chocolateTiles = new BoardTile[width, height];
 
         findMatches = FindObjectOfType<FindMatches>();
+        hintManager = FindObjectOfType<HintManager>();
 
         blankSpaces = new bool[width, height];
         allCandys = new GameObject[width, height];
@@ -388,6 +391,11 @@ public class Board : MonoBehaviour
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()
     public void DestroyMatches()
     {
+        if (hintManager != null)
+        {
+            hintManager.DestroyHints();
+        }
+
         if (findMatches.currentMatches.Count >= 4)
         {
             CheckToMakeBombs();
@@ -715,6 +723,10 @@ public class Board : MonoBehaviour
 
     private bool IsDeadlocked()
     {
+        if (hintManager != null)
+        {
+            hintManager.DestroyHints();
+        }
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -723,17 +735,27 @@ public class Board : MonoBehaviour
                 {
                     if (i < width - 1)
                     {
-                        if (SwitchAndCheck(i, j, Vector2.right))
+                        if (allCandys[i + 1, j] != null)
                         {
-                            return false;
+                            if (SwitchAndCheck(i, j, Vector2.right))
+                            {
+                                return false;
+                            }
                         }
                     }
                     if (j < height - 1)
                     {
-                        if (SwitchAndCheck(i, j, Vector2.up))
+                        if (allCandys[i, j + 1] != null)
                         {
-                            return false;
+                            if (SwitchAndCheck(i, j, Vector2.up))
+                            {
+                                return false;
+                            }
                         }
+                    }
+                    if (allCandys[i, j].GetComponent<Candy>().isColorBomb)
+                    {
+                        return false;
                     }
                 }
             }

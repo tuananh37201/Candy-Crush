@@ -1,20 +1,8 @@
-    // Copyright (C) 2017-2018 gamevanilla. All rights reserved.
-// This code can only be used under the standard Unity Asset Store End User License Agreement,
-// a copy of which is available at http://unity3d.com/company/legal/as_terms.
-
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
-
-//using GameVanilla.Core;
-//using GameVanilla.Game.Popups;
-//using GameVanilla.Game.Scenes;
-
 namespace GameVanilla.Game.UI
 {
-    /// <summary>
-    /// This class manages the level buttons that are displayed on the level scene.
-    /// </summary>
     public class LevelButton : MonoBehaviour
     {
         public int numLevel;
@@ -30,10 +18,6 @@ namespace GameVanilla.Game.UI
         [SerializeField] private GameObject star3;
         [SerializeField] private GameObject shineAnimation;
 
-
-        /// <summary>
-        /// Unity's Awake method.
-        /// </summary>
         private void Awake()
         {
             Assert.IsNotNull(currentButtonSprite);
@@ -49,9 +33,6 @@ namespace GameVanilla.Game.UI
             Assert.IsNotNull(shineAnimation);
         }
 
-        /// <summary>
-        /// Unity's Start method.
-        /// </summary>
         private void Start()
         {
             numLevelTextBlue.text = numLevel.ToString();
@@ -59,7 +40,7 @@ namespace GameVanilla.Game.UI
             var nextLevel = PlayerPrefs.GetInt("next_level");
             if (nextLevel == 0)
             {
-                nextLevel = 1;
+                nextLevel = 3;
             }
 
             if (numLevel == nextLevel)

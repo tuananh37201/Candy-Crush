@@ -4437,9 +4437,12 @@ MonoBehaviour:
   winPanel: {fileID: 0}
   fourBtSettingPanel: {fileID: 0}
   bombShop: {fileID: 0}
+  extraStepShop: {fileID: 0}
   colorBombshop: {fileID: 0}
   switchShop: {fileID: 0}
   lolipopBomShop: {fileID: 0}
+  isClickBuyRowBomb: 0
+  isClickBuyColorBomb: 0
 --- !u!114 &605948398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5177,7 +5180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 157.42693}
+  m_AnchoredPosition: {x: 0, y: 157.40068}
   m_SizeDelta: {x: 480.2247, y: 1166.6667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696447492

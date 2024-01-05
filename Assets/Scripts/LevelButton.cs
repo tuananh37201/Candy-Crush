@@ -17,13 +17,13 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private GameObject shineAnimation;
 
     public int numLevel;
-    public UnityEvent<int> OnButtonPressed;
+    // public UnityEvent<int> OnButtonPressed;
  
-    public void OnButtonClicked()
-    {
-        OnButtonPressed.Invoke(numLevel);
-        Debug.Log(numLevel);
-    }
+    // public void OnButtonClicked()
+    // {
+    //     OnButtonPressed.Invoke(numLevel);
+    //     Debug.Log(numLevel);
+    // }
 
     private void Awake()
     {

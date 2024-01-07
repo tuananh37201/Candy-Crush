@@ -25,7 +25,7 @@ public class PopupSetting : MonoBehaviour
        if (isFadeIn) {
             canvasGroup.alpha = 0; // Đặt độ đục của canvasGroup về 0
             rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f); // Đặt vị trí ban đầu của panel
-            rectTransform.DOAnchorPos(new Vector2(0, 0), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
+            rectTransform.DOAnchorPos(new Vector2(0, -20), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
             canvasGroup.DOFade(1, fadeTime); // Thực hiện animation làm đậm canvasGroup lên giá trị 1
                                              //StartCoroutine("ItemsAnimation"); // Bắt đầu coroutine để thực hiện animation cho các items
         }

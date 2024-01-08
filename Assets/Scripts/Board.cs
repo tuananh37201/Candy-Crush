@@ -147,6 +147,7 @@ public class Board : MonoBehaviour
         GenerateBlankSpace();
         GenerateBreakableTiles();
         GenerateChocolateTiles();
+
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -172,9 +173,8 @@ public class Board : MonoBehaviour
                     {
                         candyToUse = Random.Range(0, candys.Length);
                         maxIterations++;
-                        Debug.Log(maxIterations);
+                        Debug.Log("Times create board without matches: " + maxIterations);
                     }
-                    maxIterations = 0;
 
                     GameObject candy = Instantiate(candys[candyToUse], tempPosition, Quaternion.identity);
                     candy.GetComponent<Candy>().row = j;
@@ -186,6 +186,7 @@ public class Board : MonoBehaviour
             }
         }
     }
+
 
     private bool MatchesAt(int column, int row, GameObject piece)
     {
@@ -501,29 +502,6 @@ public class Board : MonoBehaviour
         StartCoroutine(FillBoardCor());
     }
 
-    private IEnumerator DecreaseRowCor()
-    {
-        int nullCount = 0;
-        for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-                if (allCandys[i, j] == null)
-                {
-                    nullCount++;
-                }
-                else if (nullCount > 0)
-                {
-                    allCandys[i, j].GetComponent<Candy>().row -= nullCount;
-                    allCandys[i, j] = null;
-                }
-            }
-            nullCount = 0;
-        }
-        yield return new WaitForSeconds(refillDelay * 0.25f);
-        StartCoroutine(FillBoardCor());
-    }
-
     private void RefillBoard()
     {
         for (int i = 0; i < width; i++)
@@ -580,10 +558,9 @@ public class Board : MonoBehaviour
         {
             streakValue++;
             DestroyMatches();
-            //yield return new WaitForSeconds(2 * refillDelay);
+            yield return new WaitForSeconds(2 * refillDelay);
             yield break;
         }
-        //findMatches.currentMatches.Clear();
         currentCandy = null;
         CheckToMakeChocolate();
 

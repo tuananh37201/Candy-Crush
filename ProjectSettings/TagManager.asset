@@ -13,11 +13,7 @@ TagManager:
   - Gray Candy
   - Pink Candy
   - BuyBombButton
-  - Biscuit
-  - Breakable
-  - Chocolate
-  - Board
-  - Lock
+
   layers:
   - Default
   - TransparentFX

@@ -3256,7 +3256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -122, y: 0}
+  m_AnchoredPosition: {x: -122.00001, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &516936883
@@ -3635,7 +3635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -121, y: -44}
+  m_AnchoredPosition: {x: -121.00001, y: -44}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &541336119
@@ -7199,9 +7199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a424554401c44e9df99a2f2d22e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToGetOneStar: 500
-  scoreToGetTwoStar: 800
-  scoreToGetThreeStar: 1000
+  scoreToGetOneStar: 100
+  scoreToGetTwoStar: 300
+  scoreToGetThreeStar: 500
   yellowStar1: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar2: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar3: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}

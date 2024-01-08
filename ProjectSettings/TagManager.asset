@@ -13,6 +13,11 @@ TagManager:
   - Gray Candy
   - Pink Candy
   - BuyBombButton
+  - Biscuit
+  - Breakable
+  - Chocolate
+  - Board
+  - Lock
   layers:
   - Default
   - TransparentFX
@@ -49,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Maker
+    uniqueID: 226513869
     locked: 0

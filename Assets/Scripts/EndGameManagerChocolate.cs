@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using TMPro;
-
-public enum GameType {
+public enum GameTypeChoco {
     Moves,
     Times
 }
 
 [System.Serializable]
-public class EndGameRequirements {
-    public GameType gameType;
+public class EndGameRequirementsChocolate {
+    public GameTypeChoco gameType;
     public int counterValue;
 }
 
-public class EndGameManager : MonoBehaviour {
-    public static EndGameManager instance;
-    public EndGameRequirements requirements;
+public class EndGameManagerChocolate : MonoBehaviour {
+    public static EndGameManagerChocolate instance;
+    public EndGameRequirementsChocolate requirements;
     public TextMeshProUGUI counter;
     public GameObject movesLabels;
+    public TextMeshProUGUI chocoText;
+    public int chocoAmonutToGet;
+    public int movedChoco = 0;
     //public GameObject timesLabels;
     public int currentCounterValue;
     private Board board;
@@ -24,9 +26,6 @@ public class EndGameManager : MonoBehaviour {
     public int counterValue;
     private bool setEndGame = false;
     private bool setWinGame = false;
-    public TextMeshProUGUI goalScoreText;
-    public int goalScore;
-
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -36,29 +35,29 @@ public class EndGameManager : MonoBehaviour {
         currentCounterValue = requirements.counterValue;
         board = FindObjectOfType<Board>();
         SetUpGame();
-        
+
     }
 
     void SetUpGame() {
-        
-        if (requirements.gameType == GameType.Moves) {
+
+        if (requirements.gameType == GameTypeChoco.Moves) {
             movesLabels.SetActive(true);
             //timesLabels.SetActive(false);
         } else {
             timerSeconds = 1;
             movesLabels.SetActive(false);
-           // timesLabels.SetActive(true);
+            // timesLabels.SetActive(true);
         }
-        counter.text =  currentCounterValue.ToString();
+        counter.text = currentCounterValue.ToString();
     }
     public void DecreaseCountervalue() {
         //if (board.currentState != GameState.pause) {
-            currentCounterValue--;
+        currentCounterValue--;
+        counter.text = "" + currentCounterValue;
+        if (currentCounterValue == 0) {
+            board.currentState = GameState.pause;
+            currentCounterValue = 0;
             counter.text = "" + currentCounterValue;
-            if (currentCounterValue == 0) {
-                board.currentState = GameState.pause;
-                currentCounterValue = 0;
-                counter.text = "" + currentCounterValue;
             //}
         }
     }
@@ -83,15 +82,24 @@ public class EndGameManager : MonoBehaviour {
         }
     }
 
+    public void FindMovedChoco() {
+        GameObject[] chocoObjects = GameObject.FindGameObjectsWithTag("Choco");
+        int tweeningCount = 0;
+        foreach (GameObject chocoObject in chocoObjects) {
+            if (chocoObject.transform.hasChanged) { }
+        }
+    }
+
     void Update() {
+        chocoText.text = chocoAmonutToGet.ToString();
+
         if (currentCounterValue == 0) {
             FindObjectOfType<Board>().currentState = GameState.pause;
             SetEndGame();
         }
-        if(FindObjectOfType<ScoreManager>().score >= goalScore) {
+        if (chocoAmonutToGet <= 0) {
             FindObjectOfType<Board>().currentState = GameState.pause;
             SetWinGame();
         }
-        goalScoreText.text = goalScore.ToString();
     }
 }

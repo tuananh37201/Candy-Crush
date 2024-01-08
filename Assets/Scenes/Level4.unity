@@ -1573,7 +1573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -139.99998, y: 20}
+  m_AnchoredPosition: {x: -140, y: 20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &297817621
@@ -3334,7 +3334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -121.999985, y: 0}
+  m_AnchoredPosition: {x: -122, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &516936883
@@ -3713,7 +3713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120.999985, y: -44}
+  m_AnchoredPosition: {x: -121, y: -44}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &541336119
@@ -5680,21 +5680,23 @@ MonoBehaviour:
   boardLayout:
   - x: 3
     y: 3
-    tileKind: 2
+    tileKind: 3
   - x: 2
     y: 2
-    tileKind: 2
+    tileKind: 3
   - x: 2
     y: 3
-    tileKind: 2
+    tileKind: 3
   - x: 3
     y: 2
-    tileKind: 2
+    tileKind: 3
   currentCandy: {fileID: 0}
   basePieceValue: 20
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
   breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
   chocolatePrefab: {fileID: 4224556276647248944, guid: 66092b997fc844f4bb688f2f4a94a2bd, type: 3}
+  lockTilePrefab: {fileID: 0}
+  biscuitTilePrefab: {fileID: 0}
   candys:
   - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
   - {fileID: 3119144058038550759, guid: 956a563712e349a4e92ba7f107890975, type: 3}

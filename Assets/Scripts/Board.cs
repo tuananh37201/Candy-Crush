@@ -16,6 +16,7 @@ public enum TileKind
 {
     Breakable,
     Blank,
+    Lock,
     Chocolate,
     Normal
 }
@@ -54,10 +55,12 @@ public class Board : MonoBehaviour
     public GameObject boardTilePrefab;
     public GameObject breakableTilePrefab;
     public GameObject chocolatePrefab;
+    public GameObject lockTilePrefab;
 
     public GameObject[] candys;
     private BoardTile[,] breakableTiles;
     private BoardTile[,] chocolateTiles;
+    public BoardTile[,] lockTiles;
     public GameObject[,] allCandys;
 
     [Header("Destroy Effect")]
@@ -89,6 +92,7 @@ public class Board : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
         chocolateTiles = new BoardTile[width, height];
+        lockTiles = new BoardTile[width, height];
 
         findMatches = FindObjectOfType<FindMatches>();
         hintManager = FindObjectOfType<HintManager>();
@@ -134,10 +138,26 @@ public class Board : MonoBehaviour
             // If a tiles is a "Chocolate" tile
             if (boardLayout[i].tileKind == TileKind.Chocolate)
             {
-                // Create a "Chocolate tiles at that position
+                // Create a "Chocolate" tiles at that position
                 Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
                 GameObject tile = Instantiate(chocolatePrefab, tempPosition, Quaternion.identity);
                 chocolateTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
+            }
+        }
+    }
+
+    private void GenerateLockTiles()
+    {
+        // Look at all the tilse in the layout
+        for (int i = 0; i < boardLayout.Length; i++)
+        {
+            // If a tiles is a "Lock" tile
+            if (boardLayout[i].tileKind == TileKind.Lock)
+            {
+                // Create a "Lock" tiles at that position
+                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                GameObject tile = Instantiate(lockTilePrefab, tempPosition, Quaternion.identity);
+                lockTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
             }
         }
     }
@@ -147,6 +167,7 @@ public class Board : MonoBehaviour
         GenerateBlankSpace();
         GenerateBreakableTiles();
         GenerateChocolateTiles();
+        GenerateLockTiles();
 
         for (int i = 0; i < width; i++)
         {
@@ -341,6 +362,7 @@ public class Board : MonoBehaviour
             {
                 CheckToMakeBombs();
             }
+
             // Does tile need to break?
             if (breakableTiles[column, row] != null)
             {
@@ -351,6 +373,17 @@ public class Board : MonoBehaviour
                     breakableTiles[column, row] = null;
                 }
             }
+
+            if (lockTiles[column, row] != null)
+            {
+                // If it does, take damege
+                lockTiles[column, row].TakeDamage(1);
+                if (lockTiles[column, row].hitPoints <= 0)
+                {
+                    lockTiles[column, row] = null;
+                }
+            }
+
             DameChocolate(column, row);
 
             if (allCandys[column, row].tag == "Blue Candy")

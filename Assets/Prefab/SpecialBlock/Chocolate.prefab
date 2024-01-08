@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 226513869
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f7a402b2fff6bad49837e981d150b680, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 1
-  breakEffect: {fileID: 8880397862751961556, guid: 7a9a6b4fbd080a34899c259189c1d976, type: 3}
+  target: {fileID: 0}
 --- !u!95 &7128464936198481548
 Animator:
   serializedVersion: 5

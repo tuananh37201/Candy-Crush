@@ -5680,23 +5680,21 @@ MonoBehaviour:
   boardLayout:
   - x: 3
     y: 3
-    tileKind: 3
+    tileKind: 2
   - x: 2
     y: 2
-    tileKind: 3
+    tileKind: 2
   - x: 2
     y: 3
-    tileKind: 3
+    tileKind: 2
   - x: 3
     y: 2
-    tileKind: 3
+    tileKind: 2
   currentCandy: {fileID: 0}
   basePieceValue: 20
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
   breakableTilePrefab: {fileID: 5145132402397459195, guid: c3801d57d2e92184bbecf8bf3a8138c1, type: 3}
   chocolatePrefab: {fileID: 4224556276647248944, guid: 66092b997fc844f4bb688f2f4a94a2bd, type: 3}
-  lockTilePrefab: {fileID: 0}
-  biscuitTilePrefab: {fileID: 0}
   candys:
   - {fileID: 9049320357325297055, guid: a7374ad6549af944a9b8391affc98b25, type: 3}
   - {fileID: 3119144058038550759, guid: 956a563712e349a4e92ba7f107890975, type: 3}

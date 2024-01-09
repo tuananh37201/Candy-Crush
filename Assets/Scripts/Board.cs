@@ -89,6 +89,7 @@ public class Board : MonoBehaviour
     [Range(0, 1)]
     public float refillDelay;
 
+    int count = 0;
 
     private void Awake()
     {
@@ -476,6 +477,10 @@ public class Board : MonoBehaviour
             {
                 GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
+                // vqlinh test
+                count++;
+                Debug.Log(count);
+                if (count >= 8) ConditionWinLose();
             }
             if (allCandys[column, row].tag == "Green Candy")
             {
@@ -507,6 +512,11 @@ public class Board : MonoBehaviour
             scoreManager.IncreaseScore(basePieceValue * streakValue);
             allCandys[column, row] = null;
         }
+    }
+    public void ConditionWinLose()
+    {
+        //vqlinhtest
+        Debug.Log("Winn");
     }
 
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()

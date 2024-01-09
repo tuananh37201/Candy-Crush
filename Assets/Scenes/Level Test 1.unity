@@ -4036,6 +4036,7 @@ GameObject:
   - component: {fileID: 640107584}
   - component: {fileID: 640107583}
   - component: {fileID: 640107582}
+  - component: {fileID: 640107587}
   m_Layer: 5
   m_Name: BtnNextMap
   m_TagString: Untagged
@@ -4142,7 +4143,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 640107585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640107587}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: LoadLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &640107585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4181,6 +4194,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640107580}
   m_CullTransparentMesh: 1
+--- !u!114 &640107587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640107580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd636b8226c7f8346a80ddc363fe1793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &644026185
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,7 +5467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6772501800855981739, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6772501800855981739, guid: b7c992eb3d8b4524f9b94f355269e4e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5570,17 +5595,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a057556d2929c64e8f9b7074ad9ef54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelJson: {fileID: 4900000, guid: 62ca8e20faf81794aa5e92b85883785b, type: 3}
   currentState: 1
   width: 5
   height: 5
   offSet: 10
-  boardLayout:
-  - x: 2
-    y: 2
-    tileKind: 4
-  - x: 2
-    y: 3
-    tileKind: 3
+  boardLayout: []
   currentCandy: {fileID: 0}
   basePieceValue: 20
   boardTilePrefab: {fileID: 4327553612826966441, guid: c51186f7e8bc1bd40a9e815b7e5a6863, type: 3}
@@ -6021,6 +6041,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162496038}
   m_CullTransparentMesh: 1
+--- !u!1 &1178087801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178087802}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1178087802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178087801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3155648, y: -9.469068, z: -2.5302453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228399302
 GameObject:
   m_ObjectHideFlags: 0
@@ -7151,9 +7202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a424554401c44e9df99a2f2d22e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToGetOneStar: 500
-  scoreToGetTwoStar: 800
-  scoreToGetThreeStar: 1000
+  scoreToGetOneStar: 100
+  scoreToGetTwoStar: 300
+  scoreToGetThreeStar: 500
   yellowStar1: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar2: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar3: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
@@ -7701,7 +7752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1514963560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9803,7 +9854,7 @@ RectTransform:
   m_Children:
   - {fileID: 1334077379}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

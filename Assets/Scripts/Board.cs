@@ -1,7 +1,9 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public enum GameState
 {
@@ -14,15 +16,15 @@ public enum GameState
 
 public enum TileKind
 {
-    Breakable,
     Blank,
-    Lock,
+    Breakable,
     Chocolate,
+    Lock,
     Biscuit,
     Normal
 }
 
-[System.Serializable]
+[Serializable]
 public class TileType
 {
     public int x;
@@ -30,8 +32,13 @@ public class TileType
     public TileKind tileKind;
 }
 
+
 public class Board : MonoBehaviour
 {
+
+    public TextAsset levelJson; // Drag and drop your JSON file in the inspector
+    private LevelData currentLevelData; // Variable to hold the current level data
+
     public static Board Instance;
     public GameState currentState = GameState.move;
 
@@ -89,10 +96,20 @@ public class Board : MonoBehaviour
         {
             Instance = this;
         }
+
+        if (levelJson != null)
+        {
+            LoadLevelData();
+        }
+        else
+        {
+            Debug.LogError("Level JSON is not assigned!");
+        }
     }
 
     void Start()
     {
+
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
         chocolateTiles = new BoardTile[width, height];
@@ -107,6 +124,18 @@ public class Board : MonoBehaviour
         Setup();
         //currentState = GameState.pause;
     }
+    private void LoadLevelData()
+    {
+        // Parse JSON data into LevelData
+        currentLevelData = JsonUtility.FromJson<LevelData>(levelJson.ToString());
+
+        // Set width, height, and boardLayout
+        width = currentLevelData._width;
+        height = currentLevelData._height;
+        boardLayout = currentLevelData._boardLayout;
+    }
+
+
 
     public void GenerateBlankSpace()
     {
@@ -209,12 +238,12 @@ public class Board : MonoBehaviour
                     boardTile.transform.parent = this.transform;
                     boardTile.name = "( " + i + " , " + j + " )";
 
-                    int candyToUse = Random.Range(0, candys.Length);
+                    int candyToUse = UnityEngine.Random.Range(0, candys.Length);
 
                     int maxIterations = 0;
                     while (MatchesAt(i, j, candys[candyToUse]) && maxIterations < 100)
                     {
-                        candyToUse = Random.Range(0, candys.Length);
+                        candyToUse = UnityEngine.Random.Range(0, candys.Length);
                         maxIterations++;
                         Debug.Log("Times create board without matches: " + maxIterations);
                     }
@@ -649,12 +678,12 @@ public class Board : MonoBehaviour
                 if (allCandys[i, j] == null && !blankSpaces[i, j] && !chocolateTiles[i, j] && !biscuitTiles[i, j])
                 {
                     Vector2 tempPosition = new Vector2(i, j + offSet);
-                    int candyToUse = Random.Range(0, candys.Length);
+                    int candyToUse = UnityEngine.Random.Range(0, candys.Length);
                     int maxIterations = 0;
                     while (MatchesAt(i, j, candys[candyToUse]) && maxIterations < 100)
                     {
                         maxIterations++;
-                        candyToUse = Random.Range(0, candys.Length);
+                        candyToUse = UnityEngine.Random.Range(0, candys.Length);
                     }
                     maxIterations = 0;
 
@@ -760,8 +789,8 @@ public class Board : MonoBehaviour
 
         while (!chocolate && loops < 200)
         {
-            int newX = Random.Range(0, width);
-            int newY = Random.Range(0, height);
+            int newX = UnityEngine.Random.Range(0, width);
+            int newY = UnityEngine.Random.Range(0, height);
             if (chocolateTiles[newX, newY])
             {
                 Vector2 adjacent = CheckForAdjacent(newX, newY);
@@ -909,13 +938,13 @@ public class Board : MonoBehaviour
                 if (!blankSpaces[i, j] && !chocolateTiles[i, j] && !biscuitTiles[i, j])
                 {
                     // Pick a random number
-                    int pieceToUse = Random.Range(0, newBoard.Count);
+                    int pieceToUse = UnityEngine.Random.Range(0, newBoard.Count);
 
                     // Assign the column and row to the piece
                     int maxIterations = 0;
                     while (MatchesAt(i, j, newBoard[pieceToUse]) && maxIterations < 100)
                     {
-                        pieceToUse = Random.Range(0, newBoard.Count);
+                        pieceToUse = UnityEngine.Random.Range(0, newBoard.Count);
                         maxIterations++;
                     }
                     // Make a container for the piece

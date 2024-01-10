@@ -26,7 +26,7 @@ public class EndGameManager : MonoBehaviour {
     public TextMeshProUGUI goalScoreText;
     public int goalScore;
     private LevelData currentLevelData; // Variable to hold the current level data
-    private string filePath = "C:\\Users\\deven\\OneDrive\\Tài liệu\\GitHub\\Candy-Crush\\Assets\\Resources";
+    private string filePath = "Assets\\Resources";
 
     private void Awake() {
         if (instance == null) {
@@ -90,11 +90,11 @@ public class EndGameManager : MonoBehaviour {
             setWinGame = true;
             FindObjectOfType<SoundManager>().audioSource.Stop();
             FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().winSound);
-            SaveDateToJson();
+            CreateJsonFile();
         }
     }
 
-    public void SaveDateToJson()
+    public void CreateJsonFile()
     {
         string jsonData = JsonUtility.ToJson(FindObjectOfType<ScoreManager>().score);
         File.WriteAllText(filePath, jsonData);

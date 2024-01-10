@@ -5595,10 +5595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a057556d2929c64e8f9b7074ad9ef54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelJson: {fileID: 4900000, guid: 62ca8e20faf81794aa5e92b85883785b, type: 3}
   currentState: 1
-  width: 5
-  height: 5
+  levelJson: {fileID: 4900000, guid: a108c87ea1261024e967b4c592647871, type: 3}
+  width: 0
+  height: 0
   offSet: 10
   boardLayout: []
   currentCandy: {fileID: 0}
@@ -6050,6 +6050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178087802}
+  - component: {fileID: 1178087803}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -6072,6 +6073,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178087803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178087801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cea17eb4a0abc41b4a581773bebad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: d6ac414cf803a98489691d78ec114245, type: 2}
+  fileName: level1.json
 --- !u!1 &1228399302
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    Read data from file json
+*/
+
+using System;
 
 [System.Serializable]
 public class LevelData

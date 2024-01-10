@@ -30,24 +30,26 @@ public class TileType
     public int x;
     public int y;
     public TileKind tileKind;
+    public string tileKindName;
 }
 
 
 public class Board : MonoBehaviour
 {
 
-    public TextAsset levelJson; // Drag and drop your JSON file in the inspector
-    private LevelData currentLevelData; // Variable to hold the current level data
-
     public static Board Instance;
     public GameState currentState = GameState.move;
 
+    [Header("Level")]
+    public TextAsset levelJson; // Drag and drop your JSON file in the inspector
+    private LevelData currentLevelData; // Variable to hold the current level data
+
+
+    [Header("Board Stuff")]
     public int width;
     public int height;
     public int offSet;
-
     private HintManager hintManager;
-
     public TileType[] boardLayout;
     private bool[,] blankSpaces;
 
@@ -125,6 +127,7 @@ public class Board : MonoBehaviour
         Setup();
         //currentState = GameState.pause;
     }
+
     private void LoadLevelData()
     {
         // Parse JSON data into LevelData
@@ -133,10 +136,28 @@ public class Board : MonoBehaviour
         // Set width, height, and boardLayout
         width = currentLevelData._width;
         height = currentLevelData._height;
+
+        foreach (TileType tile in currentLevelData._boardLayout)
+        {
+            string _str = tile.tileKindName;
+            TileKind tileKind = ParseEnum(_str, TileKind.Blank);
+            tile.tileKind = tileKind;
+            Debug.Log(tile.tileKind);
+        }
         boardLayout = currentLevelData._boardLayout;
     }
 
-
+    public static T ParseEnum<T>(string value, T defaultValue)
+    {
+        try
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
+        catch (ArgumentException)
+        {
+            return defaultValue;
+        }
+    }
 
     public void GenerateBlankSpace()
     {
@@ -246,7 +267,6 @@ public class Board : MonoBehaviour
                     {
                         candyToUse = UnityEngine.Random.Range(0, candys.Length);
                         maxIterations++;
-                        Debug.Log("Times create board without matches: " + maxIterations);
                     }
 
                     GameObject candy = Instantiate(candys[candyToUse], tempPosition, Quaternion.identity);
@@ -675,7 +695,6 @@ public class Board : MonoBehaviour
             }
         }
         //yield return new WaitForSeconds(refillDelay * 0.5f);
-        Debug.Log("Refilling the board");
         StartCoroutine(FillBoardCor());
     }
 
@@ -744,10 +763,8 @@ public class Board : MonoBehaviour
         if (IsDeadlocked())
         {
             StartCoroutine(ShuffleBoard());
-            Debug.Log("Deadlocked!!");
         }
         yield return new WaitForSeconds(refillDelay);
-        Debug.Log("Done Refill");
         System.GC.Collect();
         currentState = GameState.move;
         makeChocolate = true;

@@ -8,7 +8,7 @@
 	],
 	
 	"_move": 15,
-
+        "_goalScore": 1,
 	"_score1" : 100,
 	"_score2" : 200,
 	"_score3" : 500

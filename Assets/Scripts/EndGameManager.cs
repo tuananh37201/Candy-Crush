@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.IO;
 
 public enum GameType {
-    Moves,
-    Times
+    Moves
 }
 
 [System.Serializable]
 public class EndGameRequirements {
     public GameType gameType;
-    public int counterValue;
 }
 
 public class EndGameManager : MonoBehaviour {
@@ -26,17 +25,28 @@ public class EndGameManager : MonoBehaviour {
     private bool setWinGame = false;
     public TextMeshProUGUI goalScoreText;
     public int goalScore;
+    private LevelData currentLevelData; // Variable to hold the current level data
+    private string filePath = "C:\\Users\\deven\\OneDrive\\Tài liệu\\GitHub\\Candy-Crush\\Assets\\Resources";
 
     private void Awake() {
         if (instance == null) {
             instance = this;
         }
+        board = FindObjectOfType<Board>();
+        LoadLevelData();
+
     }
     void Start() {
-        currentCounterValue = requirements.counterValue;
-        board = FindObjectOfType<Board>();
         SetUpGame();
         
+    }
+
+    private void LoadLevelData()
+    {
+        // Parse JSON data into LevelData
+        currentLevelData = JsonUtility.FromJson<LevelData>(board.levelJson.ToString());
+        goalScore = currentLevelData._goalScore;
+        currentCounterValue = currentLevelData._move;
     }
 
     void SetUpGame() {
@@ -80,7 +90,15 @@ public class EndGameManager : MonoBehaviour {
             setWinGame = true;
             FindObjectOfType<SoundManager>().audioSource.Stop();
             FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().winSound);
+            SaveDateToJson();
         }
+    }
+
+    public void SaveDateToJson()
+    {
+        string jsonData = JsonUtility.ToJson(FindObjectOfType<ScoreManager>().score);
+        File.WriteAllText(filePath, jsonData);
+        Debug.Log("Data saved to: " + filePath);
     }
 
     void Update() {
@@ -93,5 +111,6 @@ public class EndGameManager : MonoBehaviour {
             SetWinGame();
         }
         goalScoreText.text = goalScore.ToString();
+        counter.text = currentCounterValue.ToString();  
     }
 }

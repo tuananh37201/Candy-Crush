@@ -12,6 +12,7 @@ public class LevelData
     public int _move;
 
     // Score
+    public int _goalScore;
     public int _score1;
     public int _score2;
     public int _score3;

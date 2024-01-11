@@ -22,6 +22,5 @@ public class LevelData
     public int _score3;
 
     // Bổ sung thêm: Các loại boost, điều kiện chiến thắng
-    public int _CountWin;
-    public string _strTagCandy;
+
 }

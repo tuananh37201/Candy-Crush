@@ -2,7 +2,9 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public enum GameState
@@ -36,6 +38,20 @@ public class TileType
 
 public class Board : MonoBehaviour
 {
+    //vqlinhtest
+    private string TagCandy;
+    public TextMeshProUGUI TagCandytxt;
+    private int CountCandy;
+    #region Image
+    public Sprite GreenCandy;
+    public Sprite PurpleCandy;
+    public Sprite OrangeCandy;
+    public Sprite RedCandy;
+    public Sprite YellowCandy;
+    public Sprite BlueCandy;
+    public Image CandyCondition;
+    #endregion
+    // 
 
     public static Board Instance;
     public GameState currentState = GameState.move;
@@ -145,6 +161,28 @@ public class Board : MonoBehaviour
             Debug.Log(tile.tileKind);
         }
         boardLayout = currentLevelData._boardLayout;
+        //condition win
+        TagCandy = currentLevelData._strTagCandy;
+        CountCandy = currentLevelData._CountWin;
+        TagCandySprites();
+    }
+    public void TagCandySprites()
+    {
+        if (TagCandy == "Green Candy") CandyCondition.sprite = GreenCandy;
+        if (TagCandy == "Blue Candy") CandyCondition.sprite = BlueCandy;
+        if (TagCandy == "Red Candy") CandyCondition.sprite = RedCandy;
+        if (TagCandy == "Yellow Candy") CandyCondition.sprite = YellowCandy;
+        if (TagCandy == "Purple Candy") CandyCondition.sprite = PurpleCandy;
+        if (TagCandy == "Orange Candy") CandyCondition.sprite = OrangeCandy;
+    }
+    private void Update()
+    {
+        TagCandytxt.text = CountCandy.ToString();
+        if (CountCandy <= 0) ConditionWinLose();
+    }
+    public void ConditionWinLose()
+    {
+        PopupSetting.instance.PanelFadeIn();
     }
 
     public static T ParseEnum<T>(string value, T defaultValue)
@@ -493,39 +531,45 @@ public class Board : MonoBehaviour
             DameBiscuit(column, row);
             DameChocolate(column, row);
 
+            string candyTag = allCandys[column, row].tag;
+            bool isTagMatch = (TagCandy == candyTag);
+
             if (allCandys[column, row].tag == "Blue Candy")
             {
                 GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
-                // vqlinh test
-                count++;
-                Debug.Log(count);
-                if (count >= 8) ConditionWinLose();
+                if (isTagMatch) CountCandy--;
             }
             if (allCandys[column, row].tag == "Green Candy")
             {
                 GameObject particle = Instantiate(greenDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
+                if (isTagMatch) CountCandy--;
+
             }
             if (allCandys[column, row].tag == "Orange Candy")
             {
                 GameObject particle = Instantiate(orangeDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
+                if (isTagMatch) CountCandy--;
             }
             if (allCandys[column, row].tag == "Red Candy")
             {
                 GameObject particle = Instantiate(redDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
+                if (isTagMatch) CountCandy--;
             }
             if (allCandys[column, row].tag == "Purple Candy")
             {
                 GameObject particle = Instantiate(purpleDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
+                if (isTagMatch) CountCandy--;
             }
             if (allCandys[column, row].tag == "Yellow Candy")
             {
                 GameObject particle = Instantiate(yellowDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
+                if (isTagMatch) CountCandy--;
             }
 
             Destroy(allCandys[column, row]);
@@ -533,11 +577,7 @@ public class Board : MonoBehaviour
             allCandys[column, row] = null;
         }
     }
-    public void ConditionWinLose()
-    {
-        //vqlinhtest
-        Debug.Log("Winn");
-    }
+
 
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()
     public void DestroyMatches()

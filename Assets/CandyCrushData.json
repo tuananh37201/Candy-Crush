@@ -1,0 +1,60 @@
+{
+  "levelDataList": [
+    {
+      "board": {
+        "width": 0,
+        "height": 0,
+        "boardLayout": []
+      },
+      "match": {
+        "move": 0,
+        "score1": 0,
+        "score2": 0,
+        "score3": 0
+      }
+    },
+    {
+      "board": {
+        "width": 1,
+        "height": 1,
+        "boardLayout": [
+          {
+            "x": 1,
+            "y": 1,
+            "tileKind": "Breakable"
+          }
+        ]
+      },
+      "match": {
+        "move": 1,
+        "score1": 1,
+        "score2": 1,
+        "score3": 1
+      }
+    },
+    {
+      "board": {
+        "width": 2,
+        "height": 2,
+        "boardLayout": [
+          {
+            "x": 1,
+            "y": 1,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Blank"
+          }
+        ]
+      },
+      "match": {
+        "move": 1,
+        "score1": 1,
+        "score2": 1,
+        "score3": 1
+      }
+    }
+  ]
+}

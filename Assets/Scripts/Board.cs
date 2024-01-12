@@ -14,26 +14,6 @@ public enum GameState
     pause
 }
 
-public enum TileKind
-{
-    Blank,
-    Breakable,
-    Chocolate,
-    Lock,
-    Biscuit,
-    Normal
-}
-
-[Serializable]
-public class TileType
-{
-    public int x;
-    public int y;
-    public TileKind tileKind;
-    public string tileKindName;
-}
-
-
 public class Board : MonoBehaviour
 {
 
@@ -41,9 +21,10 @@ public class Board : MonoBehaviour
     public GameState currentState = GameState.move;
 
     [Header("Level")]
+    public int level;
     public TextAsset levelJson; // Drag and drop your JSON file in the inspector
-    private LevelData currentLevelData; // Variable to hold the current level data
-
+    public Level_Data levelData;
+    
 
     [Header("Board Stuff")]
     public int width;
@@ -112,7 +93,6 @@ public class Board : MonoBehaviour
 
     void Start()
     {
-
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
         chocolateTiles = new BoardTile[width, height];
@@ -131,20 +111,22 @@ public class Board : MonoBehaviour
     private void LoadLevelData()
     {
         // Parse JSON data into LevelData
-        currentLevelData = JsonUtility.FromJson<LevelData>(levelJson.ToString());
+        // levelData = JsonUtility.FromJson<Level_Data>(levelJson.ToString());
 
         // Set width, height, and boardLayout
-        width = currentLevelData._width;
-        height = currentLevelData._height;
+        // width = gameLevelData.dWidth;
+        // height = gameLevelData.dHeight;
 
-        foreach (TileType tile in currentLevelData._boardLayout)
-        {
-            string _str = tile.tileKindName;
-            TileKind tileKind = ParseEnum(_str, TileKind.Blank);
-            tile.tileKind = tileKind;
-            Debug.Log(tile.tileKind);
-        }
-        boardLayout = currentLevelData._boardLayout;
+        // foreach (TileKind tilekind in gameLevelData.dboardLayout.tileKind)
+        // {
+        //     string _str = tile.tileKindName;
+        //     TileKind tileKind = ParseEnum(_str, TileKind.Blank);
+        //     tile.tileKind = tileKind;
+        //     Debug.Log(tile.tileKind);
+        // }
+        // boardLayout = gameLevelData.dBoardLayout;
+
+        // Debug.Log(levelData);
     }
 
     public static T ParseEnum<T>(string value, T defaultValue)

@@ -28,7 +28,7 @@ public class EndGameManager : MonoBehaviour
     private bool setWinGame = false;
     public TextMeshProUGUI goalScoreText;
     public int goalScore;
-    private LevelData currentLevelData; // Variable to hold the current level data
+    private Level_Data currentLevelData; // Variable to hold the current level data
     //private string filePath = "Assets\\Resources";
 
     private void Awake()
@@ -49,7 +49,7 @@ public class EndGameManager : MonoBehaviour
     private void LoadLevelData()
     {
         // Parse JSON data into LevelData
-        currentLevelData = JsonUtility.FromJson<LevelData>(board.levelJson.ToString());
+        currentLevelData = JsonUtility.FromJson<Level_Data>(board.levelJson.ToString());
         goalScore = currentLevelData._goalScore;
         currentCounterValue = currentLevelData._move;
     }

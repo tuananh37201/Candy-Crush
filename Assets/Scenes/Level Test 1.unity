@@ -1496,7 +1496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -140, y: 20}
+  m_AnchoredPosition: {x: -139.99998, y: 20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &297817621
@@ -2422,10 +2422,9 @@ MonoBehaviour:
     gameType: 0
   counter: {fileID: 516936883}
   movesLabels: {fileID: 297817619}
-  currentCounterValue: 1
   counterValue: 0
   goalScoreText: {fileID: 2001514953}
-  goalScore: 5000
+  goalScore: 0
 --- !u!1 &457085480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,7 +3254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -122, y: 0}
+  m_AnchoredPosition: {x: -121.999985, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &516936883
@@ -3634,7 +3633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -121, y: -44}
+  m_AnchoredPosition: {x: -120.999985, y: -44}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &541336119
@@ -4065,7 +4064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfdc9e9944380d4a9dbf07b8597cb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 3
+  levelToLoad: 0
   dWidth: 0
   dHeight: 0
   dBoardLayout: []
@@ -4074,7 +4073,7 @@ MonoBehaviour:
   dScore2: 0
   dScore3: 0
   _move: 0
-  _goalScore: 0
+  dGoalScore: 0
   jsonFilePath: Assets/CandyCrushData.json
 --- !u!1 &640107580
 GameObject:
@@ -5682,6 +5681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 1
   levelData: {fileID: 621003990}
+  goalScore: 0
   width: 0
   height: 0
   offSet: 10
@@ -7287,9 +7287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36a424554401c44e9df99a2f2d22e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToGetOneStar: 100
-  scoreToGetTwoStar: 300
-  scoreToGetThreeStar: 500
+  scoreToGetOneStar: 0
+  scoreToGetTwoStar: 0
+  scoreToGetThreeStar: 0
   yellowStar1: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar2: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar3: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
@@ -7387,10 +7387,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1946257002}
+      - m_Target: {fileID: 1806253715}
         m_TargetAssemblyTypeName: GameObjectLV1, Assembly-CSharp
-        m_MethodName: LoadLv1
-        m_Mode: 1
+        m_MethodName: ReLoadCurrentMap
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12305,7 +12305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 66, y: -140}
+  m_AnchoredPosition: {x: 72, y: -252}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8978593368666200542

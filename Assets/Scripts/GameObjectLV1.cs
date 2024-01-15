@@ -12,6 +12,7 @@ public class GameObjectLV1 : MonoBehaviour {
     private int clickBuyColorBombCount = 0;
     private int clickUseRowBomb = 0;
     private int clickUseColorBomb = 0;
+    public bool isWinPanel;
 
     private void Awake() {
         Instance = this;
@@ -75,13 +76,14 @@ public class GameObjectLV1 : MonoBehaviour {
         if(ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.extraStepPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.extraStepPrice;
             ItemPriceManager.Instance.extraStepAmount += 1;
+            
         }
     }
 
     public void UseExtraStep() {
         if(ItemPriceManager.Instance.extraStepAmount >= 1) {
-            EndGameManager.instance.currentCounterValue += 1;
-            EndGameManager.instance.counter.text = "" + EndGameManager.instance.currentCounterValue;
+            Level_Data.Instance.dMove += 1;
+            EndGameManager.instance.counter.text = "" + Level_Data.Instance.dGoalScore;
             ItemPriceManager.Instance.extraStepAmount -= 1;
         }
     }
@@ -161,7 +163,11 @@ public class GameObjectLV1 : MonoBehaviour {
     }
 
     public void WinPanelAppear() {
-        winPanel.SetActive(true);
+        isWinPanel = true;
+        if(isWinPanel)
+        {
+            winPanel.SetActive(true);
+        }
         FourBtDisappear();
     }
 
@@ -181,7 +187,8 @@ public class GameObjectLV1 : MonoBehaviour {
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void OnMouseOver() {
-
+    public void ReLoadCurrentMap()
+    {
+        SceneManager.LoadScene("Level Test 1");
     }
 }

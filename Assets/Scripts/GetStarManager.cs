@@ -18,22 +18,22 @@ public class GetStarManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(GameObjectLV1.Instance.winPanel != null) {
+        if(GameObjectLV1.Instance.isWinPanel == true) {
             if(!spawnStar) {
                 SpawnStar();
-                spawnStar = true;
+                spawnStar = true;       
             }
         }
     }
 
     public void SpawnStar() {
-        if (FindObjectOfType<ScoreManager>().score >= scoreToGetOneStar) {
+        if (ScoreManager.Instance.score >= Level_Data.Instance.dScore1) {
             StartCoroutine(SpawnStar1());
         }
-        if (FindObjectOfType<ScoreManager>().score >= scoreToGetTwoStar) {
+        if (ScoreManager.Instance.score >= Level_Data.Instance.dScore2) {
             StartCoroutine(SpawnStar2());
         }
-        if (FindObjectOfType<ScoreManager>().score >= scoreToGetThreeStar) {
+        if (ScoreManager.Instance.score >= Level_Data.Instance.dScore3) {
             StartCoroutine(SpawnStar3());
         }
     }

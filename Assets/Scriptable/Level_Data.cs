@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Level_Data : MonoBehaviour
 {
+    public static Level_Data Instance;
     [Header("Enter number of level:")]
     public int levelToLoad;
 
@@ -20,13 +21,19 @@ public class Level_Data : MonoBehaviour
     public int dScore3;
 
     public int _move;
-    public int _goalScore;
+    public int dGoalScore;
 
     public string jsonFilePath = "Assets/CandyCrushData.json";
 
+    private void Awake()
+    {
+        Instance = this;
+        levelToLoad = LoadMapManager.instance.selectedMapIndex;
+        LoadData();
+    }
     void Start()
     {
-        LoadData();
+        
     }
 
     void LoadData()
@@ -53,6 +60,7 @@ public class Level_Data : MonoBehaviour
                 dScore1 = levelData.match.score1;
                 dScore2 = levelData.match.score2;
                 dScore3 = levelData.match.score3;
+                dGoalScore = levelData.match.goalScore;
 
                 Debug.Log("Loaded level data for level " + levelToLoad);
             }

@@ -20,7 +20,6 @@ public class EndGameManager : MonoBehaviour
     public TextMeshProUGUI counter;
     public GameObject movesLabels;
     //public GameObject timesLabels;
-    public int currentCounterValue;
     private Board board;
     private float timerSeconds;
     public int counterValue;
@@ -60,18 +59,18 @@ public class EndGameManager : MonoBehaviour
             movesLabels.SetActive(false);
             // timesLabels.SetActive(true);
         }
-        counter.text = currentCounterValue.ToString();
+        counter.text = Level_Data.Instance.dMove.ToString();
     }
     public void DecreaseCountervalue()
     {
         //if (board.currentState != GameState.pause) {
-        currentCounterValue--;
-        counter.text = "" + currentCounterValue;
-        if (currentCounterValue == 0)
+        Level_Data.Instance.dMove--;
+        counter.text = "" + Level_Data.Instance.dMove;
+        if (Level_Data.Instance.dMove == 0)
         {
             board.currentState = GameState.pause;
-            currentCounterValue = 0;
-            counter.text = "" + currentCounterValue;
+            Level_Data.Instance.dMove = 0;
+            counter.text = "" + Level_Data.Instance.dMove;
             //}
         }
     }
@@ -112,17 +111,17 @@ public class EndGameManager : MonoBehaviour
 
     void Update()
     {
-        if (currentCounterValue == 0)
+        if (Level_Data.Instance.dMove == 0)
         {
             FindObjectOfType<Board>().currentState = GameState.pause;
             SetEndGame();
         }
-        if (FindObjectOfType<ScoreManager>().score >= goalScore)
+        if (FindObjectOfType<ScoreManager>().score >= Level_Data.Instance.dGoalScore)
         {
             FindObjectOfType<Board>().currentState = GameState.pause;
             SetWinGame();
         }
-        goalScoreText.text = goalScore.ToString();
-        counter.text = currentCounterValue.ToString();
+        goalScoreText.text = Level_Data.Instance.dGoalScore.ToString();
+        counter.text = Level_Data.Instance.dMove.ToString();
     }
 }

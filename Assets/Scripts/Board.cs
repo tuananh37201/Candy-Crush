@@ -24,9 +24,10 @@ public class Board : MonoBehaviour
     //public int level;
     //public TextAsset levelJson; // Drag and drop your JSON file in the inspector
     public Level_Data levelData;
-    
+
 
     [Header("Board Stuff")]
+    public int goalScore;
     public int width;
     public int height;
     public int offSet;
@@ -103,6 +104,7 @@ public class Board : MonoBehaviour
 
     // GetLevelData
     private void GetLevelData(){
+        goalScore = levelData.dGoalScore;
         width = levelData.dWidth;
         height = levelData.dHeight;
         boardLayout = levelData.dBoardLayout;

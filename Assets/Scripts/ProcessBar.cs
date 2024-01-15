@@ -12,7 +12,7 @@ public class ProcessBar : MonoBehaviour {
     void Start() {
         slider = GetComponent<Slider>();
         slider.value = 0;
-        slider.maxValue = EndGameManager.instance.goalScore;
+        slider.maxValue = Level_Data.Instance.dGoalScore;
     }
 
     // Update is called once per frame

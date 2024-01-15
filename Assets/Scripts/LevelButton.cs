@@ -47,7 +47,7 @@ public class LevelButton : MonoBehaviour
         var nextLevel = PlayerPrefs.GetInt("next_level");
         if (nextLevel == 0)
         {
-            nextLevel = 5;
+            nextLevel = numLevel;
         }
 
         if (numLevel == nextLevel)

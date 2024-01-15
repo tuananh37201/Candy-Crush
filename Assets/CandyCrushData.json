@@ -16,15 +16,9 @@
     },
     {
       "board": {
-        "width": 4,
-        "height": 4,
-        "boardLayout": [
-          {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Breakable"
-          }
-        ]
+        "width": 5,
+        "height": 5,
+        "boardLayout": []
       },
       "match": {
         "move": 15,
@@ -36,14 +30,9 @@
     },
     {
       "board": {
-        "width": 5,
-        "height": 5,
+        "width": 6,
+        "height": 6,
         "boardLayout": [
-          {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Chocolate"
-          },
           {
             "x": 2,
             "y": 2,
@@ -61,41 +50,16 @@
     },
     {
       "board": {
-        "width": 4,
-        "height": 4,
+        "width": 7,
+        "height": 7,
         "boardLayout": [
-          {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Chocolate"
-          },
           {
             "x": 2,
             "y": 2,
             "tileKind": "Blank"
-          }
-        ]
-      },
-      "match": {
-        "move": 1,
-        "score1": 1,
-        "score2": 1,
-        "score3": 1,
-        "goalScore": 0
-      }
-    },
-    {
-      "board": {
-        "width": 5,
-        "height": 5,
-        "boardLayout": [
-          {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Chocolate"
           },
           {
-            "x": 2,
+            "x": 3,
             "y": 2,
             "tileKind": "Blank"
           }
@@ -103,10 +67,10 @@
       },
       "match": {
         "move": 12,
-        "score1": 300,
-        "score2": 750,
-        "score3": 1500,
-        "goalScore": 1500
+        "score1": 400,
+        "score2": 1000,
+        "score3": 200,
+        "goalScore": 2000
       }
     },
     {
@@ -115,23 +79,48 @@
         "height": 6,
         "boardLayout": [
           {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Chocolate"
+            "x": 2,
+            "y": 2,
+            "tileKind": "Blank"
           },
           {
-            "x": 2,
+            "x": 3,
             "y": 2,
             "tileKind": "Blank"
           }
         ]
       },
       "match": {
-        "move": 6,
-        "score1": 420,
-        "score2": 1100,
-        "score3": 2200,
-        "goalScore": 2200
+        "move": 12,
+        "score1": 400,
+        "score2": 1000,
+        "score3": 200,
+        "goalScore": 2000
+      }
+    },
+    {
+      "board": {
+        "width": 7,
+        "height": 7,
+        "boardLayout": [
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "tileKind": "Blank"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500
       }
     }
   ]

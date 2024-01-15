@@ -19,11 +19,9 @@ public class Level_Data : MonoBehaviour
     public int dScore1;
     public int dScore2;
     public int dScore3;
-
     public int _move;
     public int dGoalScore;
-
-    public string jsonFilePath = "Assets/CandyCrushData.json";
+    public TextAsset jsonDataFile;
 
     private void Awake()
     {
@@ -38,9 +36,9 @@ public class Level_Data : MonoBehaviour
 
     void LoadData()
     {
-        if (File.Exists(jsonFilePath))
+        if (jsonDataFile != null)
         {
-            string jsonData = File.ReadAllText(jsonFilePath);
+            string jsonData = jsonDataFile.text;
 
             // Deserialize JSON to CandyCrushData
             CandyCrushScriptable.CandyCrushData candyCrushData = JsonConvert.DeserializeObject<CandyCrushScriptable.CandyCrushData>(jsonData);
@@ -71,7 +69,7 @@ public class Level_Data : MonoBehaviour
         }
         else
         {
-            Debug.LogError("File not found: " + jsonFilePath);
+            Debug.LogError("File not found: " + jsonDataFile);
         }
     }
 }

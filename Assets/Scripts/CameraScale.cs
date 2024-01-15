@@ -9,6 +9,7 @@ public class CameraScale : MonoBehaviour
     public float yOffset = 1;
     public int boardWidth;
     public int boardHeight;
+    private bool hasRunOnce = false;
 
     private void Awake()
     {
@@ -21,10 +22,14 @@ public class CameraScale : MonoBehaviour
 
     private void Update()
     {
-        boardWidth = Board.Instance.width;
-        boardHeight = Board.Instance.height;
-        Debug.Log(boardWidth);
-        RepositionCamera(Board.Instance.width - 1, Board.Instance.height - 1);
+        if (!hasRunOnce)
+        {
+            boardWidth = Board.Instance.width;
+            boardHeight = Board.Instance.height;
+            Debug.Log(boardWidth);
+            RepositionCamera(Board.Instance.width - 1, Board.Instance.height - 1);
+            hasRunOnce = true;
+        }
     }
 
     void RepositionCamera(float x, float y)

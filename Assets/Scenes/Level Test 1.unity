@@ -2425,7 +2425,7 @@ MonoBehaviour:
   currentCounterValue: 1
   counterValue: 0
   goalScoreText: {fileID: 2001514953}
-  goalScore: 0
+  goalScore: 5000
 --- !u!1 &457085480
 GameObject:
   m_ObjectHideFlags: 0
@@ -4065,7 +4065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfdc9e9944380d4a9dbf07b8597cb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 2
+  levelToLoad: 3
   dWidth: 0
   dHeight: 0
   dBoardLayout: []
@@ -5681,9 +5681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  level: 0
-  levelJson: {fileID: 4900000, guid: 490513ae60ba0324bae191012668da0f, type: 3}
-  levelData: {fileID: 0}
+  levelData: {fileID: 621003990}
   width: 0
   height: 0
   offSet: 10

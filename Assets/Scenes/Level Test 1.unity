@@ -1496,7 +1496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -139.99998, y: 20}
+  m_AnchoredPosition: {x: -140, y: 20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &297817621
@@ -3254,7 +3254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -121.999985, y: 0}
+  m_AnchoredPosition: {x: -121.99999, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &516936883
@@ -3598,6 +3598,8 @@ MonoBehaviour:
   aspectRatio: 0.625
   padding: 2
   yOffset: 1
+  boardWidth: 0
+  boardHeight: 0
 --- !u!1 &541336117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,7 +3635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120.999985, y: -44}
+  m_AnchoredPosition: {x: -120.99999, y: -44}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &541336119
@@ -4199,7 +4201,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 640107587}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: LoadLevel2
+        m_MethodName: SelectLevelScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7890,6 +7892,7 @@ MonoBehaviour:
   lolipopBomShop: {fileID: 1356273464}
   isClickBuyRowBomb: 0
   isClickBuyColorBomb: 0
+  isWinPanel: 0
 --- !u!114 &1514963562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9310,6 +9313,7 @@ MonoBehaviour:
   lolipopBomShop: {fileID: 1356273464}
   isClickBuyRowBomb: 0
   isClickBuyColorBomb: 0
+  isWinPanel: 0
 --- !u!114 &1806253716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10107,6 +10111,7 @@ MonoBehaviour:
   lolipopBomShop: {fileID: 1356273464}
   isClickBuyRowBomb: 0
   isClickBuyColorBomb: 0
+  isWinPanel: 0
 --- !u!114 &1946257003
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,12 +1,10 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using static UnityEngine.GraphicsBuffer;
+using UnityEditor;
 
 [JsonConverter(typeof(StringEnumConverter))]
 public enum TileKind
@@ -22,7 +20,6 @@ public enum TileKind
 [CreateAssetMenu(menuName = "Assets/CandyCrushScriptable")]
 public class CandyCrushScriptable : ScriptableObject
 {
-
     [Serializable]
     public class GameLevelData
     {
@@ -38,7 +35,7 @@ public class CandyCrushScriptable : ScriptableObject
 
     public List<GameLevelData> levelDataList = new();
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CustomEditor(typeof(CandyCrushScriptable))]
     public class CandyCrushScriptableEditor : Editor
     {
@@ -50,19 +47,18 @@ public class CandyCrushScriptable : ScriptableObject
 
             if (GUILayout.Button("Save"))
             {
-                candyCrushScriptable.Save();
+                SaveScriptable(candyCrushScriptable);
             }
         }
     }
-    #endif
 
-    public void Save()
+    public static void SaveScriptable(CandyCrushScriptable candyCrushScriptable)
     {
-        if (levelDataList != null && levelDataList.Count > 0)
+        if (candyCrushScriptable.levelDataList != null && candyCrushScriptable.levelDataList.Count > 0)
         {
             CandyCrushData candyCrushData = new CandyCrushData
             {
-                levelDataList = levelDataList
+                levelDataList = candyCrushScriptable.levelDataList
             };
 
             JsonSerializerSettings settings = new JsonSerializerSettings
@@ -76,7 +72,7 @@ public class CandyCrushScriptable : ScriptableObject
             {
                 string filePath = "Assets/CandyCrushData.json";
                 System.IO.File.WriteAllText(filePath, jsonData);
-                UnityEditor.EditorUtility.SetDirty(this);
+                UnityEditor.EditorUtility.SetDirty(candyCrushScriptable);
                 UnityEditor.AssetDatabase.SaveAssets();
                 Debug.Log("Level data has been saved.");
             }
@@ -90,4 +86,5 @@ public class CandyCrushScriptable : ScriptableObject
             Debug.LogWarning("Level data list is null or empty. Nothing to save.");
         }
     }
+#endif
 }

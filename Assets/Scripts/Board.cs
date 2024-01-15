@@ -75,17 +75,14 @@ public class Board : MonoBehaviour
 
     int count = 0;
 
+    private bool hasRunOnce = false;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-
-    }
-
-    void Start()
-    {
         GetLevelData();
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
@@ -99,6 +96,11 @@ public class Board : MonoBehaviour
         blankSpaces = new bool[width, height];
         allCandys = new GameObject[width, height];
         Setup();
+    }
+
+    void Start()
+    {
+        
         //currentState = GameState.pause;
     }
 

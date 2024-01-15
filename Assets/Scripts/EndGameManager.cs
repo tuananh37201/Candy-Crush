@@ -38,7 +38,6 @@ public class EndGameManager : MonoBehaviour
             instance = this;
         }
         board = FindObjectOfType<Board>();
-        LoadLevelData();
 
     }
     void Start()
@@ -46,13 +45,6 @@ public class EndGameManager : MonoBehaviour
         SetUpGame();
     }
 
-    private void LoadLevelData()
-    {
-        // Parse JSON data into LevelData
-        currentLevelData = JsonUtility.FromJson<Level_Data>(board.levelJson.ToString());
-        goalScore = currentLevelData._goalScore;
-        currentCounterValue = currentLevelData._move;
-    }
 
     void SetUpGame()
     {

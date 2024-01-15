@@ -55,6 +55,30 @@
         "score2": 1,
         "score3": 1
       }
+    },
+    {
+      "board": {
+        "width": 4,
+        "height": 4,
+        "boardLayout": [
+          {
+            "x": 1,
+            "y": 1,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Blank"
+          }
+        ]
+      },
+      "match": {
+        "move": 1,
+        "score1": 1,
+        "score2": 1,
+        "score3": 1
+      }
     }
   ]
 }

@@ -21,8 +21,8 @@ public class Board : MonoBehaviour
     public GameState currentState = GameState.move;
 
     [Header("Level")]
-    public int level;
-    public TextAsset levelJson; // Drag and drop your JSON file in the inspector
+    //public int level;
+    //public TextAsset levelJson; // Drag and drop your JSON file in the inspector
     public Level_Data levelData;
     
 
@@ -81,18 +81,11 @@ public class Board : MonoBehaviour
             Instance = this;
         }
 
-        if (levelJson != null)
-        {
-            LoadLevelData();
-        }
-        else
-        {
-            Debug.LogError("Level JSON is not assigned!");
-        }
     }
 
     void Start()
     {
+        GetLevelData();
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTiles = new BoardTile[width, height];
         chocolateTiles = new BoardTile[width, height];
@@ -108,37 +101,11 @@ public class Board : MonoBehaviour
         //currentState = GameState.pause;
     }
 
-    private void LoadLevelData()
-    {
-        // Parse JSON data into LevelData
-        // levelData = JsonUtility.FromJson<Level_Data>(levelJson.ToString());
-
-        // Set width, height, and boardLayout
-        // width = gameLevelData.dWidth;
-        // height = gameLevelData.dHeight;
-
-        // foreach (TileKind tilekind in gameLevelData.dboardLayout.tileKind)
-        // {
-        //     string _str = tile.tileKindName;
-        //     TileKind tileKind = ParseEnum(_str, TileKind.Blank);
-        //     tile.tileKind = tileKind;
-        //     Debug.Log(tile.tileKind);
-        // }
-        // boardLayout = gameLevelData.dBoardLayout;
-
-        // Debug.Log(levelData);
-    }
-
-    public static T ParseEnum<T>(string value, T defaultValue)
-    {
-        try
-        {
-            return (T)Enum.Parse(typeof(T), value, true);
-        }
-        catch (ArgumentException)
-        {
-            return defaultValue;
-        }
+    // GetLevelData
+    private void GetLevelData(){
+        width = levelData.dWidth;
+        height = levelData.dHeight;
+        boardLayout = levelData.dBoardLayout;
     }
 
     public void GenerateBlankSpace()

@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class Level_Data : MonoBehaviour
 {
     [Header("Enter number of level:")]
-    public int levelToLoad; 
+    public int levelToLoad;
 
     [Header("Board")]
     public int dWidth;

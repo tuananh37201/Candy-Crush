@@ -16,28 +16,22 @@
     },
     {
       "board": {
-        "width": 4,
-        "height": 4,
-        "boardLayout": [
-          {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Blank"
-          }
-        ]
+        "width": 5,
+        "height": 5,
+        "boardLayout": []
       },
       "match": {
         "move": 15,
         "score1": 200,
         "score2": 500,
         "score3": 1000,
-        "goalScore": 1
+        "goalScore": 1000
       }
     },
     {
       "board": {
-        "width": 6,
-        "height": 6,
+        "width": 5,
+        "height": 5,
         "boardLayout": [
           {
             "x": 2,
@@ -51,32 +45,21 @@
         "score1": 300,
         "score2": 600,
         "score3": 1200,
-        "goalScore": 1
+        "goalScore": 1200
       }
     },
     {
       "board": {
         "width": 7,
         "height": 7,
-        "boardLayout": [
-          {
-            "x": 2,
-            "y": 2,
-            "tileKind": "Blank"
-          },
-          {
-            "x": 3,
-            "y": 2,
-            "tileKind": "Blank"
-          }
-        ]
+        "boardLayout": []
       },
       "match": {
         "move": 12,
         "score1": 400,
         "score2": 1000,
-        "score3": 200,
-        "goalScore": 1
+        "score3": 2000,
+        "goalScore": 2000
       }
     },
     {
@@ -87,12 +70,12 @@
           {
             "x": 2,
             "y": 2,
-            "tileKind": "Blank"
+            "tileKind": "Breakable"
           },
           {
             "x": 3,
             "y": 2,
-            "tileKind": "Blank"
+            "tileKind": "Breakable"
           }
         ]
       },
@@ -100,8 +83,8 @@
         "move": 12,
         "score1": 400,
         "score2": 1000,
-        "score3": 200,
-        "goalScore": 200
+        "score3": 2000,
+        "goalScore": 2000
       }
     },
     {
@@ -110,14 +93,39 @@
         "height": 7,
         "boardLayout": [
           {
+            "x": 0,
+            "y": 3,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 1,
+            "y": 3,
+            "tileKind": "Breakable"
+          },
+          {
             "x": 2,
-            "y": 2,
-            "tileKind": "Blank"
+            "y": 3,
+            "tileKind": "Breakable"
           },
           {
             "x": 3,
-            "y": 2,
-            "tileKind": "Blank"
+            "y": 3,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 4,
+            "y": 3,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 6,
+            "y": 3,
+            "tileKind": "Breakable"
           }
         ]
       },
@@ -126,7 +134,7 @@
         "score1": 300,
         "score2": 750,
         "score3": 1500,
-        "goalScore": 1
+        "goalScore": 1500
       }
     }
   ]

@@ -13,6 +13,9 @@ public class LoadMapManager : MonoBehaviour
 
     public void LoadMap()
     {
-        SceneManager.LoadScene("Level Test 1");
+        if(selectedMapIndex <= LevelButton.Instance.nextLevel)
+        {
+            SceneManager.LoadScene("Level Test 1");
+        }
     }
 }

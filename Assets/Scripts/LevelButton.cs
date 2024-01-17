@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class LevelButton : MonoBehaviour
 {
+    public static LevelButton Instance;
     [SerializeField] private Sprite currentButtonSprite;
     [SerializeField] private Sprite playedButtonSprite;
     [SerializeField] private Sprite lockedButtonSprite;
@@ -17,8 +18,9 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private GameObject shineAnimation;
 
     public int numLevel;
+    public int nextLevel;
     // public UnityEvent<int> OnButtonPressed;
- 
+
     // public void OnButtonClicked()
     // {
     //     OnButtonPressed.Invoke(numLevel);
@@ -38,17 +40,17 @@ public class LevelButton : MonoBehaviour
         Assert.IsNotNull(star2);
         Assert.IsNotNull(star3);
         Assert.IsNotNull(shineAnimation);
+        Instance = this;
     }
 
     private void Start()
     {
         numLevelTextBlue.text = numLevel.ToString();
         numLevelTextPink.text = numLevel.ToString();
-        var nextLevel = PlayerPrefs.GetInt("next_level");
-        if (nextLevel == 0)
-        {
-            nextLevel = 5;
-        }
+        nextLevel = PlayerPrefs.GetInt("next_level", 1);
+        //PlayerPrefs.DeleteKey("next_level");
+        //PlayerPrefs.Save();
+
 
         if (numLevel == nextLevel)
         {
@@ -91,7 +93,26 @@ public class LevelButton : MonoBehaviour
             star2.SetActive(false);
             star3.SetActive(false);
         }
+        
     }
+
+    private void Update()
+    {
+        //if (nextLevel == 1)
+        //{
+        //if (ButtonManager.instance.isEnableNextMap == true)
+        //{
+        //    nextLevel = 4;
+        //    PlayerPrefs.SetInt("next_level", nextLevel);
+        //    PlayerPrefs.Save();
+        //}
+        //}
+    }
+
+    //private void Update()
+    //{
+    //    if (GameObjectLV1.Instance.isClickNextLevel == true) nextLevel = 4;
+    //}
 
     /// <summary>
     /// Called when the button is pressed.

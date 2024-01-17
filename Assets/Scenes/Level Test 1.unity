@@ -4077,7 +4077,6 @@ MonoBehaviour:
   _move: 0
   dGoalScore: 0
   jsonDataFile: {fileID: 4900000, guid: 490513ae60ba0324bae191012668da0f, type: 3}
-  jsonFilePath: Assets/CandyCrushData.json
 --- !u!1 &640107580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4262,6 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd636b8226c7f8346a80ddc363fe1793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnableNextMap: 0
 --- !u!1 &644026185
 GameObject:
   m_ObjectHideFlags: 0

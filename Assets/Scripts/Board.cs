@@ -231,6 +231,12 @@ public class Board : MonoBehaviour
                 }
             }
         }
+
+        if (IsDeadlocked())
+        {
+            StartCoroutine(ShuffleBoard());
+        }
+
     }
 
     private bool MatchesAt(int column, int row, GameObject piece)

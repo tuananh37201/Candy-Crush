@@ -93,20 +93,28 @@ public class EndGameManager : MonoBehaviour
         {
             FindObjectOfType<PopupSetting>().PanelFadeIn();
             GameObjectLV1.Instance.WinPanelAppear();
-            setWinGame = true;
             FindObjectOfType<SoundManager>().audioSource.Stop();
             FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().winSound);
             CreateJsonFile();
+            if(LevelButton.Instance.nextLevel == Level_Data.Instance.levelToLoad)
+            {
+                PlayerPrefs.SetInt("next_level", Level_Data.Instance.levelToLoad += 1);
+            }
+            //PlayerPrefs.DeleteKey("next_level");
+            //LevelButton.Instance.nextLevel = PlayerPrefs.GetInt("new next_level", Level_Data.Instance.levelToLoad += 1);
+            PlayerPrefs.Save();
+            setWinGame = true;
         }
     }
 
+
     public void CreateJsonFile()
     {
-        string fileName = "vipro.json";
-        string jsonData = JsonUtility.ToJson(FindObjectOfType<ScoreManager>().score);
-        string filePath = "Assets/Resources" + "/" + fileName;
-        File.WriteAllText(filePath, jsonData);
-        Debug.Log("Data saved to: " + filePath);
+        //string fileName = "vipro.json";
+        //string jsonData = JsonUtility.ToJson(FindObjectOfType<ScoreManager>().score);
+        //string filePath = "Assets/Resources" + "/" + fileName;
+        //File.WriteAllText(filePath, jsonData);
+        //Debug.Log("Data saved to: " + filePath);
     }
 
     void Update()

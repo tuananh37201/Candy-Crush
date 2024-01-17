@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelDataList:
   - board:
-      width: 6
-      height: 6
+      width: 5
+      height: 5
       boardLayout: []
     match:
       move: 0
@@ -24,15 +24,18 @@ MonoBehaviour:
       score3: 0
       goalScore: 500
   - board:
-      width: 5
-      height: 5
-      boardLayout: []
+      width: 4
+      height: 4
+      boardLayout:
+      - x: 1
+        y: 1
+        tileKind: 0
     match:
       move: 15
       score1: 200
       score2: 500
       score3: 1000
-      goalScore: 1000
+      goalScore: 1
   - board:
       width: 6
       height: 6
@@ -45,7 +48,7 @@ MonoBehaviour:
       score1: 300
       score2: 600
       score3: 1200
-      goalScore: 1200
+      goalScore: 1
   - board:
       width: 7
       height: 7
@@ -61,7 +64,7 @@ MonoBehaviour:
       score1: 400
       score2: 1000
       score3: 200
-      goalScore: 2000
+      goalScore: 1
   - board:
       width: 6
       height: 6
@@ -77,7 +80,7 @@ MonoBehaviour:
       score1: 400
       score2: 1000
       score3: 200
-      goalScore: 2000
+      goalScore: 200
   - board:
       width: 7
       height: 7
@@ -93,4 +96,4 @@ MonoBehaviour:
       score1: 300
       score2: 750
       score3: 1500
-      goalScore: 1500
+      goalScore: 1

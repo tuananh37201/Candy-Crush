@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class LoadMapManager : MonoBehaviour
 {
     public static LoadMapManager instance;
-    public int selectedMapIndex = 1;
+    public int selectedMapIndex;
 
     private void Awake()
     {

@@ -5,6 +5,7 @@ public class ButtonManager : MonoBehaviour
 {
     public static ButtonManager instance;
     public bool isEnableNextMap;
+    public int mapId;
 
     private void Awake()
     {
@@ -27,6 +28,26 @@ public class ButtonManager : MonoBehaviour
     //     Debug.Log("LoadLevel" + level);
     //     SceneManager.LoadScene("Level" + level);
     // }
+
+    public void SetMapId()
+    {
+        if (mapId == 1)
+        {
+            LoadMapManager.instance.selectedMapIndex = 1;
+        }
+        else if (mapId == 2)
+        {
+            LoadMapManager.instance.selectedMapIndex = 2;
+        }
+        else if (mapId == 3)
+        {
+            LoadMapManager.instance.selectedMapIndex = 3;
+        }
+        else if (mapId == 4)
+        {
+            LoadMapManager.instance.selectedMapIndex = 4;
+        }
+    }
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");

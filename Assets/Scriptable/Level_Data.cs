@@ -30,7 +30,7 @@ public class Level_Data : MonoBehaviour
         levelToLoad = LoadMapManager.instance.selectedMapIndex;
         LoadData();
     }
-    void Start()
+    void Start()    
     {
         
     }

@@ -13,7 +13,8 @@ public class LoadMapManager : MonoBehaviour
 
     public void LoadMap()
     {
-        if(selectedMapIndex <= LevelButton.Instance.nextLevel)
+        if(selectedMapIndex <= LevelButton.Instance.nextLevel && 
+           HeartAmountManager.instance.heartAmount >0)
         {
             SceneManager.LoadScene("Level Test 1");
         }

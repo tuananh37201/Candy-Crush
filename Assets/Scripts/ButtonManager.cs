@@ -48,5 +48,6 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefs.DeleteKey("BombAmount");
         PlayerPrefs.DeleteKey("BombAmount");
         PlayerPrefs.DeleteKey("ExtraStepAmount");
+        PlayerPrefs.DeleteKey("HeartAmount");
     }
 }

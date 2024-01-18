@@ -108,6 +108,8 @@ public class EndGameManager : MonoBehaviour
             setEndGame = true;
             FindObjectOfType<SoundManager>().audioSource.Stop();
             FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().loseSound);
+            PlayerPrefs.SetInt("HeartAmount", HeartAmountManager.instance.heartAmount -= 1);
+            PlayerPrefs.Save();
         }
     }
     public void SetWinGame()
@@ -125,6 +127,7 @@ public class EndGameManager : MonoBehaviour
             }
             //PlayerPrefs.DeleteKey("next_level");
             //LevelButton.Instance.nextLevel = PlayerPrefs.GetInt("new next_level", Level_Data.Instance.levelToLoad += 1);
+            PlayerPrefs.SetInt("HeartAmount", HeartAmountManager.instance.heartAmount += 1);
             PlayerPrefs.Save();
             setWinGame = true;
         }

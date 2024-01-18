@@ -26,7 +26,9 @@ public class ItemPriceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        bombAmount = PlayerPrefs.GetInt("BombAmount", 0);
+        extraStepAmount = PlayerPrefs.GetInt("ExtraStepAmount", 0);
+        colorBombAmount = PlayerPrefs.GetInt("ColorBombAmount", 0);
     }
 
     // Update is called once per frame

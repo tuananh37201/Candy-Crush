@@ -56,7 +56,9 @@ public class GameObjectLV1 : MonoBehaviour {
         clickBuyRowBombCount++;
         if (clickBuyRowBombCount >= 1 && ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.bombPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.bombPrice;
-            ItemPriceManager.Instance.bombAmount += 1;
+            int amount = ItemPriceManager.Instance.bombAmount += 1;
+            PlayerPrefs.SetInt("BombAmount", amount);
+            PlayerPrefs.Save();
             //isClickBuyRowBomb = true;
             //isClickBuyColorBomb = false;
         }
@@ -73,8 +75,9 @@ public class GameObjectLV1 : MonoBehaviour {
     public void BuyExtraStep() {
         if(ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.extraStepPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.extraStepPrice;
-            ItemPriceManager.Instance.extraStepAmount += 1;
-            
+            int amount = ItemPriceManager.Instance.extraStepAmount += 1;
+            PlayerPrefs.SetInt("ExtraStepAmount", amount);
+            PlayerPrefs.Save();
         }
     }
 
@@ -82,7 +85,9 @@ public class GameObjectLV1 : MonoBehaviour {
         if(ItemPriceManager.Instance.extraStepAmount >= 1) {
             Level_Data.Instance.dMove += 1;
             EndGameManager.instance.counter.text = "" + Level_Data.Instance.dGoalScore;
-            ItemPriceManager.Instance.extraStepAmount -= 1;
+            int amount = ItemPriceManager.Instance.extraStepAmount -= 1;
+            PlayerPrefs.GetInt("ExtraStepAmount", amount);
+            PlayerPrefs.Save();
         }
     }
     
@@ -90,7 +95,9 @@ public class GameObjectLV1 : MonoBehaviour {
         clickBuyColorBombCount++;
         if (clickBuyColorBombCount >= 1 && ItemPriceManager.Instance.myMoney >= ItemPriceManager.Instance.colorBombPrice) {
             ItemPriceManager.Instance.myMoney -= ItemPriceManager.Instance.colorBombPrice;
-            ItemPriceManager.Instance.colorBombAmount += 1;
+            int amount = ItemPriceManager.Instance.colorBombAmount += 1;
+            PlayerPrefs.SetInt("ColorBombAmount", amount);
+            PlayerPrefs.Save();
             //isClickBuyColorBomb = true;
             //isClickBuyRowBomb = false;
         }

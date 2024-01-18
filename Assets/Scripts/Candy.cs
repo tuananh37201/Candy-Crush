@@ -74,7 +74,9 @@ public class Candy : MonoBehaviour
                 isRowBomb = true;
                 GameObject arrow = Instantiate(rowSugar, transform.position, Quaternion.identity);
                 arrow.transform.parent = this.transform;
-                ItemPriceManager.Instance.bombAmount -= 1;
+                int amount = ItemPriceManager.Instance.bombAmount -= 1;
+                PlayerPrefs.SetInt("BombAmount", amount);
+                PlayerPrefs.Save();
             }
         }
         if (isClickColorBomb && Input.GetMouseButtonDown(0))
@@ -85,7 +87,9 @@ public class Candy : MonoBehaviour
                 isColorBomb = true;
                 GameObject arrow = Instantiate(colorBomb, transform.position, Quaternion.identity);
                 arrow.transform.parent = this.transform;
-                ItemPriceManager.Instance.colorBombAmount -= 1;
+                int amount = ItemPriceManager.Instance.colorBombAmount -= 1;
+                PlayerPrefs.SetInt("ColorBombAmount", amount);
+                PlayerPrefs.Save();
             }
         }
     }

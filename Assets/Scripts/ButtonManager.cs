@@ -44,5 +44,9 @@ public class ButtonManager : MonoBehaviour
     public void DeleteData()
     {
         PlayerPrefs.DeleteKey("next_level");
+        PlayerPrefs.DeleteKey("ColorBombAmount");
+        PlayerPrefs.DeleteKey("BombAmount");
+        PlayerPrefs.DeleteKey("BombAmount");
+        PlayerPrefs.DeleteKey("ExtraStepAmount");
     }
 }

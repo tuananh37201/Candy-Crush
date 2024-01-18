@@ -6,4 +6,5 @@ public class MatchData
     public int score2;
     public int score3;
     public int goalScore;
+    public int specialBlockAmount;
 }

@@ -23,39 +23,49 @@ MonoBehaviour:
       score2: 0
       score3: 0
       goalScore: 500
+      specialBlockAmount: 10
   - board:
       width: 5
       height: 5
-      boardLayout: []
+      boardLayout:
+      - x: 0
+        y: 0
+        tileKind: 2
     match:
       move: 15
       score1: 200
       score2: 500
       score3: 1000
       goalScore: 1000
+      specialBlockAmount: 1
   - board:
       width: 5
       height: 5
       boardLayout:
       - x: 2
         y: 2
-        tileKind: 0
+        tileKind: 1
     match:
       move: 10
       score1: 300
       score2: 600
       score3: 1200
       goalScore: 1200
+      specialBlockAmount: 1
   - board:
       width: 7
       height: 7
-      boardLayout: []
+      boardLayout:
+      - x: 2
+        y: 2
+        tileKind: 4
     match:
       move: 12
       score1: 400
       score2: 1000
       score3: 2000
       goalScore: 2000
+      specialBlockAmount: 1
   - board:
       width: 6
       height: 6
@@ -72,6 +82,7 @@ MonoBehaviour:
       score2: 1000
       score3: 2000
       goalScore: 2000
+      specialBlockAmount: 0
   - board:
       width: 7
       height: 7
@@ -103,3 +114,4 @@ MonoBehaviour:
       score2: 750
       score3: 1500
       goalScore: 1500
+      specialBlockAmount: 20

@@ -11,21 +11,29 @@
         "score1": 0,
         "score2": 0,
         "score3": 0,
-        "goalScore": 500
+        "goalScore": 500,
+        "specialBlockAmount": 10
       }
     },
     {
       "board": {
         "width": 5,
         "height": 5,
-        "boardLayout": []
+        "boardLayout": [
+          {
+            "x": 0,
+            "y": 0,
+            "tileKind": "Chocolate"
+          }
+        ]
       },
       "match": {
         "move": 15,
         "score1": 200,
         "score2": 500,
         "score3": 1000,
-        "goalScore": 1000
+        "goalScore": 1000,
+        "specialBlockAmount": 1
       }
     },
     {
@@ -36,7 +44,7 @@
           {
             "x": 2,
             "y": 2,
-            "tileKind": "Blank"
+            "tileKind": "Breakable"
           }
         ]
       },
@@ -45,21 +53,29 @@
         "score1": 300,
         "score2": 600,
         "score3": 1200,
-        "goalScore": 1200
+        "goalScore": 1200,
+        "specialBlockAmount": 1
       }
     },
     {
       "board": {
         "width": 7,
         "height": 7,
-        "boardLayout": []
+        "boardLayout": [
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Biscuit"
+          }
+        ]
       },
       "match": {
         "move": 12,
         "score1": 400,
         "score2": 1000,
         "score3": 2000,
-        "goalScore": 2000
+        "goalScore": 2000,
+        "specialBlockAmount": 1
       }
     },
     {
@@ -84,7 +100,8 @@
         "score1": 400,
         "score2": 1000,
         "score3": 2000,
-        "goalScore": 2000
+        "goalScore": 2000,
+        "specialBlockAmount": 0
       }
     },
     {
@@ -134,7 +151,8 @@
         "score1": 300,
         "score2": 750,
         "score3": 1500,
-        "goalScore": 1500
+        "goalScore": 1500,
+        "specialBlockAmount": 20
       }
     }
   ]

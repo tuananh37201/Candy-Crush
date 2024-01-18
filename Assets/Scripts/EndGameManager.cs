@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.IO;
+using System.Linq;
 
 public enum GameType
 {
@@ -27,8 +28,12 @@ public class EndGameManager : MonoBehaviour
     private bool setWinGame = false;
     public TextMeshProUGUI goalScoreText;
     public int goalScore;
+    public TextMeshProUGUI specialBlockAmountText;
+    public int specialBlockAmount;
+    public GameObject goalScoreObject, chocolateIcon, iceIcon, biscuitIcon, specialBlockAmountIcon;
     private Level_Data currentLevelData; // Variable to hold the current level data
     //private string filePath = "Assets\\Resources";
+    public TileKind tileKind;
 
     private void Awake()
     {
@@ -41,7 +46,9 @@ public class EndGameManager : MonoBehaviour
     }
     void Start()
     {
+        CheckTileTypes();
         SetUpGame();
+        SetIconsBasedOnTileKind();
     }
 
 
@@ -61,9 +68,28 @@ public class EndGameManager : MonoBehaviour
         }
         counter.text = Level_Data.Instance.dMove.ToString();
     }
+    void CheckTileTypes()
+    {
+        bool isChocolate = false;
+        bool isBreakable = false;
+        bool isBitcuit = false;
+        isChocolate = board.boardLayout.Any(tileType => tileType.tileKind == TileKind.Chocolate);
+        isBreakable = board.boardLayout.Any(tileType => tileType.tileKind == TileKind.Breakable);
+        isBitcuit = board.boardLayout.Any(tileType => tileType.tileKind == TileKind.Biscuit);
+        tileKind = isBreakable ? TileKind.Breakable : (isChocolate ? TileKind.Chocolate : (isBitcuit ? TileKind.Biscuit : TileKind.Normal));
+    }
+    void SetIconsBasedOnTileKind()
+    {
+        chocolateIcon.SetActive(tileKind == TileKind.Chocolate);
+        iceIcon.SetActive(tileKind == TileKind.Breakable);
+        goalScoreObject.SetActive(tileKind == TileKind.Normal);
+        biscuitIcon.SetActive(tileKind == TileKind.Biscuit);
+        specialBlockAmountIcon.SetActive(tileKind == TileKind.Chocolate ||
+                                         tileKind == TileKind.Breakable ||
+                                         tileKind == TileKind.Biscuit);
+    }
     public void DecreaseCountervalue()
     {
-        //if (board.currentState != GameState.pause) {
         Level_Data.Instance.dMove--;
         counter.text = "" + Level_Data.Instance.dMove;
         if (Level_Data.Instance.dMove == 0)
@@ -71,10 +97,8 @@ public class EndGameManager : MonoBehaviour
             board.currentState = GameState.pause;
             Level_Data.Instance.dMove = 0;
             counter.text = "" + Level_Data.Instance.dMove;
-            //}
         }
     }
-
     public void SetEndGame()
     {
         if (!setEndGame)
@@ -86,7 +110,6 @@ public class EndGameManager : MonoBehaviour
             FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().loseSound);
         }
     }
-
     public void SetWinGame()
     {
         if (!setWinGame)
@@ -96,7 +119,7 @@ public class EndGameManager : MonoBehaviour
             FindObjectOfType<SoundManager>().audioSource.Stop();
             FindObjectOfType<SoundManager>().audioSource.PlayOneShot(FindObjectOfType<SoundManager>().winSound);
             CreateJsonFile();
-            if(LevelButton.Instance.nextLevel == Level_Data.Instance.levelToLoad)
+            if (LevelButton.Instance.nextLevel == Level_Data.Instance.levelToLoad)
             {
                 PlayerPrefs.SetInt("next_level", Level_Data.Instance.levelToLoad += 1);
             }
@@ -106,8 +129,6 @@ public class EndGameManager : MonoBehaviour
             setWinGame = true;
         }
     }
-
-
     public void CreateJsonFile()
     {
         //string fileName = "vipro.json";
@@ -116,9 +137,10 @@ public class EndGameManager : MonoBehaviour
         //File.WriteAllText(filePath, jsonData);
         //Debug.Log("Data saved to: " + filePath);
     }
-
     void Update()
     {
+        //GameObject choco = GameObject.FindGameObjectWithTag("Chocolate");
+
         if (Level_Data.Instance.dMove == 0)
         {
             FindObjectOfType<Board>().currentState = GameState.pause;
@@ -131,5 +153,6 @@ public class EndGameManager : MonoBehaviour
         }
         goalScoreText.text = Level_Data.Instance.dGoalScore.ToString();
         counter.text = Level_Data.Instance.dMove.ToString();
+        specialBlockAmountText.text = Level_Data.Instance.dSpecialBlockAmount.ToString();
     }
 }

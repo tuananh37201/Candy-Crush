@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
@@ -31,22 +32,11 @@ public class ButtonManager : MonoBehaviour
 
     public void SetMapId()
     {
-        if (mapId == 1)
-        {
-            LoadMapManager.instance.selectedMapIndex = 1;
-        }
-        else if (mapId == 2)
-        {
-            LoadMapManager.instance.selectedMapIndex = 2;
-        }
-        else if (mapId == 3)
-        {
-            LoadMapManager.instance.selectedMapIndex = 3;
-        }
-        else if (mapId == 4)
-        {
-            LoadMapManager.instance.selectedMapIndex = 4;
-        }
+        // Sử dụng danh sách ánh xạ giữa mapId và selectedMapIndex
+        List<int> selectedMapIndices = new List<int> { 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15};
+        // Kiểm tra xem mapId có nằm trong danh sách không
+        if (mapId >= 1 && mapId <= selectedMapIndices.Count)
+            LoadMapManager.instance.selectedMapIndex = selectedMapIndices[mapId - 1];
     }
     public void BackToMainMenu()
     {

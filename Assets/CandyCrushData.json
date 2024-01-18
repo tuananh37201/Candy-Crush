@@ -19,13 +19,7 @@
       "board": {
         "width": 5,
         "height": 5,
-        "boardLayout": [
-          {
-            "x": 0,
-            "y": 0,
-            "tileKind": "Chocolate"
-          }
-        ]
+        "boardLayout": []
       },
       "match": {
         "move": 15,
@@ -38,13 +32,18 @@
     },
     {
       "board": {
-        "width": 5,
-        "height": 5,
+        "width": 4,
+        "height": 7,
         "boardLayout": [
           {
-            "x": 2,
-            "y": 2,
-            "tileKind": "Breakable"
+            "x": 0,
+            "y": 0,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 4,
+            "y": 7,
+            "tileKind": "Blank"
           }
         ]
       },
@@ -61,13 +60,7 @@
       "board": {
         "width": 7,
         "height": 7,
-        "boardLayout": [
-          {
-            "x": 2,
-            "y": 2,
-            "tileKind": "Biscuit"
-          }
-        ]
+        "boardLayout": []
       },
       "match": {
         "move": 12,
@@ -80,18 +73,18 @@
     },
     {
       "board": {
-        "width": 6,
+        "width": 3,
         "height": 6,
         "boardLayout": [
           {
-            "x": 2,
-            "y": 2,
-            "tileKind": "Breakable"
+            "x": 1,
+            "y": 3,
+            "tileKind": "Blank"
           },
           {
-            "x": 3,
+            "x": 1,
             "y": 2,
-            "tileKind": "Breakable"
+            "tileKind": "Blank"
           }
         ]
       },
@@ -106,24 +99,9 @@
     },
     {
       "board": {
-        "width": 7,
-        "height": 7,
+        "width": 6,
+        "height": 6,
         "boardLayout": [
-          {
-            "x": 0,
-            "y": 3,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 1,
-            "y": 3,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 2,
-            "y": 3,
-            "tileKind": "Breakable"
-          },
           {
             "x": 3,
             "y": 3,
@@ -135,14 +113,472 @@
             "tileKind": "Breakable"
           },
           {
-            "x": 5,
+            "x": 3,
+            "y": 4,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "tileKind": "Breakable"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 5,
+        "height": 5,
+        "boardLayout": [
+          {
+            "x": 0,
+            "y": 0,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 0,
+            "y": 2,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 0,
+            "y": 4,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 1,
+            "y": 1,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 1,
             "y": 3,
             "tileKind": "Breakable"
           },
           {
-            "x": 6,
+            "x": 2,
+            "y": 0,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 3,
+            "y": 1,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 3,
             "y": 3,
             "tileKind": "Breakable"
+          },
+          {
+            "x": 4,
+            "y": 0,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "tileKind": "Breakable"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "tileKind": "Breakable"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 7,
+        "height": 10,
+        "boardLayout": []
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 7,
+        "height": 7,
+        "boardLayout": [
+          {
+            "x": 0,
+            "y": 0,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 0,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 6,
+            "y": 0,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 6,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 3,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 5,
+            "tileKind": "Blank"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 7,
+        "height": 7,
+        "boardLayout": [
+          {
+            "x": 6,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 5,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 4,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 3,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 1,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 0,
+            "y": 6,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 6,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 5,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 4,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 3,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 1,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 0,
+            "y": 5,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 6,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 5,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 4,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 1,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 0,
+            "y": 4,
+            "tileKind": "Blank"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 6,
+        "height": 6,
+        "boardLayout": [
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 3,
+            "y": 2,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 2,
+            "y": 3,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "tileKind": "Chocolate"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 6,
+        "height": 6,
+        "boardLayout": [
+          {
+            "x": 5,
+            "y": 5,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 4,
+            "y": 5,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 3,
+            "y": 5,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 2,
+            "y": 5,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 1,
+            "y": 5,
+            "tileKind": "Chocolate"
+          },
+          {
+            "x": 0,
+            "y": 5,
+            "tileKind": "Chocolate"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 4,
+        "height": 9,
+        "boardLayout": [
+          {
+            "x": 0,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 1,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 2,
+            "y": 4,
+            "tileKind": "Blank"
+          },
+          {
+            "x": 3,
+            "y": 4,
+            "tileKind": "Blank"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 5,
+        "height": 5,
+        "boardLayout": [
+          {
+            "x": 2,
+            "y": 2,
+            "tileKind": "Biscuit"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 20
+      }
+    },
+    {
+      "board": {
+        "width": 7,
+        "height": 6,
+        "boardLayout": [
+          {
+            "x": 6,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 5,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 4,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 3,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 2,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 1,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 0,
+            "y": 5,
+            "tileKind": "Biscuit"
           }
         ]
       },

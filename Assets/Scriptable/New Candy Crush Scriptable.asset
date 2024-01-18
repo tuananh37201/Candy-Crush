@@ -27,10 +27,7 @@ MonoBehaviour:
   - board:
       width: 5
       height: 5
-      boardLayout:
-      - x: 0
-        y: 0
-        tileKind: 2
+      boardLayout: []
     match:
       move: 15
       score1: 200
@@ -39,12 +36,15 @@ MonoBehaviour:
       goalScore: 1000
       specialBlockAmount: 1
   - board:
-      width: 5
-      height: 5
+      width: 4
+      height: 7
       boardLayout:
-      - x: 2
-        y: 2
-        tileKind: 1
+      - x: 0
+        y: 0
+        tileKind: 0
+      - x: 4
+        y: 7
+        tileKind: 0
     match:
       move: 10
       score1: 300
@@ -55,10 +55,7 @@ MonoBehaviour:
   - board:
       width: 7
       height: 7
-      boardLayout:
-      - x: 2
-        y: 2
-        tileKind: 4
+      boardLayout: []
     match:
       move: 12
       score1: 400
@@ -67,15 +64,15 @@ MonoBehaviour:
       goalScore: 2000
       specialBlockAmount: 1
   - board:
-      width: 6
+      width: 3
       height: 6
       boardLayout:
-      - x: 2
+      - x: 1
+        y: 3
+        tileKind: 0
+      - x: 1
         y: 2
-        tileKind: 1
-      - x: 3
-        y: 2
-        tileKind: 1
+        tileKind: 0
     match:
       move: 12
       score1: 400
@@ -84,30 +81,309 @@ MonoBehaviour:
       goalScore: 2000
       specialBlockAmount: 0
   - board:
-      width: 7
-      height: 7
+      width: 6
+      height: 6
       boardLayout:
-      - x: 0
-        y: 3
-        tileKind: 1
-      - x: 1
-        y: 3
-        tileKind: 1
-      - x: 2
-        y: 3
-        tileKind: 1
       - x: 3
         y: 3
         tileKind: 1
       - x: 4
         y: 3
         tileKind: 1
-      - x: 5
+      - x: 3
+        y: 4
+        tileKind: 1
+      - x: 4
+        y: 4
+        tileKind: 1
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 5
+      height: 5
+      boardLayout:
+      - x: 0
+        y: 0
+        tileKind: 1
+      - x: 0
+        y: 2
+        tileKind: 1
+      - x: 0
+        y: 4
+        tileKind: 1
+      - x: 1
+        y: 1
+        tileKind: 1
+      - x: 1
         y: 3
         tileKind: 1
+      - x: 2
+        y: 0
+        tileKind: 1
+      - x: 2
+        y: 2
+        tileKind: 1
+      - x: 2
+        y: 4
+        tileKind: 1
+      - x: 3
+        y: 1
+        tileKind: 1
+      - x: 3
+        y: 3
+        tileKind: 1
+      - x: 4
+        y: 0
+        tileKind: 1
+      - x: 4
+        y: 2
+        tileKind: 1
+      - x: 4
+        y: 4
+        tileKind: 1
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 7
+      height: 10
+      boardLayout: []
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 7
+      height: 7
+      boardLayout:
+      - x: 0
+        y: 0
+        tileKind: 0
+      - x: 0
+        y: 6
+        tileKind: 0
       - x: 6
+        y: 0
+        tileKind: 0
+      - x: 6
+        y: 6
+        tileKind: 0
+      - x: 2
         y: 3
-        tileKind: 1
+        tileKind: 0
+      - x: 2
+        y: 4
+        tileKind: 0
+      - x: 2
+        y: 5
+        tileKind: 0
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 7
+      height: 7
+      boardLayout:
+      - x: 6
+        y: 6
+        tileKind: 0
+      - x: 5
+        y: 6
+        tileKind: 0
+      - x: 4
+        y: 6
+        tileKind: 0
+      - x: 3
+        y: 6
+        tileKind: 0
+      - x: 2
+        y: 6
+        tileKind: 0
+      - x: 1
+        y: 6
+        tileKind: 0
+      - x: 0
+        y: 6
+        tileKind: 0
+      - x: 6
+        y: 5
+        tileKind: 0
+      - x: 5
+        y: 5
+        tileKind: 0
+      - x: 4
+        y: 5
+        tileKind: 0
+      - x: 3
+        y: 5
+        tileKind: 0
+      - x: 2
+        y: 5
+        tileKind: 0
+      - x: 1
+        y: 5
+        tileKind: 0
+      - x: 0
+        y: 5
+        tileKind: 0
+      - x: 6
+        y: 4
+        tileKind: 0
+      - x: 5
+        y: 4
+        tileKind: 0
+      - x: 4
+        y: 4
+        tileKind: 0
+      - x: 3
+        y: 4
+        tileKind: 0
+      - x: 2
+        y: 4
+        tileKind: 0
+      - x: 1
+        y: 4
+        tileKind: 0
+      - x: 0
+        y: 4
+        tileKind: 0
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 6
+      height: 6
+      boardLayout:
+      - x: 2
+        y: 2
+        tileKind: 2
+      - x: 3
+        y: 2
+        tileKind: 2
+      - x: 2
+        y: 3
+        tileKind: 2
+      - x: 3
+        y: 3
+        tileKind: 2
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 6
+      height: 6
+      boardLayout:
+      - x: 5
+        y: 5
+        tileKind: 2
+      - x: 4
+        y: 5
+        tileKind: 2
+      - x: 3
+        y: 5
+        tileKind: 2
+      - x: 2
+        y: 5
+        tileKind: 2
+      - x: 1
+        y: 5
+        tileKind: 2
+      - x: 0
+        y: 5
+        tileKind: 2
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 4
+      height: 9
+      boardLayout:
+      - x: 0
+        y: 4
+        tileKind: 0
+      - x: 1
+        y: 4
+        tileKind: 0
+      - x: 2
+        y: 4
+        tileKind: 0
+      - x: 3
+        y: 4
+        tileKind: 0
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 5
+      height: 5
+      boardLayout:
+      - x: 2
+        y: 2
+        tileKind: 4
+    match:
+      move: 5
+      score1: 300
+      score2: 750
+      score3: 1500
+      goalScore: 1500
+      specialBlockAmount: 20
+  - board:
+      width: 7
+      height: 6
+      boardLayout:
+      - x: 6
+        y: 5
+        tileKind: 4
+      - x: 5
+        y: 5
+        tileKind: 4
+      - x: 4
+        y: 5
+        tileKind: 4
+      - x: 3
+        y: 5
+        tileKind: 4
+      - x: 2
+        y: 5
+        tileKind: 4
+      - x: 1
+        y: 5
+        tileKind: 4
+      - x: 0
+        y: 5
+        tileKind: 4
     match:
       move: 5
       score1: 300

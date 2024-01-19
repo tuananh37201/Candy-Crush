@@ -99,9 +99,11 @@ public class FindMatches : MonoBehaviour
         AddToListAndMatch(candy3);
     }
 
-    private IEnumerator FindAllMatchesCor()
+    public IEnumerator FindAllMatchesCor()
     {
-        yield return new WaitForSeconds(.1f);
+//=======================  
+      //yield return new WaitForSeconds(.1f);
+//=======================     
         for (int i = 0; i < board.width; i++)
         {
             for (int j = 0; j < board.height; j++)
@@ -167,6 +169,9 @@ public class FindMatches : MonoBehaviour
                         }
                     }
                 }
+//=======================                
+                yield return null;
+//=======================                
             }
         }
     }
@@ -181,7 +186,7 @@ public class FindMatches : MonoBehaviour
                 if (board.allCandys[i, j] != null)
                 {
                     // Check the tag on that candy
-                    if (board.allCandys[i, j].tag == color)
+                    if (board.allCandys[i, j].CompareTag(color))
                     {
                         // Set that dot to be matched
                         board.allCandys[i, j].GetComponent<Candy>().isMatched = true;
@@ -203,11 +208,13 @@ public class FindMatches : MonoBehaviour
                 {
                     if (board.allCandys[i, j] != null)
                     {
-                        Candy candy = board.allCandys[column, i].GetComponent<Candy>();
-                        if (candy.isRowBomb)
-                        {
-                            candys.Union(GetRowPieces(i)).ToList();
-                        }
+//=======================                       
+                        // Candy candy = board.allCandys[column, i].GetComponent<Candy>();
+                        // if (candy.isRowBomb)
+                        // {
+                        //     candys.Union(GetRowPieces(i)).ToList();
+                        // }
+//=======================                     
                         candys.Add(board.allCandys[i, j]);
                         board.allCandys[i, j].GetComponent<Candy>().isMatched = true;
                     }
@@ -223,11 +230,22 @@ public class FindMatches : MonoBehaviour
         List<GameObject> candys = new List<GameObject>();
         for (int i = 0; i < board.height; i++)
         {
-            if (board.allCandys[column, i] != null)
+//=======================            
+            // if (board.allCandys[column, i] != null)
+            // {
+            //     candys.Add(board.allCandys[column, i]);
+            //     board.allCandys[column, i].GetComponent<Candy>().isMatched = true;
+            // }
+
+            Candy candy = board.allCandys[column, i].GetComponent<Candy>();
+            if(candy.isRowBomb)
             {
-                candys.Add(board.allCandys[column, i]);
-                board.allCandys[column, i].GetComponent<Candy>().isMatched = true;
+                candys.Union(GetRowPieces(i)).ToList();
             }
+
+            candys.Add(board.allCandys[column, i]);
+            candy.isMatched = true;
+//=======================            
         }
         return candys;
     }
@@ -238,11 +256,22 @@ public class FindMatches : MonoBehaviour
         List<GameObject> candys = new List<GameObject>();
         for (int i = 0; i < board.width; i++)
         {
-            if (board.allCandys[i, row] != null)
+//=======================            
+            // if (board.allCandys[i, row] != null)
+            // {
+            //     candys.Add(board.allCandys[i, row]);
+            //     board.allCandys[i, row].GetComponent<Candy>().isMatched = true;
+            // }
+
+            Candy candy = board.allCandys[i, row].GetComponent<Candy>();
+            if(candy.isColumnBomb)
             {
-                candys.Add(board.allCandys[i, row]);
-                board.allCandys[i, row].GetComponent<Candy>().isMatched = true;
+                candys.Union(GetColumnPieces(i)).ToList();
             }
+
+            candys.Add(board.allCandys[i, row]);
+            candy.isMatched = true;
+//=======================            
         }
         return candys;
     }

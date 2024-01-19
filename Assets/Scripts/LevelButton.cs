@@ -2,6 +2,7 @@
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 public class LevelButton : MonoBehaviour
 {
     public static LevelButton Instance;

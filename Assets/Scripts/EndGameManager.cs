@@ -127,7 +127,11 @@ public class EndGameManager : MonoBehaviour
             }
             //PlayerPrefs.DeleteKey("next_level");
             //LevelButton.Instance.nextLevel = PlayerPrefs.GetInt("new next_level", Level_Data.Instance.levelToLoad += 1);
-            PlayerPrefs.SetInt("HeartAmount", HeartAmountManager.instance.heartAmount += 1);
+            PlayerPrefs.SetInt("HeartAmount", HeartAmountManager.instance.heartAmount);
+            PlayerPrefs.SetInt("MyMoney", ItemPriceManager.Instance.myMoney);
+            PlayerPrefs.SetInt("ColorBombAmount", ItemPriceManager.Instance.colorBombAmount);
+            PlayerPrefs.SetInt("BombAmount", ItemPriceManager.Instance.bombAmount);
+            PlayerPrefs.SetInt("ExtraStepAmount", ItemPriceManager.Instance.extraStepAmount);
             PlayerPrefs.Save();
             setWinGame = true;
         }

@@ -64,10 +64,10 @@
       },
       "match": {
         "move": 12,
-        "score1": 400,
-        "score2": 1000,
-        "score3": 2000,
-        "goalScore": 2000,
+        "score1": 200,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
         "specialBlockAmount": 1
       }
     },
@@ -90,10 +90,10 @@
       },
       "match": {
         "move": 12,
-        "score1": 400,
-        "score2": 1000,
-        "score3": 2000,
-        "goalScore": 2000,
+        "score1": 300,
+        "score2": 800,
+        "score3": 1700,
+        "goalScore": 1700,
         "specialBlockAmount": 0
       }
     },
@@ -130,7 +130,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 10
+        "specialBlockAmount": 3
       }
     },
     {
@@ -211,7 +211,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 20
+        "specialBlockAmount": 11
       }
     },
     {
@@ -434,7 +434,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 20
+        "specialBlockAmount": 3
       }
     },
     {
@@ -480,7 +480,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 20
+        "specialBlockAmount": 5
       }
     },
     {
@@ -528,6 +528,11 @@
             "x": 2,
             "y": 2,
             "tileKind": "Biscuit"
+          },
+          {
+            "x": 1,
+            "y": 2,
+            "tileKind": "Biscuit"
           }
         ]
       },
@@ -537,7 +542,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 20
+        "specialBlockAmount": 2
       }
     },
     {
@@ -588,7 +593,63 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 20
+        "specialBlockAmount": 6
+      }
+    },
+    {
+      "board": {
+        "width": 7,
+        "height": 6,
+        "boardLayout": [
+          {
+            "x": 6,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 5,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 4,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 3,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 2,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 1,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 0,
+            "y": 5,
+            "tileKind": "Biscuit"
+          },
+          {
+            "x": 0,
+            "y": 5,
+            "tileKind": "Biscuit"
+          }
+        ]
+      },
+      "match": {
+        "move": 5,
+        "score1": 300,
+        "score2": 750,
+        "score3": 1500,
+        "goalScore": 1500,
+        "specialBlockAmount": 7
       }
     }
   ]

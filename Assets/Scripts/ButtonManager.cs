@@ -32,6 +32,7 @@ public class ButtonManager : MonoBehaviour
 
     public void SetMapId()
     {
+        TextOfSelectLevel.Instance.currentLevel = mapId;
         // Sử dụng danh sách ánh xạ giữa mapId và selectedMapIndex
         List<int> selectedMapIndices = new List<int> { 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15};
         // Kiểm tra xem mapId có nằm trong danh sách không

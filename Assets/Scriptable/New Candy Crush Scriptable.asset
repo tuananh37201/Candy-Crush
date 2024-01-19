@@ -42,8 +42,8 @@ MonoBehaviour:
       - x: 0
         y: 0
         tileKind: 0
-      - x: 4
-        y: 7
+      - x: 3
+        y: 6
         tileKind: 0
     match:
       move: 10

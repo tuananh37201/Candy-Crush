@@ -37,7 +37,7 @@ public class Board : MonoBehaviour
 
     [Header("Math Stuff")]
     public Candy currentCandy;
-    private FindMatches findMatches;
+    public FindMatches findMatches;
     public int basePieceValue = 20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
@@ -73,10 +73,6 @@ public class Board : MonoBehaviour
     [Range(0, 1)]
     public float refillDelay;
 
-    int count = 0;
-
-    private bool hasRunOnce = false;
-
     private void Awake()
     {
         if (Instance == null)
@@ -96,13 +92,7 @@ public class Board : MonoBehaviour
         blankSpaces = new bool[width, height];
         allCandys = new GameObject[width, height];
         Setup();
-    }
-
-    void Start()
-    {
-        
-        //currentState = GameState.pause;
-    }
+    } 
 
     // GetLevelData
     private void GetLevelData(){
@@ -456,10 +446,6 @@ public class Board : MonoBehaviour
             {
                 GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
                 Destroy(particle, CandyDestroyTime);
-                // vqlinh test
-                count++;
-                Debug.Log(count);
-                if (count >= 8) ConditionWinLose();
             }
             if (allCandys[column, row].tag == "Green Candy")
             {
@@ -491,11 +477,6 @@ public class Board : MonoBehaviour
             scoreManager.IncreaseScore(basePieceValue * streakValue);
             allCandys[column, row] = null;
         }
-    }
-    public void ConditionWinLose()
-    {
-        //vqlinhtest
-        Debug.Log("Winn");
     }
 
     // Check có ô nào trên bảng bị null ko, nếu ko null thì gọi hàm DestroyMatchesAt()
@@ -880,25 +861,29 @@ public class Board : MonoBehaviour
                     }
                     if (j < height - 1)
                     {
-                        if (allCandys[i, j + 1] != null)
-                        {
-                            if (SwitchAndCheck(i, j, Vector2.up))
+                        if (SwitchAndCheck(i, j, Vector2.up))
                             {
                                 return false;
                             }
-                        }
+                        // if (allCandys[i, j + 1] != null)
+                        // {
+                        //     if (SwitchAndCheck(i, j, Vector2.up))
+                        //     {
+                        //         return false;
+                        //     }
+                        // }
                     }
-                    if (allCandys[i, j].GetComponent<Candy>().isColorBomb)
-                    {
-                        return false;
-                    }
+                    // if (allCandys[i, j].GetComponent<Candy>().isColorBomb)
+                    // {
+                    //     return false;
+                    // }
                 }
             }
         }
         return true;
     }
 
-    private IEnumerator ShuffleBoard()
+    public IEnumerator ShuffleBoard()
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -953,5 +938,6 @@ public class Board : MonoBehaviour
             StartCoroutine(ShuffleBoard());
         }
 
+        StartCoroutine(findMatches.FindAllMatchesCor());
     }
 }

@@ -51,7 +51,7 @@ public class Candy : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {     
         spriteRenderer = GetComponent<SpriteRenderer>();
         isColumnBomb = false;
         isRowBomb = false;
@@ -113,8 +113,9 @@ public class Candy : MonoBehaviour
         targetX = column;
         targetY = row;
 
+        #region Move towards the target
+        
         // ( TRÁI || PHẢI )
-        // Move Towards the target 
         if (Mathf.Abs(targetX - transform.position.x) > .1) // Lấy trị tuyệt đối để di chuyển sang trái hay bên phải ( + hoặc - )
         {
             tempPosition = new Vector2(targetX, transform.position.y);
@@ -152,6 +153,7 @@ public class Candy : MonoBehaviour
             tempPosition = new Vector2(transform.position.x, targetY);
             transform.position = tempPosition;
         }
+#endregion
     }
 
     private void OnMouseDown()
@@ -288,41 +290,6 @@ public class Candy : MonoBehaviour
                 board.DestroyMatches();
             }
             //otherCandy = null;
-        }
-    }
-
-    void FindMatches()
-    {
-        // Kiểm tra xem viên kẹo bên trái và bên phải có cùng tag với viên kẹo hiện tại không
-        if (column > 0 && column < board.width - 1)
-        {
-            GameObject leftCandy1 = board.allCandys[column - 1, row];
-            GameObject rightCandy1 = board.allCandys[column + 1, row];
-            if (leftCandy1 != null && rightCandy1 != null)
-            {
-                if (gameObject.CompareTag(leftCandy1.tag) && gameObject.CompareTag(rightCandy1.tag))
-                {
-                    leftCandy1.GetComponent<Candy>().isMatched = true;
-                    rightCandy1.GetComponent<Candy>().isMatched = true;
-                    isMatched = true;
-                }
-            }
-
-        }
-        // Kiểm tra xem viên kẹo bên trên và bên dưới có cùng tag với viên kẹo hiện tại không
-        if (row > 0 && row < board.height - 1)
-        {
-            GameObject downCandy1 = board.allCandys[column, row - 1];
-            GameObject upCandy1 = board.allCandys[column, row + 1];
-            if (upCandy1 != null && downCandy1 != null)
-            {
-                if (gameObject.CompareTag(downCandy1.tag) && gameObject.CompareTag(upCandy1.tag))
-                {
-                    downCandy1.GetComponent<Candy>().isMatched = true;
-                    upCandy1.GetComponent<Candy>().isMatched = true;
-                    isMatched = true;
-                }
-            }
         }
     }
 

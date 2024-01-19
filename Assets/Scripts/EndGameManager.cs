@@ -25,7 +25,7 @@ public class EndGameManager : MonoBehaviour
     private float timerSeconds;
     public int counterValue;
     private bool setEndGame = false;
-    private bool setWinGame = false;
+    public bool setWinGame = false;
     public TextMeshProUGUI goalScoreText;
     public int goalScore;
     public TextMeshProUGUI specialBlockAmountText;

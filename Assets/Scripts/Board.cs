@@ -523,8 +523,15 @@ public class Board : MonoBehaviour
             }
         }
         ItemPriceManager.Instance.myMoney += 100;
-        PlayerPrefs.SetInt("MyMoney", ItemPriceManager.Instance.myMoney += 100);
         StartCoroutine(DecreaseRowCor2());
+        if(EndGameManager.instance.setWinGame == true)
+        {
+            PlayerPrefs.SetInt("MyMoney", ItemPriceManager.Instance.myMoney);
+            PlayerPrefs.SetInt("BombAmount", ItemPriceManager.Instance.bombAmount);
+            PlayerPrefs.SetInt("ExtraStepAmount", ItemPriceManager.Instance.extraStepAmount);
+            PlayerPrefs.SetInt("BombAmount", ItemPriceManager.Instance.colorBombAmount);
+            PlayerPrefs.Save();
+        }
     }
 
     private void DameBiscuit(int column, int row)

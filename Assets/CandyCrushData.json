@@ -73,16 +73,16 @@
     },
     {
       "board": {
-        "width": 3,
+        "width": 5,
         "height": 6,
         "boardLayout": [
           {
-            "x": 1,
+            "x": 2,
             "y": 3,
             "tileKind": "Blank"
           },
           {
-            "x": 1,
+            "x": 3,
             "y": 2,
             "tileKind": "Blank"
           }
@@ -130,7 +130,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 20
+        "specialBlockAmount": 10
       }
     },
     {

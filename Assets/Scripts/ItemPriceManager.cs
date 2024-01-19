@@ -19,13 +19,15 @@ public class ItemPriceManager : MonoBehaviour
     public TextMeshProUGUI colorBombAmountText;
     public int colorBombAmount;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        myMoney = PlayerPrefs.GetInt("MyMoney", 0);
         bombAmount = PlayerPrefs.GetInt("BombAmount", 0);
         extraStepAmount = PlayerPrefs.GetInt("ExtraStepAmount", 0);
         colorBombAmount = PlayerPrefs.GetInt("ColorBombAmount", 0);

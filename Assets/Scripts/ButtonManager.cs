@@ -54,11 +54,11 @@ public class ButtonManager : MonoBehaviour
 
     public void DeleteData()
     {
-        PlayerPrefs.DeleteKey("next_level");
-        PlayerPrefs.DeleteKey("ColorBombAmount");
-        PlayerPrefs.DeleteKey("BombAmount");
-        PlayerPrefs.DeleteKey("BombAmount");
-        PlayerPrefs.DeleteKey("ExtraStepAmount");
-        PlayerPrefs.DeleteKey("HeartAmount");
+        string[] keysToDelete = { "next_level", "ColorBombAmount", "BombAmount", "ExtraStepAmount", "HeartAmount", "MyMoney" };
+
+        foreach (string key in keysToDelete)
+        {
+            PlayerPrefs.DeleteKey(key);
+        }
     }
 }

@@ -11,6 +11,7 @@ public class PopupSetting : MonoBehaviour
     public RectTransform rectTransform;
     public List<GameObject> items = new List<GameObject>();
     public bool isFadeIn = true;
+    public int movePos;
     public static PopupSetting instance { get; private set; }
 
     private void Awake()
@@ -26,8 +27,8 @@ public class PopupSetting : MonoBehaviour
         if (isFadeIn)
         {
             canvasGroup.alpha = 0; // Đặt độ đục của canvasGroup về 0
-            rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f); // Đặt vị trí ban đầu của panel
-            rectTransform.DOAnchorPos(new Vector2(0, -20), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
+            rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f); // Đặt vị trí ban đầu của panel
+            rectTransform.DOAnchorPos(new Vector2(0, movePos), fadeTime, false).SetEase(Ease.OutElastic); // Thực hiện animation dịch chuyển panel vào vị trí mới
             canvasGroup.DOFade(1, fadeTime); // Thực hiện animation làm đậm canvasGroup lên giá trị 1
                                              //StartCoroutine("ItemsAnimation"); // Bắt đầu coroutine để thực hiện animation cho các items
         }
@@ -40,7 +41,7 @@ public class PopupSetting : MonoBehaviour
     {
         canvasGroup.alpha = 1f; // Đặt độ đục của canvasGroup về 1
         rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f); // Đặt vị trí ban đầu của panel
-        rectTransform.DOAnchorPos(new Vector2(0, -1000f), 0.35f, false).SetEase(Ease.InOutQuint); // Thực hiện animation dịch chuyển panel ra khỏi màn hình
+        rectTransform.DOAnchorPos(new Vector2(0, -2000f), 0.35f, false).SetEase(Ease.InOutQuint); // Thực hiện animation dịch chuyển panel ra khỏi màn hình
         canvasGroup.DOFade(0, 0.35f); // Thực hiện animation làm mờ canvasGroup về giá trị 0
     }
 

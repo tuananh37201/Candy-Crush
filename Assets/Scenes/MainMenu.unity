@@ -540,6 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 508652741}
   - component: {fileID: 508652740}
+  - component: {fileID: 508652742}
   - component: {fileID: 508652739}
   m_Layer: 0
   m_Name: Main Camera
@@ -591,7 +592,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 0.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -622,6 +623,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &508652742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508652738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a722d4bd517bc48b5c19e47fb43cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wireColor: {r: 1, g: 1, b: 1, a: 1}
+  UnitsSize: 1
+  constraint: 1
+  camera: {fileID: 508652740}
 --- !u!114 &849014428 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5227492844805191077, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
@@ -812,6 +829,9 @@ MonoBehaviour:
   isClickBuyRowBomb: 0
   isClickBuyColorBomb: 0
   isWinPanel: 0
+  isUseRowBomb: 1
+  isUseColorBomb: 1
+  isUseExtraStep: 1
 --- !u!1 &1015023114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnableNextMap: 0
+  mapId: 0
 --- !u!114 &1673110813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1782,10 +1803,10 @@ RectTransform:
   m_Father: {fileID: 1078622320}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -140.87, y: 713}
-  m_SizeDelta: {x: 162.07, y: 67.23}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 81.035, y: -67.22998}
+  m_SizeDelta: {x: 162.07, y: 67.22998}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1925508045
 MonoBehaviour:
@@ -1800,6 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnableNextMap: 0
+  mapId: 0
 --- !u!114 &1925508046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,19 +2478,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987083747695677737, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 75.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987083747695677737, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 46.72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987083747695677737, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.8699951
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987083747695677737, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1062
+      value: -1055
       objectReference: {fileID: 0}
     - target: {fileID: 3074581842048872383, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2640,11 +2662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8630305108791466522, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 8630305108791466522, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -39
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 8641487801718935307, guid: 18f2a235c8c47e5449ea4a5777379401, type: 3}
       propertyPath: m_AnchorMax.x

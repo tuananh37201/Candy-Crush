@@ -46,12 +46,13 @@ public class Candy : MonoBehaviour
 
     private void Awake()
     {
+        DOTween.SetTweensCapacity(1000,100);
         instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
-    {     
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         isColumnBomb = false;
         isRowBomb = false;

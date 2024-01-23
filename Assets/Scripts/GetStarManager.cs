@@ -7,7 +7,7 @@ public class GetStarManager : MonoBehaviour {
     public GameObject yellowStar1, yellowStar2, yellowStar3;
     public Transform yellowStar1Pos, yellowStar2Pos, yellowStar3Pos;
     private bool spawnStar = false;
-    private int[] yellowStarAmounts = new int[3];
+    private int[] yellowStarAmounts = new int[15];
 
     private void Awake() {
         instance = this;

@@ -98,6 +98,7 @@ public class Candy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        findMatches.FindAllMatches();
         if (GameObjectLV1.Instance.isClickBuyColorBomb == true)
         {
             isClickColorBomb = true;

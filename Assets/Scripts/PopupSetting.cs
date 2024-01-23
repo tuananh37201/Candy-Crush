@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PopupSetting : MonoBehaviour
 {
@@ -13,13 +14,20 @@ public class PopupSetting : MonoBehaviour
     public bool isFadeIn = true;
     public int movePos;
     public static PopupSetting instance { get; private set; }
+    public GameObject yellowStar1;
+   //[SerializeField] private Button m_ExitButton;
+
+    //private void OnExit() {
+    //    Debug.Log("OnExit");
+    //    yellowStar1.SetActive(false);
+    //}
 
     private void Awake()
     {
         if (instance != null && instance != this) Destroy(this);
         else instance = this;
+        //m_ExitButton.onClick.AddListener(OnExit);
     }
-
     // Phương thức để hiển thị popup và thực hiện animation
     public void PanelFadeIn()
     {

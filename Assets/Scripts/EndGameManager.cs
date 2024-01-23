@@ -123,7 +123,7 @@ public class EndGameManager : MonoBehaviour
             CreateJsonFile();
             if (LevelButton.Instance.nextLevel == Level_Data.Instance.levelToLoad)
             {
-                PlayerPrefs.SetInt("next_level", Level_Data.Instance.levelToLoad += 1);
+                PlayerPrefs.SetInt("next_level", LevelButton.Instance.nextLevel += 1);
             }
             //PlayerPrefs.DeleteKey("next_level");
             //LevelButton.Instance.nextLevel = PlayerPrefs.GetInt("new next_level", Level_Data.Instance.levelToLoad += 1);
@@ -157,6 +157,7 @@ public class EndGameManager : MonoBehaviour
         {
             FindObjectOfType<Board>().currentState = GameState.pause;
             SetWinGame();
+            GetStarManager.instance.SetAmountOfReachedStars();
         }
         goalScoreText.text = Level_Data.Instance.dGoalScore.ToString();
         counter.text = Level_Data.Instance.dMove.ToString();

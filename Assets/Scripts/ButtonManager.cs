@@ -41,6 +41,9 @@ public class ButtonManager : MonoBehaviour
     }
     public void BackToMainMenu()
     {
+        //if (LevelButton.Instance.nextLevel == Level_Data.Instance.levelToLoad) {
+        //    PlayerPrefs.SetInt("next_level", Level_Data.Instance.levelToLoad += 1);
+        //}
         SceneManager.LoadScene("MainMenu");
     }
     public void SelectLevelSceneAtMenu()
@@ -55,11 +58,12 @@ public class ButtonManager : MonoBehaviour
 
     public void DeleteData()
     {
-        string[] keysToDelete = { "next_level", "ColorBombAmount", "BombAmount", "ExtraStepAmount", "HeartAmount", "MyMoney" };
+        //string[] keysToDelete = { "next_level", "ColorBombAmount", "BombAmount", "ExtraStepAmount", "HeartAmount", "MyMoney", "YellowStar" };
 
-        foreach (string key in keysToDelete)
-        {
-            PlayerPrefs.DeleteKey(key);
-        }
+        //foreach (string key in keysToDelete)
+        //{
+        //    PlayerPrefs.DeleteKey(key);
+        //}
+        PlayerPrefs.DeleteAll();
     }
 }

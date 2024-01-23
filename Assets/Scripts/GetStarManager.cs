@@ -4,7 +4,8 @@ using UnityEngine;
 public class GetStarManager : MonoBehaviour {
     public static GetStarManager instance;
     public int scoreToGetOneStar, scoreToGetTwoStar, scoreToGetThreeStar;
-    public GameObject yellowStar1, yellowStar2, yellowStar3, BTExitAndNextMap;
+    public GameObject yellowStar1, yellowStar2, yellowStar3;
+    public GameObject BTExitAndNextMap;
     public Transform yellowStar1Pos, yellowStar2Pos, yellowStar3Pos;
     private bool spawnStar = false;
     private int[] yellowStarAmounts = new int[15];

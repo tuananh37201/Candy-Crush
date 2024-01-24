@@ -161,6 +161,7 @@ public class EndGameManager : MonoBehaviour
         }
         goalScoreText.text = Level_Data.Instance.dGoalScore.ToString();
         counter.text = Level_Data.Instance.dMove.ToString();
+        if(Level_Data.Instance.dSpecialBlockAmount < 0) Level_Data.Instance.dSpecialBlockAmount = 0;
         specialBlockAmountText.text = Level_Data.Instance.dSpecialBlockAmount.ToString();
     }
 }

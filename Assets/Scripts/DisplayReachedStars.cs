@@ -48,7 +48,7 @@ public class DisplayReachedStars : MonoBehaviour {
         }
     }
 
-    private void Update() {
+    void Update() {
         int currentLevel = TextOfSelectLevel.Instance.currentLevel;
 
         if (levelToPlayerPrefsKey.ContainsKey(currentLevel)) {

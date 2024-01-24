@@ -14,7 +14,18 @@ public class ScoreManager : MonoBehaviour
         { 1, "HighestScoreLv1" },
         { 2, "HighestScoreLv2" },
         { 3, "HighestScoreLv3" },
-        { 4, "HighestScoreLv4" }
+        { 4, "HighestScoreLv4" },
+        { 5, "HighestScoreLv5" },
+        { 6, "HighestScoreLv6" },
+        { 7, "HighestScoreLv7" },
+        { 8, "HighestScoreLv8" },
+        { 9, "HighestScoreLv9" },
+        { 10, "HighestScoreLv10" },
+        { 11, "HighestScoreLv11" },
+        { 12, "HighestScoreLv12" },
+        { 13, "HighestScoreLv13" },
+        { 14, "HighestScoreLv14" },
+        { 15, "HighestScoreLv15" }
     };
 
     private void Awake()

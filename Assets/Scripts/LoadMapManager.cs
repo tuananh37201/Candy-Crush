@@ -6,6 +6,7 @@ public class LoadMapManager : MonoBehaviour
     public static LoadMapManager instance;
     public int selectedMapIndex;
     public GameObject NotEnoughHeartNotice;
+    public GameObject playNotice;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class LoadMapManager : MonoBehaviour
         {
             SceneManager.LoadScene("Level Test 1");
         }
+        else if(LevelButton.Instance.nextLevel < selectedMapIndex) playNotice.SetActive(true);
     }
 
     public void NotEnoughHeart() {

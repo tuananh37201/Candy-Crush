@@ -20,6 +20,8 @@ public class BoardTile : MonoBehaviour
         if (hitPoints <= 0)
         {
             StartCoroutine(BreakalbeDestroyEffect());
+            DOTween.Kill(transform);
+            Destroy(gameObject);
         }
     }
 
@@ -33,7 +35,5 @@ public class BoardTile : MonoBehaviour
         transform.DOMove(target.transform.position, 2f, false);
         //transform.DORotate(new Vector3(0f, 0f, 360f), 1.5f, RotateMode.FastBeyond360);
         yield return new WaitForSeconds(2.5f);
-        DOTween.Kill(transform);
-        Destroy(gameObject);
     }
 }

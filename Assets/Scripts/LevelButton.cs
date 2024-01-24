@@ -48,7 +48,9 @@ public class LevelButton : MonoBehaviour
     {
         numLevelTextBlue.text = numLevel.ToString();
         numLevelTextPink.text = numLevel.ToString();
-        nextLevel = PlayerPrefs.GetInt("next_level", 6);
+
+        nextLevel = PlayerPrefs.GetInt("next_level", 15);
+
         //PlayerPrefs.DeleteKey("next_level");
         //PlayerPrefs.Save();
 

@@ -154,41 +154,6 @@
             "tileKind": "Breakable"
           },
           {
-            "x": 1,
-            "y": 1,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 1,
-            "y": 3,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 2,
-            "y": 0,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 2,
-            "y": 2,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 2,
-            "y": 4,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 3,
-            "y": 1,
-            "tileKind": "Breakable"
-          },
-          {
-            "x": 3,
-            "y": 3,
-            "tileKind": "Breakable"
-          },
-          {
             "x": 4,
             "y": 0,
             "tileKind": "Breakable"
@@ -491,22 +456,22 @@
           {
             "x": 0,
             "y": 4,
-            "tileKind": "Blank"
+            "tileKind": "Lock"
           },
           {
             "x": 1,
             "y": 4,
-            "tileKind": "Blank"
+            "tileKind": "Lock"
           },
           {
             "x": 2,
             "y": 4,
-            "tileKind": "Blank"
+            "tileKind": "Lock"
           },
           {
             "x": 3,
             "y": 4,
-            "tileKind": "Blank"
+            "tileKind": "Lock"
           }
         ]
       },

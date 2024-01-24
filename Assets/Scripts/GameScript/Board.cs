@@ -122,7 +122,7 @@ public class Board : MonoBehaviour
             if (boardLayout[i].tileKind == TileKind.Breakable)
             {
                 // Create a "Breakable tiles at that position
-                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                Vector2 tempPosition = new(boardLayout[i].x, boardLayout[i].y);
                 GameObject tile = Instantiate(breakableTilePrefab, tempPosition, Quaternion.identity);
                 breakableTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
             }
@@ -138,7 +138,7 @@ public class Board : MonoBehaviour
             if (boardLayout[i].tileKind == TileKind.Chocolate)
             {
                 // Create a "Chocolate" tiles at that position
-                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                Vector2 tempPosition = new(boardLayout[i].x, boardLayout[i].y);
                 GameObject tile = Instantiate(chocolatePrefab, tempPosition, Quaternion.identity);
                 chocolateTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
             }
@@ -154,7 +154,7 @@ public class Board : MonoBehaviour
             if (boardLayout[i].tileKind == TileKind.Biscuit)
             {
                 // Create a "Biscuit" tiles at that position
-                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                Vector2 tempPosition = new(boardLayout[i].x, boardLayout[i].y);
                 GameObject tile = Instantiate(biscuitTilePrefab, tempPosition, Quaternion.identity);
                 biscuitTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
             }
@@ -170,7 +170,7 @@ public class Board : MonoBehaviour
             if (boardLayout[i].tileKind == TileKind.Lock)
             {
                 // Create a "Lock" tiles at that position
-                Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
+                Vector2 tempPosition = new(boardLayout[i].x, boardLayout[i].y);
                 GameObject tile = Instantiate(lockTilePrefab, tempPosition, Quaternion.identity);
                 lockTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BoardTile>();
             }
@@ -412,6 +412,11 @@ public class Board : MonoBehaviour
     {
         if (allCandys[column, row].GetComponent<Candy>().isMatched)
         {
+
+            DameBiscuit(column, row);
+            DameChocolate(column, row);
+            //DameBreakable(column, row);
+            
             // How many elements are in the matched pieces list from findmatches?
             if (findMatches.currentMatches.Count >= 4)
             {
@@ -439,39 +444,38 @@ public class Board : MonoBehaviour
                 }
             }
 
-            DameBiscuit(column, row);
-            DameChocolate(column, row);
-
-            if (allCandys[column, row].tag == "Blue Candy")
-            {
-                GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, CandyDestroyTime);
-            }
-            if (allCandys[column, row].tag == "Green Candy")
-            {
-                GameObject particle = Instantiate(greenDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, CandyDestroyTime);
-            }
-            if (allCandys[column, row].tag == "Orange Candy")
-            {
-                GameObject particle = Instantiate(orangeDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, CandyDestroyTime);
-            }
-            if (allCandys[column, row].tag == "Red Candy")
-            {
-                GameObject particle = Instantiate(redDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, CandyDestroyTime);
-            }
-            if (allCandys[column, row].tag == "Purple Candy")
-            {
-                GameObject particle = Instantiate(purpleDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, CandyDestroyTime);
-            }
-            if (allCandys[column, row].tag == "Yellow Candy")
-            {
-                GameObject particle = Instantiate(yellowDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
-                Destroy(particle, CandyDestroyTime);
-            }
+            #region Destroy Effect
+                if (allCandys[column, row].CompareTag("Blue Candy"))
+                {
+                    GameObject particle = Instantiate(blueDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                    Destroy(particle, CandyDestroyTime);
+                }
+                if (allCandys[column, row].CompareTag("Green Candy"))
+                {
+                    GameObject particle = Instantiate(greenDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                    Destroy(particle, CandyDestroyTime);
+                }
+                if (allCandys[column, row].CompareTag("Orange Candy"))
+                {
+                    GameObject particle = Instantiate(orangeDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                    Destroy(particle, CandyDestroyTime);
+                }
+                if (allCandys[column, row].CompareTag("Red Candy"))
+                {
+                    GameObject particle = Instantiate(redDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                    Destroy(particle, CandyDestroyTime);
+                }
+                if (allCandys[column, row].CompareTag("Purple Candy"))
+                {
+                    GameObject particle = Instantiate(purpleDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                    Destroy(particle, CandyDestroyTime);
+                }
+                if (allCandys[column, row].CompareTag("Yellow Candy"))
+                {
+                    GameObject particle = Instantiate(yellowDestroyEffect, allCandys[column, row].transform.position, Quaternion.identity);
+                    Destroy(particle, CandyDestroyTime);
+                }
+            #endregion
 
             Destroy(allCandys[column, row]);
             scoreManager.IncreaseScore(basePieceValue * streakValue);

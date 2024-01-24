@@ -116,27 +116,6 @@ MonoBehaviour:
       - x: 0
         y: 4
         tileKind: 1
-      - x: 1
-        y: 1
-        tileKind: 1
-      - x: 1
-        y: 3
-        tileKind: 1
-      - x: 2
-        y: 0
-        tileKind: 1
-      - x: 2
-        y: 2
-        tileKind: 1
-      - x: 2
-        y: 4
-        tileKind: 1
-      - x: 3
-        y: 1
-        tileKind: 1
-      - x: 3
-        y: 3
-        tileKind: 1
       - x: 4
         y: 0
         tileKind: 1
@@ -328,16 +307,16 @@ MonoBehaviour:
       boardLayout:
       - x: 0
         y: 4
-        tileKind: 0
+        tileKind: 3
       - x: 1
         y: 4
-        tileKind: 0
+        tileKind: 3
       - x: 2
         y: 4
-        tileKind: 0
+        tileKind: 3
       - x: 3
         y: 4
-        tileKind: 0
+        tileKind: 3
     match:
       move: 5
       score1: 300

@@ -176,7 +176,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 11
+        "specialBlockAmount": 6
       }
     },
     {
@@ -399,7 +399,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 3
+        "specialBlockAmount": 4
       }
     },
     {
@@ -445,7 +445,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 5
+        "specialBlockAmount": 6
       }
     },
     {
@@ -558,7 +558,7 @@
         "score2": 750,
         "score3": 1500,
         "goalScore": 1500,
-        "specialBlockAmount": 6
+        "specialBlockAmount": 7
       }
     },
     {

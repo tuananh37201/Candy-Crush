@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your heart is't enough to play. Please buy heart in the heart shop and
+  m_text: Your heart is'nt enough to play. Please buy heart in the heart shop and
     try again !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6f89582b7b5e484799eaba664f53140, type: 2}

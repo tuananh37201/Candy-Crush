@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class HeartShop : MonoBehaviour
     public TextMeshProUGUI myMoneyText;
     public int moneyAmount;
     public int heartPrice;
+    public GameObject moneyNotice;
     private void Awake()
     {
         instance = this;
@@ -22,7 +24,17 @@ public class HeartShop : MonoBehaviour
             PlayerPrefs.SetInt("MyMoney", moneyAmount -= heartPrice);
             PlayerPrefs.Save();
         }
+        else if(moneyAmount <= heartPrice) {
+            moneyNotice.SetActive(true);
+            StartCoroutine(DisappearNotice());
+        }
     }
+
+    private IEnumerator DisappearNotice() {
+        yield return new WaitForSeconds(2f);
+        moneyNotice.SetActive(false);
+    }
+
     void Update()
     {
         moneyAmount = PlayerPrefs.GetInt("MyMoney");

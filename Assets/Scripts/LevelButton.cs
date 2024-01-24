@@ -13,9 +13,9 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private Image buttonImage;
     [SerializeField] private Text numLevelTextBlue;
     [SerializeField] private Text numLevelTextPink;
-    [SerializeField] private GameObject star1;
-    [SerializeField] private GameObject star2;
-    [SerializeField] private GameObject star3;
+    //[SerializeField] private GameObject star1;
+    //[SerializeField] private GameObject star2;
+    //[SerializeField] private GameObject star3;
     [SerializeField] private GameObject shineAnimation;
 
     public int numLevel;
@@ -37,9 +37,9 @@ public class LevelButton : MonoBehaviour
         Assert.IsNotNull(buttonImage);
         Assert.IsNotNull(numLevelTextBlue);
         Assert.IsNotNull(numLevelTextPink);
-        Assert.IsNotNull(star1);
-        Assert.IsNotNull(star2);
-        Assert.IsNotNull(star3);
+        //Assert.IsNotNull(star1);
+        //Assert.IsNotNull(star2);
+        //Assert.IsNotNull(star3);
         Assert.IsNotNull(shineAnimation);
         Instance = this;
     }
@@ -58,9 +58,9 @@ public class LevelButton : MonoBehaviour
         if (numLevel == nextLevel)
         {
             buttonImage.sprite = currentButtonSprite;
-            star1.SetActive(false);
-            star2.SetActive(false);
-            star3.SetActive(false);
+            //star1.SetActive(false);
+            //star2.SetActive(false);
+            //star3.SetActive(false);
             shineAnimation.SetActive(true);
             numLevelTextPink.gameObject.SetActive(false);
         }
@@ -72,18 +72,18 @@ public class LevelButton : MonoBehaviour
             switch (stars)
             {
                 case 1:
-                    star1.GetComponent<Image>().sprite = yellowStarSprite;
+                   // star1.GetComponent<Image>().sprite = yellowStarSprite;
                     break;
 
                 case 2:
-                    star1.GetComponent<Image>().sprite = yellowStarSprite;
-                    star2.GetComponent<Image>().sprite = yellowStarSprite;
+                    //star1.GetComponent<Image>().sprite = yellowStarSprite;
+                    //star2.GetComponent<Image>().sprite = yellowStarSprite;
                     break;
 
                 default:
-                    star1.GetComponent<Image>().sprite = yellowStarSprite;
-                    star2.GetComponent<Image>().sprite = yellowStarSprite;
-                    star3.GetComponent<Image>().sprite = yellowStarSprite;
+                    //star1.GetComponent<Image>().sprite = yellowStarSprite;
+                    //star2.GetComponent<Image>().sprite = yellowStarSprite;
+                    //star3.GetComponent<Image>().sprite = yellowStarSprite;
                     break;
             }
         }
@@ -92,9 +92,9 @@ public class LevelButton : MonoBehaviour
             buttonImage.sprite = lockedButtonSprite;
             numLevelTextBlue.gameObject.SetActive(false);
             numLevelTextPink.gameObject.SetActive(false);
-            star1.SetActive(false);
-            star2.SetActive(false);
-            star3.SetActive(false);
+            //star1.SetActive(false);
+            //star2.SetActive(false);
+            //star3.SetActive(false);
         }
         
     }

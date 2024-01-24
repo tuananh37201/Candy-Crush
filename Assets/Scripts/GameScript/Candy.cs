@@ -46,12 +46,13 @@ public class Candy : MonoBehaviour
 
     private void Awake()
     {
+        DOTween.SetTweensCapacity(1000,100);
         instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
-    {     
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         isColumnBomb = false;
         isRowBomb = false;
@@ -66,6 +67,9 @@ public class Candy : MonoBehaviour
     // Testing
     private void OnMouseOver()
     {
+        Color colorAlpha = new(){a = 0};
+
+
         if (isClickRowBomb && Input.GetMouseButtonDown(0))
         {
             doubleClickCount++;
@@ -74,6 +78,7 @@ public class Candy : MonoBehaviour
                 isRowBomb = true;
                 GameObject arrow = Instantiate(rowSugar, transform.position, Quaternion.identity);
                 arrow.transform.parent = this.transform;
+                arrow.transform.parent.GetComponent<SpriteRenderer>().color = colorAlpha;
                 int amount = ItemPriceManager.Instance.bombAmount -= 1;
                 PlayerPrefs.SetInt("BombAmount", amount);
                 PlayerPrefs.Save();
@@ -87,6 +92,7 @@ public class Candy : MonoBehaviour
                 isColorBomb = true;
                 GameObject arrow = Instantiate(colorBomb, transform.position, Quaternion.identity);
                 arrow.transform.parent = this.transform;
+                arrow.transform.parent.GetComponent<SpriteRenderer>().color = colorAlpha;
                 int amount = ItemPriceManager.Instance.colorBombAmount -= 1;
                 PlayerPrefs.SetInt("ColorBombAmount", amount);
                 PlayerPrefs.Save();

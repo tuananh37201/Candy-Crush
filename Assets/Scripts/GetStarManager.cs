@@ -1,11 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class GetStarManager : MonoBehaviour {
     public static GetStarManager instance;
     public int scoreToGetOneStar, scoreToGetTwoStar, scoreToGetThreeStar;
     public GameObject yellowStar1, yellowStar2, yellowStar3;
-    public GameObject BTExitAndNextMap;
+    public Transform btExit, btNextMap;
+    public Vector2 btSize;
+    private bool hasChangeSize = false;
     public Transform yellowStar1Pos, yellowStar2Pos, yellowStar3Pos;
     private bool spawnStar = false;
     private int[] yellowStarAmounts = new int[15];
@@ -61,8 +64,19 @@ public class GetStarManager : MonoBehaviour {
     }
 
     private IEnumerator ShowExitAndNextMapBt() {
+        yield return new WaitForSeconds(2);
+        btExit.DOScale(btSize, 1.5f);
+        btNextMap.DOScale(btSize, 1.5f);
+    }
+
+    private IEnumerator WaitAndStopTweens(params Tween[] tweens) {
+        // Chờ 3 giây
         yield return new WaitForSeconds(3f);
-        BTExitAndNextMap.SetActive(true);
+
+        // Dừng tất cả các tween đã được truyền vào
+        foreach (var tween in tweens) {
+            tween.Kill(); // Dừng tween
+        }
     }
 
     private IEnumerator SpawnStar1() {

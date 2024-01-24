@@ -1731,7 +1731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &319615214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4176,7 +4176,6 @@ GameObject:
   - component: {fileID: 640107585}
   - component: {fileID: 640107584}
   - component: {fileID: 640107583}
-  - component: {fileID: 640107582}
   - component: {fileID: 640107587}
   m_Layer: 5
   m_Name: BtnNextMap
@@ -4194,7 +4193,7 @@ RectTransform:
   m_GameObject: {fileID: 640107580}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 319615214}
@@ -4205,21 +4204,6 @@ RectTransform:
   m_AnchoredPosition: {x: 61, y: -73}
   m_SizeDelta: {x: 79.7, y: 77.92}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &640107582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640107580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978c88629d886084c9c4dbfa146f12d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yourButton: {fileID: 640107584}
-  scaleDuration: 0.5
-  scaleValue: {x: 1.1, y: 0.9}
 --- !u!95 &640107583
 Animator:
   serializedVersion: 5
@@ -5553,7 +5537,6 @@ GameObject:
   - component: {fileID: 1021253102}
   - component: {fileID: 1021253101}
   - component: {fileID: 1021253100}
-  - component: {fileID: 1021253099}
   m_Layer: 5
   m_Name: 'BtnExit '
   m_TagString: Untagged
@@ -5570,7 +5553,7 @@ RectTransform:
   m_GameObject: {fileID: 1021253097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 319615214}
@@ -5581,21 +5564,6 @@ RectTransform:
   m_AnchoredPosition: {x: -59, y: -73}
   m_SizeDelta: {x: 79.7, y: 77.92}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1021253099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021253097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978c88629d886084c9c4dbfa146f12d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yourButton: {fileID: 1021253101}
-  scaleDuration: 0.5
-  scaleValue: {x: 1.1, y: 0.9}
 --- !u!95 &1021253100
 Animator:
   serializedVersion: 5
@@ -7655,7 +7623,9 @@ MonoBehaviour:
   yellowStar1: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar2: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
   yellowStar3: {fileID: 6181189289097360231, guid: 5d6a251cdda7eed4fb1ebf956def7f52, type: 3}
-  BTExitAndNextMap: {fileID: 319615213}
+  btExit: {fileID: 1021253098}
+  btNextMap: {fileID: 640107581}
+  btSize: {x: 1, y: 1}
   yellowStar1Pos: {fileID: 1947234639}
   yellowStar2Pos: {fileID: 1137762640}
   yellowStar3Pos: {fileID: 2019215975}

@@ -18,6 +18,8 @@ public class Board : MonoBehaviour
 {
 
     public static Board Instance;
+    public AudioSource audioSource;
+    public AudioClip destroyEffectsound;
     public GameState currentState = GameState.move;
 
     [Header("Level")]
@@ -91,6 +93,7 @@ public class Board : MonoBehaviour
 
         blankSpaces = new bool[width, height];
         allCandys = new GameObject[width, height];
+        audioSource = GetComponent<AudioSource>();
         Setup();
     } 
 

@@ -5962,6 +5962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a057556d2929c64e8f9b7074ad9ef54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  destroyEffectsound: {fileID: 8300000, guid: fe2864c5d727f034e8eb83d973e4c986, type: 3}
   currentState: 1
   levelData: {fileID: 621003990}
   goalScore: 0

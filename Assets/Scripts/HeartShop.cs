@@ -8,6 +8,7 @@ public class HeartShop : MonoBehaviour
     public TextMeshProUGUI myMoneyText;
     public int moneyAmount;
     public int heartPrice;
+    public TextMeshProUGUI heartPriceText;
     public GameObject moneyNotice;
     private void Awake()
     {
@@ -20,8 +21,9 @@ public class HeartShop : MonoBehaviour
         {
             moneyAmount -= heartPrice;
             HeartAmountManager.instance.heartAmount += 1;
-            PlayerPrefs.SetInt("HeartAmount", HeartAmountManager.instance.heartAmount += 1);
-            PlayerPrefs.SetInt("MyMoney", moneyAmount -= heartPrice);
+            PlayerPrefs.SetInt("HeartAmount", HeartAmountManager.instance.heartAmount);
+            if(moneyAmount<0) moneyAmount = 0;
+            PlayerPrefs.SetInt("MyMoney", moneyAmount);
             PlayerPrefs.Save();
         }
         else if(moneyAmount <= heartPrice) {
@@ -39,5 +41,6 @@ public class HeartShop : MonoBehaviour
     {
         moneyAmount = PlayerPrefs.GetInt("MyMoney");
         myMoneyText.text = moneyAmount.ToString();
+        heartPriceText.text = "$ " + heartPrice.ToString();
     }
 }

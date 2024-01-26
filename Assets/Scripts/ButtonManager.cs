@@ -2,14 +2,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour
-{
+public class ButtonManager : MonoBehaviour {
     public static ButtonManager instance;
     public bool isEnableNextMap;
     public int mapId;
 
-    private void Awake()
-    {
+    private void Awake() {
         instance = this;
         //DontDestroyOnLoad(gameObject);
     }
@@ -30,40 +28,29 @@ public class ButtonManager : MonoBehaviour
     //     SceneManager.LoadScene("Level" + level);
     // }
 
-    public void SetMapId()
-    {
+    public void SetMapId() {
         TextOfSelectLevel.Instance.currentLevel = mapId;
         // Sử dụng danh sách ánh xạ giữa mapId và selectedMapIndex
-        List<int> selectedMapIndices = new List<int> { 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15};
+        List<int> selectedMapIndices = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
         // Kiểm tra xem mapId có nằm trong danh sách không
         if (mapId >= 1 && mapId <= selectedMapIndices.Count)
             LoadMapManager.instance.selectedMapIndex = selectedMapIndices[mapId - 1];
     }
-    public void BackToMainMenu()
-    {
+    public void BackToMainMenu() {
         //if (LevelButton.Instance.nextLevel == Level_Data.Instance.levelToLoad) {
         //    PlayerPrefs.SetInt("next_level", Level_Data.Instance.levelToLoad += 1);
         //}
         SceneManager.LoadScene("MainMenu");
     }
-    public void SelectLevelSceneAtMenu()
-    {
+    public void SelectLevelSceneAtMenu() {
         SceneManager.LoadScene("SelectLevel");
     }
-    public void SelectLevelScene()
-    {
+    public void SelectLevelScene() {
         isEnableNextMap = true;
         SceneManager.LoadScene("SelectLevel");
     }
 
-    public void DeleteData()
-    {
-        //string[] keysToDelete = { "next_level", "ColorBombAmount", "BombAmount", "ExtraStepAmount", "HeartAmount", "MyMoney", "YellowStar" };
-
-        //foreach (string key in keysToDelete)
-        //{
-        //    PlayerPrefs.DeleteKey(key);
-        //}
+    public void DeleteData() {
         PlayerPrefs.DeleteAll();
     }
 }
